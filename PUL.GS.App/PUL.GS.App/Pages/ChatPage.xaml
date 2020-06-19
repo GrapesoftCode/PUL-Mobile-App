@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:selectors="clr-namespace:PUL.GS.App.Selectors"
+             xmlns:panckeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:converters="clr-namespace:PUL.GS.App.Converters"
+             x:Class="PUL.GS.App.Pages.ChatPage"
+             Visual="Material"
+             Title="{Binding GroupName, StringFormat='Grupo {0}'}"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Resources>
+        <selectors:ChatMessageSelector x:Key="SelectMessageTemplate"></selectors:ChatMessageSelector>
+        <converters:Base64ToImageConverter x:Key="ToImage"></converters:Base64ToImageConverter>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salir"
+                     Command="{Binding LeaveCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"></RowDefinition>
+            <RowDefinition Height=".75*"></RowDefinition>
+            <RowDefinition Height=".15*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid BackgroundColor="#EFEFF0">
+            <CollectionView
+                ItemsSource="{Binding Users}"
+                VerticalOptions="Center"
+                HeightRequest="50"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedUser}"
+                SelectionChangedCommand="{Binding ItemSelectedCommand}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="20"></LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="0"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HasShadow="False"
+                            IsClippedToBounds="True">
+                            <Image Source="{Binding Avatar}"></Image>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Messages}"
+                        ItemTemplate="{StaticResource SelectMessageTemplate}"
+                        Margin="10"
+                        ItemsUpdatingScrollMode="KeepLastItemInView">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="15"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.Resources>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="SimpleText">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".15*"></ColumnDefinition>
+                                <ColumnDefinition Width=".7*"></ColumnDefinition>
+                                <ColumnDefinition Width=".15*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Frame Padding="0"
+                                   CornerRadius="30"
+                                   HasShadow="False"
+                                   HeightRequest="60"
+                                   WidthRequest="60"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   IsClippedToBounds="True"
+                                   BackgroundColor="{Binding Color}">
+                                <Image Source="{Binding Avatar}"></Image>
+                            </Frame>
+                            <panckeView:PancakeView
+                                BackgroundColor="#E6E9EF"
+                                Grid.Column="1"
+                                CornerRadius="20,20,0,20"
+                                IsClippedToBounds="True"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout Margin="15">
+                                    <Label Text="{Binding Sender}"
+                                           TextColor="{Binding Color}"
+                                           FontSize="Micro"
+                                           FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding Text}"
+                                           TextColor="DarkSlateGray"
+                                           FontSize="Small"></Label>
+                                </StackLayout>
+                            </panckeView:PancakeView>
+                        </Grid>
+                        
+                    </DataTemplate>
+                    <DataTemplate x:Key="LocalSimpleText">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                                <ColumnDefinition Width=".7*"></ColumnDefinition>
+                                <ColumnDefinition Width=".1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <panckeView:PancakeView
+                                BackgroundColor="Navy"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                CornerRadius="20,20,20,0"
+                                IsClippedToBounds="True"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,10,15,0">
+                                <Grid>
+                                    <StackLayout Margin="15">
+                                        <Label Text="{Binding Text}"
+                                               TextColor="White"
+                                               FontSize="Small"></Label>
+                                    </StackLayout>
+                                </Grid>
+                                
+                            </panckeView:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate x:Key="UserConnected">
+                        <Grid Padding="10">
+                            <panckeView:PancakeView
+                                BackgroundColor="#4C4C4C"
+                                CornerRadius="10"
+                                IsClippedToBounds="True"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="40"
+                                Margin="0,10,0,0">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    HorizontalOptions="Center">
+                                    <Label Text="{Binding Sender}"
+                                           TextColor="LightGray"
+                                           FontAttributes="Bold"
+                                           FontSize="Small"
+                                           VerticalOptions="Center"></Label>
+                                    <Label Text="Conectado"
+                                           TextColor="White"
+                                           FontSize="Small"
+                                           VerticalOptions="Center"></Label>
+                                </StackLayout>
+                            </panckeView:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate x:Key="Photo">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".15*"></ColumnDefinition>
+                                <ColumnDefinition Width=".7*"></ColumnDefinition>
+                                <ColumnDefinition Width=".15*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Padding="0"
+                                   CornerRadius="30"
+                                   HasShadow="False"
+                                   HeightRequest="60"
+                                   WidthRequest="60"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   IsClippedToBounds="True"
+                                   BackgroundColor="{Binding Color}">
+                                <Image Source="{Binding Avatar}"></Image>
+                            </Frame>
+                            <Frame CornerRadius="20"
+                                   IsClippedToBounds="False"
+                                   Padding="0"
+                                   Grid.Column="1"
+                                   BackgroundColor="#E6E9EF">
+                                <StackLayout Margin="15">
+                                    <Label Text="{Binding Sender}"
+                                           TextColor="{Binding Color}"
+                                           FontSize="Micro"
+                                           FontAttributes="Bold"></Label>
+                                    <Image Source="{Binding Url}"
+                                           HeightRequest="150"
+                                           HorizontalOptions="Fill"></Image>
+                                </StackLayout>
+                                
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate x:Key="LocalPhoto">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                                <ColumnDefinition Width=".7*"></ColumnDefinition>
+                                <ColumnDefinition Width=".1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame CornerRadius="30"
+                                   IsClippedToBounds="False"
+                                   Padding="0"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   BackgroundColor="Navy">
+                                <StackLayout Margin="15">
+                                    <Image Source="{Binding Base64Photo, Converter={StaticResource ToImage}}"
+                                           Aspect="AspectFill"
+                                           HeightRequest="150"
+                                           HorizontalOptions="Fill">
+                                        
+                                    </Image>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </CollectionView.Resources>
+        </CollectionView>
+
+        <Grid Grid.Row="2"
+              BackgroundColor="#EFEFF0"
+              VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".1*"></ColumnDefinition>
+                <ColumnDefinition Width=".8*"></ColumnDefinition>
+                <ColumnDefinition Width=".1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="photo.png"
+                         Command="{Binding PhotoCommand}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"></ImageButton>
+            <Editor Text="{Binding Text}"
+                    Grid.Column="1"
+                    AutoSize="TextChanges"></Editor>
+            <ImageButton Grid.Column="2"
+                         Source="send.png"
+                         Command="{Binding SendCommand}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"></ImageButton>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source="main.jpg"
+               Aspect="AspectFill"></Image>
+        <Grid Grid.Row="1">
+            <Frame
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                CornerRadius="2"
+                Margin="0,-20,0,-20">
+                <StackLayout>
+                    <Label Text="PUL APP"
+                           FontSize="Title"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           TextColor="Black"></Label>
+                    <Label Text="Ingresa tu usuario para ingresar"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"></Label>
+                    <Entry Placeholder="Nombre de usuario"
+                           Margin="25"
+                           Text="{Binding UserName}"
+                           ReturnCommand="{Binding ConnectCommand}"></Entry>
+                    <Button Text="Iniciar Sessión"
+                            Margin="25"
+                            BackgroundColor="DarkOrange"
+                            Command="{Binding ConnectCommand}"></Button>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>
