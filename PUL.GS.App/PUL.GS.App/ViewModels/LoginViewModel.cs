@@ -25,7 +25,7 @@ namespace PUL.GS.App.ViewModels
 
                 //await ChatService.InitAsync(UserName);
 
-                await CoreMethods.PushPageModel<MainViewModel>();
+                await CoreMethods.PushPageModel<MainViewModel>(UserName);
 
                 //var masterDetail = new FreshMasterDetailNavigationContainer();
                 //masterDetail.AddPage<MainViewModel>("Inicio");

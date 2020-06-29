@@ -27,7 +27,7 @@ namespace PUL.GS.App.Droid
 
             var activity = this.Context as Activity;
 
-            if (showLogin && FacebookAuth.User == null)
+            if (showLogin && FacebookAuth.CurrentUser == null)
             {
                 showLogin = false;
                 var auth = FacebookAuth.FacebookAuthByClientId();
@@ -42,7 +42,7 @@ namespace PUL.GS.App.Droid
                             null, eventArgs.Account);
 
                         var fbResponse = await request.GetResponseAsync();
-                        FacebookAuth.User = JsonConvert.DeserializeObject<UserFacebook>
+                        FacebookAuth.CurrentUser = JsonConvert.DeserializeObject<UserFacebook>
                         (fbResponse.GetResponseText());
                         FacebookAuth.SuccessfullLoginAction.Invoke();
                     }

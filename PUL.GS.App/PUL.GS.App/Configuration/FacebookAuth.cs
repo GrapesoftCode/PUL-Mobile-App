@@ -10,7 +10,7 @@ namespace PUL.GS.App.Configuration
 {
     public static class FacebookAuth
     {
-        public static UserFacebook User;
+        public static UserFacebook CurrentUser;
 
         private static string ClientId = "737022690378640";
         public static Action SuccessfullLoginAction
@@ -20,7 +20,7 @@ namespace PUL.GS.App.Configuration
 
                     var profilePage =
                         FreshPageModelResolver
-                            .ResolvePageModel<ProfileViewModel>(User);
+                            .ResolvePageModel<ProfileViewModel>(CurrentUser);
 
                     var navPage =
                         new FreshNavigationContainer(profilePage);
