@@ -36,7 +36,7 @@
                            IsPassword="True"></Entry>
 
                     <ImageButton
-                            Source="btnlogin.png"
+                            Source="btnlogintext.png"
                             Margin="-30,50,200,0"
                             Command="{Binding ConnectCommand}"
                             VerticalOptions="Center"
