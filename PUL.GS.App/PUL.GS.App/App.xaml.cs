@@ -14,15 +14,8 @@ namespace PUL.GS.App
 
             ConfigureContainer();
 
-            var loginPage =
-                FreshPageModelResolver
-                .ResolvePageModel<LoginViewModel>();
-
-            var navPage =
-                new FreshNavigationContainer(loginPage);
-
-            MainPage = navPage;
-
+            MainPage = new SplashPage();
+            //MainPage = new MainPage();
         }
 
         private void ConfigureContainer()

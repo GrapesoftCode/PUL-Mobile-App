@@ -24,6 +24,7 @@ namespace PUL.GS.App.iOS
         {
             global::Xamarin.Forms.FormsMaterial.Init();
             global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
