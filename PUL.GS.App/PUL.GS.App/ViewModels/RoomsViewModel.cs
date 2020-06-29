@@ -54,7 +54,10 @@ namespace PUL.GS.App.ViewModels
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
+            
             dialogs.ShowLoading("Cargando");
+
+            await ChatService.InitAsync(UserName);
 
             Rooms = await ChatService.GetRooms();
 

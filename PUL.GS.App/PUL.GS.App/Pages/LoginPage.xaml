@@ -7,39 +7,83 @@
              x:Class="PUL.GS.App.Pages.LoginPage"
              NavigationPage.HasNavigationBar="False"
              Visual="Material">
-    <Grid RowSpacing="0">
+    <Grid RowSpacing="0" BackgroundColor="#ffffff">
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="11*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="main.jpg"
-               Aspect="AspectFill"></Image>
-        <Grid Grid.Row="1">
-            <Frame
-                BackgroundColor="White"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                CornerRadius="2"
-                Margin="0,-20,0,-20">
+        <Grid Grid.Row="0" HeightRequest="100">
+            <Frame>
                 <StackLayout>
-                    <Label Text="PUL APP"
+                    <Label Text="Iniciar Sesión"
                            FontSize="Title"
-                           HorizontalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
                            FontAttributes="Bold"
-                           TextColor="Black"></Label>
-                    <Label Text="Ingresa tu usuario para ingresar"
-                           FontSize="Medium"
-                           HorizontalTextAlignment="Center"></Label>
+                           TextColor="Black"
+                           Padding="0,100,0,100"
+                           Margin="10,0,0,0"
+                           FontFamily="{StaticResource SSPBlack}"></Label>
+                    
                     <Entry Placeholder="Nombre de usuario"
-                           Margin="25"
                            Text="{Binding UserName}"
-                           ReturnCommand="{Binding ConnectCommand}"></Entry>
-                    <Button Text="Iniciar Sessión"
-                            Margin="25"
-                            BackgroundColor="DarkOrange"
-                            Command="{Binding ConnectCommand}"></Button>
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           ></Entry>
+
+                    <Entry Placeholder="Contraseña"
+                           Text="{Binding Password}"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           IsPassword="True"></Entry>
+
+                    <ImageButton
+                            Source="btnlogin.png"
+                            Margin="-30,50,200,0"
+                            Command="{Binding ConnectCommand}"
+                            VerticalOptions="Center"
+                            Aspect="AspectFit"
+                            HorizontalOptions="Center"></ImageButton>
+
+                    <Button Text="Iniciar con Facebook"
+                            BackgroundColor="#1877f2"
+                            Margin="-30,10,50,0"
+                            Padding="10"
+                            FontFamily="{StaticResource SSPBlack}"
+                            Command="{Binding LoginCommand}"></Button>
+
+
+                    <Grid Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+
+                        <Label Text="¿Olvido su contraseña?" 
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="End"
+                               Margin="0,120,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TestCommand}" />
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                        <Label Text="Nuevo Cliente" 
+                               HorizontalOptions="EndAndExpand"
+                               VerticalOptions="End"
+                               Margin="0,120,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TestCommand}" />
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                    </Grid>
+
                 </StackLayout>
+                
             </Frame>
         </Grid>
+        
+        
     </Grid>
 </ContentPage>

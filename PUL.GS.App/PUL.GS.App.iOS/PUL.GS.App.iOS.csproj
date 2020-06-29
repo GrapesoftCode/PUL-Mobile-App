@@ -63,11 +63,27 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LoginRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="..\PUL.GS.App\Fonts\good times rg.ttf">
+      <Link>Resources\Fonts\good times rg.ttf</Link>
+    </BundleResource>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-Black.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-BlackIt.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-Bold.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-BoldIt.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-ExtraLight.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-ExtraLightIt.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-It.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-Light.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-LightIt.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-Regular.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-Semibold.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSansPro-SemiboldIt.ttf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -129,6 +145,9 @@
     <PackageReference Include="Xam.Plugin.Media">
       <Version>4.0.1.5</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Auth">
+      <Version>1.7.0</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
@@ -140,6 +159,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\PUL.GS.Models\PUL.GS.Models.csproj">
+      <Project>{2C6F8581-BAEB-4B1F-9215-E6261A6177C0}</Project>
+      <Name>PUL.GS.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PUL.GS.App\PUL.GS.App.csproj">
       <Project>{69A0E38B-1E72-49B9-9E78-8E182E9A6377}</Project>
       <Name>PUL.GS.App</Name>
@@ -321,5 +344,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\xamforms.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PUL.png" />
   </ItemGroup>
 </Project>

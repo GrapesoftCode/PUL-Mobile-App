@@ -42,5 +42,21 @@
     <string>This app needs access to microphone.</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>This app needs access to the photo gallery.</string>
+    <key>UIAppFonts</key>
+    <array>
+      <string>Fonts/good times rg.ttf</string>
+      <string>Fonts/SourceSansPro-Black.ttf</string>
+      <string>Fonts/SourceSansPro-Blacklt.ttf</string>
+      <string>Fonts/SourceSansPro-Bold.ttf</string>
+      <string>Fonts/SourceSansPro-Boldlt.ttf</string>
+      <string>Fonts/SourceSansPro-ExtraLight.ttf</string>
+      <string>Fonts/SourceSansPro-ExtraLightlt.ttf</string>
+      <string>Fonts/SourceSansPro-lt.ttf</string>
+      <string>Fonts/SourceSansPro-Light.ttf</string>
+      <string>Fonts/SourceSansPro-Lightlt.ttf</string>
+      <string>Fonts/SourceSansPro-Regular.ttf</string>
+      <string>Fonts/SourceSansPro-Semibold.ttf</string>
+      <string>Fonts/SourceSansPro-Semiboldlt.ttf</string>
+    </array>
 </dict>
 </plist>

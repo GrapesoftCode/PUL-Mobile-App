@@ -4,8 +4,62 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PUL.GS.App.App">
+             x:Class="PUL.GS.App.App"
+             NavigationPage.HasNavigationBar="False">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <OnPlatform x:Key="GoodTimesRg" x:TypeArguments="x:String">
+                <On Platform="Android" Value="good times rg.ttf#good times rg"></On>
+                <On Platform="iOS" Value="good times rg"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPBlack" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-Black.ttf#SourceSansPro-Black"></On>
+                <On Platform="iOS" Value="SourceSansPro-Black"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPBlacklt" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-BlackIt.ttf#SourceSansPro-BlackIt"></On>
+                <On Platform="iOS" Value="SourceSansPro-BlackIt"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPBold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-Bold.ttf#SourceSansPro-Bold"></On>
+                <On Platform="iOS" Value="SourceSansPro-Bold"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPBoldlt" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-BoldIt.ttf#SourceSansPro-BoldIt"></On>
+                <On Platform="iOS" Value="SourceSansPro-BoldIt"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPExtraLight" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-ExtraLight.ttf#SourceSansPro-ExtraLight"></On>
+                <On Platform="iOS" Value="SourceSansPro-ExtraLight"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPExtraLightlt" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-ExtraLightIt.ttf#SourceSansPro-ExtraLightIt"></On>
+                <On Platform="iOS" Value="SourceSansPro-ExtraLightIt"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPlt" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-It.ttf#SourceSansPro-It"></On>
+                <On Platform="iOS" Value="SourceSansPro-It"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPLight" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-Light.ttf#SourceSansPro-Light"></On>
+                <On Platform="iOS" Value="SourceSansPro-Light"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPLightlt" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-LightIt.ttf#SourceSansPro-LightIt"></On>
+                <On Platform="iOS" Value="SourceSansPro-LightIt"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPRegular" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-Regular.ttf#SourceSansPro-Regular"></On>
+                <On Platform="iOS" Value="SourceSansPro-Regular"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPSemibold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-Semibold.ttf#SourceSansPro-Semibold"></On>
+                <On Platform="iOS" Value="SourceSansPro-Semibold"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="SSPSemiboldlt" x:TypeArguments="x:String">
+                <On Platform="Android" Value="SourceSansPro-SemiboldIt.ttf#SourceSansPro-SemiboldIt"></On>
+                <On Platform="iOS" Value="SourceSansPro-SemiboldIt"></On>
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
