@@ -11,13 +11,21 @@ namespace PUL.GS.App.ViewModels
 
         public ProfileViewModel()
         {
+        }
+
+        public override void Init(object initData)
+        {
+            base.Init(initData);
+            var user = initData as UserFacebook;
+
             CurrentUser = new UserFacebook()
             {
-                Id = CurrentUser.Id,
-                Name = CurrentUser.Name,
-                Picture = CurrentUser.Picture,
-                //Birthday = FacebookAuth.User.Birthday
+                Id = user.Id,
+                Name = user.Name,
+                Picture = user.Picture,
+                //Birthday = FacebookAuth.CurrentUser.User.Birthday
             };
+
         }
     }
 }
