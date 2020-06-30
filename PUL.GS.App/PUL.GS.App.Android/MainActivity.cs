@@ -6,8 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Acr.UserDialogs;
+//using Acr.UserDialogs;
 using Plugin.CurrentActivity;
+using Xamarin.Forms;
 
 namespace PUL.GS.App.Droid
 {
@@ -20,7 +21,7 @@ namespace PUL.GS.App.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            UserDialogs.Init(this);
+            //UserDialogs.Init(this);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
