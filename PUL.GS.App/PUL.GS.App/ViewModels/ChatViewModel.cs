@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+﻿//using Acr.UserDialogs;
 using FreshMvvm;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -16,8 +16,8 @@ namespace PUL.GS.App.ViewModels
 {
     public class ChatViewModel : FreshBasePageModel
     {
-        IChatService ChatService;
-        IUserDialogs dialogs;
+        readonly IChatService ChatService;
+        //IUserDialogs dialogs;
 
         public ObservableCollection<User> Users { get; set; } =
             new ObservableCollection<User>();
@@ -50,8 +50,10 @@ namespace PUL.GS.App.ViewModels
         public ICommand PhotoCommand => new Command(async () =>
         {
              await CrossMedia.Current.Initialize();
-             var options = new PickMediaOptions();
-             options.CompressionQuality = 50;
+            var options = new PickMediaOptions
+            {
+                CompressionQuality = 50
+            };
 
             var photo = await CrossMedia.Current.PickPhotoAsync(options);
             var stream = photo.GetStream();
@@ -68,34 +70,34 @@ namespace PUL.GS.App.ViewModels
 
             Messages.Add(message);
 
-            dialogs.ShowLoading("Cargando");
+            //dialogs.ShowLoading("Cargando");
             await ChatService.SendMessageAsync(message);
-            dialogs.HideLoading();
+            //dialogs.HideLoading();
 
         });
 
-        public ICommand ItemSelectedCommand => new Command(async () => {
+        //public ICommand ItemSelectedCommand => new Command(async () => {
 
-            if (SelectedUser != null)
-            {
-                var privateMessage =
-                await dialogs
-                .PromptAsync($"Mensaje privado para: {SelectedUser.userId}");
-                if (string.IsNullOrEmpty(privateMessage.Text))
-                {
-                    return;
-                }
+        //    if (SelectedUser != null)
+        //    {
+        //        //var privateMessage =
+        //        //await dialogs
+        //        //.PromptAsync($"Mensaje privado para: {SelectedUser.userId}");
+        //        //if (string.IsNullOrEmpty(privateMessage.Text))
+        //        //{
+        //        //    return;
+        //        //}
 
-                var message = new SimpleTextMessage(UserName)
-                {
-                    Text= privateMessage.Text,
-                    Recipient = SelectedUser.userId
-                };
+        //        //var message = new SimpleTextMessage(UserName)
+        //        //{
+        //        //    Text= privateMessage.Text,
+        //        //    Recipient = SelectedUser.userId
+        //        //};
 
-                await ChatService.SendMessageAsync(message);
-                SelectedUser = null;
-            }
-        });
+        //        //await ChatService.SendMessageAsync(message);
+        //        SelectedUser = null;
+        //    }
+        //});
 
         public ICommand LeaveCommand => new Command(async () =>
         {
@@ -104,10 +106,12 @@ namespace PUL.GS.App.ViewModels
             await CoreMethods.PopPageModel();
         });
 
-        public ChatViewModel(IChatService _chatService, IUserDialogs _dialogs)
+        public ChatViewModel(
+            //IUserDialogs _dialogs,
+            IChatService _chatService)
         {
             ChatService = _chatService;
-            dialogs = _dialogs;
+            //dialogs = _dialogs;
         }
 
         public override async void Init(object initData)

@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+﻿//using Acr.UserDialogs;
 using FreshMvvm;
 using PUL.GS.Core.Services;
 using PUL.GS.Models;
@@ -12,7 +12,7 @@ namespace PUL.GS.App.ViewModels
     public class RoomsViewModel: FreshBasePageModel
     {
         IChatService ChatService;
-        IUserDialogs dialogs;
+        //IUserDialogs dialogs;
         bool IsBusy = false;
         string UserName;
 
@@ -20,10 +20,12 @@ namespace PUL.GS.App.ViewModels
         public Room CurrentRoom { get; set; }
         public ICommand EnterRoomCommand { get; set; }
 
-        public RoomsViewModel(IChatService _chatService, IUserDialogs _dialogs)
+        public RoomsViewModel(
+            //IUserDialogs _dialogs,
+            IChatService _chatService)
         {
             ChatService = _chatService;
-            dialogs = _dialogs;
+            //dialogs = _dialogs;
         }
 
         public override void Init(object initData)
@@ -55,13 +57,13 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
             
-            dialogs.ShowLoading("Cargando");
+            //dialogs.ShowLoading("Cargando");
 
             await ChatService.InitAsync(UserName);
 
             Rooms = await ChatService.GetRooms();
 
-            dialogs.HideLoading();
+            //dialogs.HideLoading();
         }
     }
 }

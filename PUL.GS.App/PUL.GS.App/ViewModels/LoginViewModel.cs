@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+﻿//using Acr.UserDialogs;
 using FreshMvvm;
 using PUL.GS.App.Pages;
 using PUL.GS.Core.Services;
@@ -21,7 +21,7 @@ namespace PUL.GS.App.ViewModels
             {
                 IsBusy = true;
 
-                dialogs.ShowLoading("Conectando");
+                //dialogs.ShowLoading("Conectando");
 
                 //await ChatService.InitAsync(UserName);
 
@@ -36,7 +36,7 @@ namespace PUL.GS.App.ViewModels
                 //Application.Current.MainPage = masterDetail;
 
 
-                dialogs.HideLoading();
+                //dialogs.HideLoading();
 
                 IsBusy = false;
             }
@@ -48,11 +48,11 @@ namespace PUL.GS.App.ViewModels
             {
                 IsBusy = true;
 
-                dialogs.ShowLoading("Conectando");
+                //dialogs.ShowLoading("Conectando");
 
                 await CoreMethods.PushPageModel<LoginFacebookViewModel>();
 
-                dialogs.HideLoading();
+                //dialogs.HideLoading();
 
                 IsBusy = false;
             }
@@ -60,12 +60,14 @@ namespace PUL.GS.App.ViewModels
 
 
         IChatService ChatService;
-        IUserDialogs dialogs;
+        //IUserDialogs dialogs;
 
-        public LoginViewModel(IChatService _chatService, IUserDialogs _userDialogs)
+        public LoginViewModel(
+            //IUserDialogs _userDialogs,
+            IChatService _chatService)
         {
             ChatService = _chatService;
-            dialogs = _userDialogs;
+            //dialogs = _userDialogs;
         }
     }
 }

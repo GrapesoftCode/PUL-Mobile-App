@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+﻿//using Acr.UserDialogs;
 using FreshMvvm;
 using PUL.GS.App.Configuration;
 using PUL.GS.Models;
