@@ -12,12 +12,12 @@
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <NavigationPage
-        BarBackgroundColor="Black"
+        BarBackgroundColor="#ffffff"
         FlowDirection="LeftToRight"
         IconImageSource="home.png">
       <x:Arguments>
-        <pages:MainPageDetail />
-        <!--<pages:HomeTabbedPage></pages:HomeTabbedPage>-->
+       <!--- <pages:MainPageDetail />-->
+       <pages:HomeTabbedPage></pages:HomeTabbedPage>
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>
