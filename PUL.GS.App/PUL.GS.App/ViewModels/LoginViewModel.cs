@@ -25,15 +25,15 @@ namespace PUL.GS.App.ViewModels
 
                 //await ChatService.InitAsync(UserName);
 
-                //await CoreMethods.PushPageModel<MainViewModel>(UserName);
+                await CoreMethods.PushPageModel<MainViewModel>(UserName);
 
-                var masterDetail = new FreshMasterDetailNavigationContainer();
-                masterDetail.AddPage<MainViewModel>("Inicio");
-                masterDetail.AddPage<ProfileViewModel>("Perfil", "");
-                masterDetail.AddPage<RoomsViewModel>("Salas", "");
+                //var masterDetail = new FreshMasterDetailNavigationContainer();
+                //masterDetail.AddPage<MainViewModel>("Inicio");
+                //masterDetail.AddPage<ProfileViewModel>("Perfil", "");
+                //masterDetail.AddPage<RoomsViewModel>("Salas", "");
 
-                masterDetail.Init("Menu", "logo.png");
-                Application.Current.MainPage = masterDetail;
+                //masterDetail.Init("Menu", "logo.png");
+                //Application.Current.MainPage = masterDetail;
 
 
                 //dialogs.HideLoading();
