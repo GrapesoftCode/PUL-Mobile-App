@@ -44,7 +44,8 @@ namespace PUL.GS.App.ViewModels
 
                 var token = _accountAgent.GetToken(user);
 
-                await CoreMethods.PushPageModel<MainViewModel>(UserName);
+                if (token.Success)
+                    await CoreMethods.PushPageModel<MainViewModel>(UserName);
 
                 //var masterDetail = new FreshMasterDetailNavigationContainer();
                 //masterDetail.AddPage<MainViewModel>("Inicio");
