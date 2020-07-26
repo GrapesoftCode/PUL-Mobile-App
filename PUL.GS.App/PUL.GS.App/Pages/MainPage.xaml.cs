@@ -20,8 +20,7 @@ namespace PUL.GS.App.Pages
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as MainPageMasterMenuItem;
-            if (item == null)
+            if (!(e.SelectedItem is MainPageMasterMenuItem item))
                 return;
 
             var page = (Page)Activator.CreateInstance(item.TargetType);

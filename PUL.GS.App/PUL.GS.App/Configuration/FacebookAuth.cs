@@ -12,7 +12,7 @@ namespace PUL.GS.App.Configuration
     {
         public static UserFacebook CurrentUser;
 
-        private static string ClientId = "737022690378640";
+        private static readonly string ClientId = "737022690378640";
         public static Action SuccessfullLoginAction
         {
             get {

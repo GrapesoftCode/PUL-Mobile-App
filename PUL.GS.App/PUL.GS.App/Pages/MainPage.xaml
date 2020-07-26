@@ -13,8 +13,9 @@
   <MasterDetailPage.Detail>
     <NavigationPage
         BarBackgroundColor="#ffffff"
+        BarTextColor="Black"
         FlowDirection="LeftToRight"
-        IconImageSource="home.png">
+        IconImageSource="hamburguesa.png">
       <x:Arguments>
        <!--- <pages:MainPageDetail />-->
        <pages:HomeTabbedPage></pages:HomeTabbedPage>

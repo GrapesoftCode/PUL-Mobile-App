@@ -35,20 +35,19 @@
                            BackgroundColor="#f2f5f5"
                            IsPassword="True"></Entry>
 
-                    <ImageButton
-                            Source="btnlogintext.png"
-                            Margin="-30,50,200,0"
-                            Command="{Binding ConnectCommand}"
-                            VerticalOptions="Center"
-                            Aspect="AspectFit"
-                            HorizontalOptions="Center"></ImageButton>
+                    <Button Text="Iniciar Sesión"
+                            BackgroundColor="#1877f2"
+                            Margin="-30,10,50,0"
+                            Padding="10"
+                            FontFamily="{StaticResource SSPBlack}"
+                            Command="{Binding LoginCommand}"></Button>
 
                     <Button Text="Iniciar con Facebook"
                             BackgroundColor="#1877f2"
                             Margin="-30,10,50,0"
                             Padding="10"
                             FontFamily="{StaticResource SSPBlack}"
-                            Command="{Binding LoginCommand}"></Button>
+                            Command="{Binding LoginFacebookCommand}"></Button>
 
 
                     <Grid Grid.Row="0">

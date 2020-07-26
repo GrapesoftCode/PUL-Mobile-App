@@ -149,7 +149,7 @@ namespace PUL.GS.App.ViewModels
                     }
                     if (e.Message.TypeInfo.Name != nameof(UserConnectedMessage))
                     {
-                        var user = Users.FirstOrDefault(x => x.userId ==
+                        var user = Users.FirstOrDefault(x => x.id ==
                         e.Message.Sender);
 
                         e.Message.Color = user.Color;

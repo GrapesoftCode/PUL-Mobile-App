@@ -3,7 +3,7 @@
 using Android.App;
 using Newtonsoft.Json;
 using PUL.GS.App.Configuration;
-using PUL.GS.App.Droid;
+using PUL.GS.App.Droid.Renderers;
 using PUL.GS.App.Pages;
 using PUL.GS.Models;
 using Xamarin.Auth;
@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(LoginFacebookPage), typeof(LoginRenderer))]
 
-namespace PUL.GS.App.Droid
+namespace PUL.GS.App.Droid.Renderers
 {
     public class LoginRenderer : PageRenderer
     {

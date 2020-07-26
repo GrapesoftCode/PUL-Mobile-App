@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c1:CustomTabbedPage  xmlns:c1="clr-namespace:PUL.GS.App.Controls"
                       xmlns="http://xamarin.com/schemas/2014/forms"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:views="clr-namespace:PUL.GS.App.Pages"
-                    Title="Tabbed Sample"
-                  
-                    x:Class="PUL.GS.App.Pages.HomeTabbedPage">
+                      Title="PUL"
+                      x:Class="PUL.GS.App.Pages.HomeTabbedPage">
     <c1:CustomTabbedPage.Children>
-         <NavigationPage Icon="home.png">
+        <NavigationPage Icon="home.png">
             <x:Arguments>
                 <!--<views:ProfilePage/>-->
             </x:Arguments>
@@ -23,11 +21,43 @@
                 <views:ProfilePage/>
             </x:Arguments>
         </NavigationPage>
-        
         <NavigationPage Icon="profile.png">
             <x:Arguments>
                 <!--<views:ProfilePage/>-->
             </x:Arguments>
         </NavigationPage>
     </c1:CustomTabbedPage.Children>
+    <!--<NavigationPage
+        IconImageSource="hamburguesa.png">
+        
+    </NavigationPage>-->
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="End"
+            Padding="0,0,20,0">
+            <Image
+                Source="hamburguesa.png"
+                Aspect="AspectFit"
+                WidthRequest="40"
+                HeightRequest="40">
+                <Image.GestureRecognizers>
+                    <!--<TapGestureRecognizer
+                            Tapped="OnHeaderIconTapped"/>-->
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image
+                Source="logo.png"
+                Aspect="AspectFit"
+                WidthRequest="40"
+                HeightRequest="40">
+                <Image.GestureRecognizers>
+                    <!--<TapGestureRecognizer
+                            Tapped="OnHeaderIconTapped"/>-->
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
 </c1:CustomTabbedPage>

@@ -29,9 +29,9 @@ namespace PUL.GS.App.Droid.Renderers
                         for (int j = 0; j <= viewGroup.ChildCount - 1; j++)
                         {
                             var childRelativeLayoutView = viewGroup.GetChildAt(j);
-                            if (childRelativeLayoutView is BottomNavigationView)
+                            if (childRelativeLayoutView is BottomNavigationView view)
                             {
-                                ((BottomNavigationView)childRelativeLayoutView).ItemIconTintList = null;
+                                view.ItemIconTintList = null;
                             }
                         }
                     }

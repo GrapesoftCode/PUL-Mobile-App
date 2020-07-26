@@ -25,7 +25,7 @@ namespace PUL.GS.App.Pages
             ListView = MenuItemsListView;
         }
 
-        class MainPageMasterViewModel : INotifyPropertyChanged
+        class MainPageMasterViewModel
         {
             public ObservableCollection<MainPageMasterMenuItem> MenuItems { get; set; }
 
@@ -35,18 +35,20 @@ namespace PUL.GS.App.Pages
                 {
                     new MainPageMasterMenuItem { Id = 0, Title = "Perfil", Icon="profile.png",  TargetType = typeof(ProfilePage) },
                     new MainPageMasterMenuItem { Id = 1, Title = "Salas", Icon="rooms.png", TargetType= typeof(RoomsPage) },
+                    new MainPageMasterMenuItem { Id = 0, Title = "Settings", Icon="a.png",  TargetType = typeof(SettingsPage) },
+                    new MainPageMasterMenuItem { Id = 0, Title = "About", Icon="b.png",  TargetType = typeof(AboutPage) },
                 });
             }
 
             #region INotifyPropertyChanged Implementation
-            public event PropertyChangedEventHandler PropertyChanged;
-            void OnPropertyChanged([CallerMemberName] string propertyName = "")
-            {
-                if (PropertyChanged == null)
-                    return;
+            //public event PropertyChangedEventHandler PropertyChanged;
+            //void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            //{
+            //    if (PropertyChanged == null)
+            //        return;
 
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
+            //    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            //}
             #endregion
         }
     }
