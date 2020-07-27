@@ -18,12 +18,12 @@
         </NavigationPage>
         <NavigationPage Icon="pulear.png">
             <x:Arguments>
-                <views:ProfilePage/>
+                <!--<views:ProfilePage/>-->
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Icon="profile.png">
             <x:Arguments>
-                <!--<views:ProfilePage/>-->
+                <views:ProfilePage/>
             </x:Arguments>
         </NavigationPage>
     </c1:CustomTabbedPage.Children>

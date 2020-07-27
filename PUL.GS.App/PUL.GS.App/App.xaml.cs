@@ -1,4 +1,4 @@
-﻿//using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using FreshMvvm;
 using PUL.GS.App.ViewModels;
 using PUL.GS.Core.Services;
@@ -21,7 +21,7 @@ namespace PUL.GS.App
         private void ConfigureContainer()
         {
             FreshIOC.Container.Register<IChatService, ChatService>();
-            //FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
+            FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
         }
 
         protected override void OnStart()

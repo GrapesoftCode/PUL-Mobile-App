@@ -9,6 +9,7 @@ using Android.OS;
 //using Acr.UserDialogs;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
+using Acr.UserDialogs;
 
 namespace PUL.GS.App.Droid
 {
@@ -21,11 +22,12 @@ namespace PUL.GS.App.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            //UserDialogs.Init(this);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            
             global::Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

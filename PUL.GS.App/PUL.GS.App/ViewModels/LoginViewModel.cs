@@ -1,4 +1,4 @@
-﻿//using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using FreshMvvm;
 using PUL.GS.App.Infrastructure;
 using PUL.GS.App.Pages;
@@ -20,7 +20,7 @@ namespace PUL.GS.App.ViewModels
         public bool IsBusy { get; set; }
 
         private readonly AccountData _accountAgent;
-        AppSettings appSettings = new AppSettings()
+        readonly AppSettings appSettings = new AppSettings()
         {
             baseUrl = "http://grapesoft-001-site13.ctempurl.com/api/",
             timeZoneKey = "Central Standard Time (Mexico)"
@@ -32,7 +32,7 @@ namespace PUL.GS.App.ViewModels
             {
                 IsBusy = true;
 
-                //dialogs.ShowLoading("Conectando");
+                dialogs.ShowLoading("Cargando");
 
                 //await ChatService.InitAsync(UserName);
 
@@ -56,7 +56,7 @@ namespace PUL.GS.App.ViewModels
                 //Application.Current.MainPage = masterDetail;
 
 
-                //dialogs.HideLoading();
+                dialogs.HideLoading();
 
                 IsBusy = false;
             }
@@ -80,16 +80,16 @@ namespace PUL.GS.App.ViewModels
 
 
         //IChatService ChatService;
-        //IUserDialogs dialogs;
+        IUserDialogs dialogs;
 
         public LoginViewModel(
-            //IUserDialogs _userDialogs,
+            IUserDialogs _userDialogs
             //IChatService _chatService
             )
         {
             _accountAgent = new AccountData(appSettings);
             //ChatService = _chatService;
-            //dialogs = _userDialogs;
+            dialogs = _userDialogs;
         }
     }
 }

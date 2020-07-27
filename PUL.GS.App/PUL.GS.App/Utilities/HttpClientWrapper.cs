@@ -23,7 +23,7 @@ namespace PUL.GS.App.Utilities
         {
             try
             {
-                if (ReferenceEquals(client, null))
+                if (client is null)
                 {
                     client = new HttpClient()
                     {

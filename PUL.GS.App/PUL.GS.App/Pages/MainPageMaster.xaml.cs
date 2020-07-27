@@ -33,10 +33,10 @@ namespace PUL.GS.App.Pages
             {
                 MenuItems = new ObservableCollection<MainPageMasterMenuItem>(new[]
                 {
-                    new MainPageMasterMenuItem { Id = 0, Title = "Perfil", Icon="profile.png",  TargetType = typeof(ProfilePage) },
-                    new MainPageMasterMenuItem { Id = 1, Title = "Salas", Icon="rooms.png", TargetType= typeof(RoomsPage) },
-                    new MainPageMasterMenuItem { Id = 0, Title = "Settings", Icon="a.png",  TargetType = typeof(SettingsPage) },
-                    new MainPageMasterMenuItem { Id = 0, Title = "About", Icon="b.png",  TargetType = typeof(AboutPage) },
+                    new MainPageMasterMenuItem { Id = 0, Title = "Perfil", Icon="e.png",  TargetType = typeof(ProfilePage) },
+                    new MainPageMasterMenuItem { Id = 1, Title = "Salas", Icon="b.png", TargetType= typeof(RoomsPage) },
+                    new MainPageMasterMenuItem { Id = 0, Title = "Settings", Icon="c.png",  TargetType = typeof(SettingsPage) },
+                    new MainPageMasterMenuItem { Id = 0, Title = "About", Icon="d.png",  TargetType = typeof(AboutPage) },
                 });
             }
 
