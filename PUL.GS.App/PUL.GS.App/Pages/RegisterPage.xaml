@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.RegisterPage"
+             xmlns:local="clr-namespace:PUL.GS.App.Behaviours"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material">
+    <Grid RowSpacing="0" BackgroundColor="#ffffff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HeightRequest="100">
+            <Frame>
+                <StackLayout>
+                    <Label Text="Dato del Usuario"
+                           FontSize="Title"
+                           HorizontalTextAlignment="Start"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Padding="0,25,0,25"
+                           Margin="10,0,0,0"
+                           FontFamily="{StaticResource SSPBlack}"></Label>
+
+                    <Entry Placeholder="Nombre"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           Text="{Binding NewUser.FirstName}"
+                           Keyboard="Text">
+                    </Entry>
+                    
+                    <Entry Placeholder="Apellido Paterno"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                            Text="{Binding NewUser.SurName}"
+                           Keyboard="Text">
+                    </Entry>
+                    
+                    <Entry Placeholder="Apellido Materno"
+                           Margin="10,10,-30,0"                           
+                           BackgroundColor="#f2f5f5"
+                           Text="{Binding NewUser.LastName}"
+                           Keyboard="Text">
+                    </Entry>
+                    
+                    <Entry Placeholder="Email"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           Text="{Binding NewUser.Email}"
+                           Keyboard="Email">
+                    </Entry>
+
+                    <Entry Placeholder="Usuario"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           Text="{Binding NewUser.Username}"
+                           Keyboard="Text">
+                    </Entry>
+
+                    <Entry Placeholder="Contraseña"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           IsPassword="True"
+                           Text="{Binding NewUser.Password}"
+                           x:Name="password">
+                    </Entry>
+                    
+                    <Entry Placeholder="Confirmar Contraseña"
+                           Margin="10,10,-30,0"
+                           BackgroundColor="#f2f5f5"
+                           Keyboard="Text"
+                           IsPassword="True">
+                        <Entry.Behaviors>
+                            <local:ConfirmPasswordBehavior x:Name="confirmPasswordBehavior" CompareToEntry="{Binding Source={x:Reference password}}" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Button Text="Registrar"
+                            BackgroundColor="#1877f2"
+                            Margin="-30,10,50,0"
+                            Padding="10"
+                            FontFamily="{StaticResource SSPBlack}"
+                            Command="{Binding NewUserCommand}"></Button>
+
+                </StackLayout>
+
+            </Frame>
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

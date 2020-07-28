@@ -78,6 +78,16 @@ namespace PUL.GS.App.ViewModels
             }
         });
 
+        public ICommand RegisterCommand => new Command(async () => {
+            if (!IsBusy)
+            {
+                IsBusy = true;
+                dialogs.ShowLoading("Conectando");
+                await CoreMethods.PushPageModel<RegisterViewModel>();
+                dialogs.HideLoading();
+                IsBusy = false;
+            }
+        });
 
         //IChatService ChatService;
         IUserDialogs dialogs;
