@@ -8,7 +8,7 @@
     <c1:CustomTabbedPage.Children>
         <NavigationPage Icon="home.png">
             <x:Arguments>
-                <!--<views:ProfilePage/>-->
+                <views:HomePage/>
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Icon="browser.png">

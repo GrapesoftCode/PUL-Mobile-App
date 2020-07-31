@@ -11,11 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace PUL.GS.App.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPageDetail : ContentPage
+    public partial class HomePage : ContentPage
     {
-        public MainPageDetail()
+        public HomePage()
         {
             InitializeComponent();
+            BindingContext = new HomeViewModel();
         }
     }
 }

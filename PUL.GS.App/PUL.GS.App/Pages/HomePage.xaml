@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.HomePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".10*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".33*"></RowDefinition>
+            <RowDefinition Height=".33*"></RowDefinition>
+            <RowDefinition Height=".33*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        
+        <CollectionView ItemsSource="{Binding Establishments}" Margin="20" Grid.Row="0">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal" Span="1"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame 
+                        HeightRequest="100"
+                        HorizontalOptions="CenterAndExpand">
+                        <Grid>
+                            <Image Source="{Binding Logo}"
+                               Aspect="AspectFit"></Image>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        <CollectionView ItemsSource="{Binding Promotions}" Margin="20" Grid.Row="1">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal" 
+                             Span="1"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="5"
+                       CornerRadius="10"
+                       HasShadow="True"
+                       Margin="5"
+                       IsClippedToBounds="False">
+                        <Grid>
+
+                            <Image Source="{Binding Logo}"
+                               Aspect="AspectFit"></Image>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <CollectionView ItemsSource="{Binding Establishments}" Margin="20" Grid.Row="2">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal" 
+                             Span="1"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="5"
+                       CornerRadius="10"
+                       HasShadow="True"
+                       Margin="5"
+                       IsClippedToBounds="False">
+                        <Grid>
+
+                            <Image Source="{Binding Logo}"
+                               Aspect="AspectFit"></Image>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    
+
+</ContentPage>
