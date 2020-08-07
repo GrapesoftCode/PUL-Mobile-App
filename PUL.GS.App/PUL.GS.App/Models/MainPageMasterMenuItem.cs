@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PUL.GS.App.Pages
+namespace PUL.GS.App.Models
 {
 
     public class MainPageMasterMenuItem

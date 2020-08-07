@@ -1,21 +1,30 @@
-﻿using FreshMvvm;
+﻿using Acr.UserDialogs;
+using FreshMvvm;
 using PUL.GS.App.Infrastructure;
+using PUL.GS.App.Pages;
 using PUL.GS.Models;
 using PUL.GS.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PUL.GS.App.ViewModels
 {
     public class HomeViewModel : FreshBasePageModel
     {
-        public string UserName { get; set; }
-        public bool IsBusy { get; set; }
+        private readonly EstablishmentData establishmentAgent;
+        private readonly PromotionData promotionAgent;
 
-        private readonly EstablishmentData _establishmentAgent;
-        private readonly PromotionData _promotionAgent;
+        readonly IUserDialogs dialogs;
+        public User CurrentUser { get; set; }
+        public bool IsBusy { get; set; }
+        
+
+        public Establishment CurrentEstablishment { get; set; }
+        public ICommand EnterEstablishmentCommand { get; set; }
 
         readonly AppSettings appSettings = new AppSettings()
         {
@@ -26,12 +35,49 @@ namespace PUL.GS.App.ViewModels
         public ObservableCollection<Establishment> Establishments { get; set; }
         public ObservableCollection<Book> Books { get; set; }
 
-        public HomeViewModel()
+        public HomeViewModel(IUserDialogs _dialogs)
         {
-            _establishmentAgent = new EstablishmentData(appSettings);
-            _promotionAgent = new PromotionData(appSettings);
-            Establishments = new ObservableCollection<Establishment>(_establishmentAgent.GetAll().objectResult.Records);
-            Promotions = new ObservableCollection<Promotion>(_promotionAgent.GetAll().objectResult.Records);
+            dialogs = _dialogs;
+            establishmentAgent = new EstablishmentData(appSettings);
+            promotionAgent = new PromotionData(appSettings);
+        }
+
+        public override void Init(object initData)
+        {
+            base.Init(initData);
+
+            CurrentUser = initData as User;
+
+            EnterEstablishmentCommand = new Command(async () =>
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
+
+                    if (CurrentEstablishment != null)
+                    {
+                        Establishment establishment = CurrentEstablishment;
+                        await CoreMethods.PushPageModel<BookViewModel>(establishment);
+                        CurrentEstablishment = null;
+                    }
+
+                    IsBusy = false;
+                }
+            });
+        }
+
+
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            base.ViewIsAppearing(sender, e);
+
+            dialogs.ShowLoading("Cargando");
+
+            Establishments = new ObservableCollection<Establishment>(establishmentAgent.GetAll().objectResult.Records);
+            Promotions = new ObservableCollection<Promotion>(promotionAgent.GetAll().objectResult.Records);
+            //Rooms = await ChatService.GetRooms();
+
+            dialogs.HideLoading();
         }
     }
 }

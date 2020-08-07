@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.RoomsPage"
-                NavigationPage.HasNavigationBar="False"
              Visual="Material">
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -29,14 +28,14 @@
             <RowDefinition Height=".1*"></RowDefinition>
             <RowDefinition Height=".9*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid BackgroundColor="#673AB7">
+        <!--<Grid BackgroundColor="#673AB7">
             <Label Text="Selecciona la sala"
                    FontSize="Title"
                    TextColor="White"
                    VerticalOptions="Center"
                    HorizontalOptions="Center">
             </Label>
-        </Grid>
+        </Grid>-->
         <CollectionView Grid.Row="1"
                         Margin="20,0,20,0"
                         ItemsSource="{Binding Rooms}"

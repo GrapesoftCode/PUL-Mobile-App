@@ -5,91 +5,104 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.HomePage"
+             Visual="Material"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".8*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height=".8*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" BackgroundColor="#ffffff" Margin="0,20,0,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Establecimientos" Grid.Row="0" Margin="5,0,0,0"></Label>
+                    <CollectionView 
+                        ItemsSource="{Binding Establishments}" 
+                        Grid.Row="1" 
+                        BackgroundColor="#ffffff"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding CurrentEstablishment}"
+                        SelectionChangedCommand="{Binding EnterEstablishmentCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="5,0,5,10"
+                                    IsClippedToBounds="True">
+                                    <Image Source="{Binding Logo}" Aspect="AspectFit"></Image>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <Grid Grid.Row="1" BackgroundColor="#ffffff" Margin="0,20,0,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Promociones" Grid.Row="0" Margin="5,0,0,0"></Label>
+                    <CollectionView ItemsSource="{Binding Promotions}" Grid.Row="1" BackgroundColor="#ffffff">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="5,0,5,10"
+                                       IsClippedToBounds="True">
+                                    <Grid>
+                                        <Image 
+                                        Source="{Binding Logo}"
+                                        Aspect="AspectFit"></Image>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <Grid Grid.Row="2" BackgroundColor="#ffffff" Margin="0,20,0,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Paquetes/Combos" Grid.Row="0" Margin="5,0,0,0"></Label>
+                    <CollectionView ItemsSource="{Binding Establishments}" Grid.Row="1" BackgroundColor="#ffffff">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                            Orientation="Horizontal" 
+                             Span="1" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="5,0,5,10"
+                                   HasShadow="True"
+                                   IsClippedToBounds="True">
+                                    <Grid>
+                                        <Image 
+                                        Source="{Binding Logo}"
+                                        Aspect="AspectFit"></Image>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".10*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height=".33*"></RowDefinition>
-            <RowDefinition Height=".33*"></RowDefinition>
-            <RowDefinition Height=".33*"></RowDefinition>
-        </Grid.RowDefinitions>
-        
-        
-        <CollectionView ItemsSource="{Binding Establishments}" Margin="20" Grid.Row="0">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal" Span="1"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame 
-                        HeightRequest="100"
-                        HorizontalOptions="CenterAndExpand">
-                        <Grid>
-                            <Image Source="{Binding Logo}"
-                               Aspect="AspectFit"></Image>
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-
-        <CollectionView ItemsSource="{Binding Promotions}" Margin="20" Grid.Row="1">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal" 
-                             Span="1"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Padding="5"
-                       CornerRadius="10"
-                       HasShadow="True"
-                       Margin="5"
-                       IsClippedToBounds="False">
-                        <Grid>
-
-                            <Image Source="{Binding Logo}"
-                               Aspect="AspectFit"></Image>
-
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        
-        <CollectionView ItemsSource="{Binding Establishments}" Margin="20" Grid.Row="2">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal" 
-                             Span="1"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Padding="5"
-                       CornerRadius="10"
-                       HasShadow="True"
-                       Margin="5"
-                       IsClippedToBounds="False">
-                        <Grid>
-
-                            <Image Source="{Binding Logo}"
-                               Aspect="AspectFit"></Image>
-
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
     
 
 </ContentPage>

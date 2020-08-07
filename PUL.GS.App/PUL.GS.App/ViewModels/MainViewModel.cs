@@ -15,20 +15,8 @@ namespace PUL.GS.App.ViewModels
     {
         public string UserName { get; set; }
         public bool IsBusy { get; set; }
-
-        private readonly EstablishmentData _establishmentAgent;
-        readonly AppSettings appSettings = new AppSettings()
-        {
-            baseUrl = "http://grapesoft-001-site13.ctempurl.com/api/",
-            timeZoneKey = "Central Standard Time (Mexico)"
-        };
-        public ObservableCollection<Promotion> Promotions { get; set; }
-        public ObservableCollection<Establishment> Establishments { get; set; }
-        public ObservableCollection<Book> Books { get; set; }
         public MainViewModel()
         {
-            _establishmentAgent = new EstablishmentData(appSettings);
-            Establishments = new ObservableCollection<Establishment>(_establishmentAgent.GetAll().objectResult.Records);
         }
     }
 }

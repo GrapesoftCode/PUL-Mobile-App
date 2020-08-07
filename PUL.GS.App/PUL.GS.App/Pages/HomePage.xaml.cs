@@ -16,7 +16,12 @@ namespace PUL.GS.App.Pages
         public HomePage()
         {
             InitializeComponent();
-            BindingContext = new HomeViewModel();
+            //BindingContext = new HomeViewModel();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

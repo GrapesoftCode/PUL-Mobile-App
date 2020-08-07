@@ -16,5 +16,10 @@ namespace PUL.GS.App.Pages
         {
             InitializeComponent();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PUL.GS.App.Models;
+using PUL.GS.App.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,7 @@ namespace PUL.GS.App.Pages
         public MainPage()
         {
             InitializeComponent();
+            //BindingContext = new MainViewModel();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
 

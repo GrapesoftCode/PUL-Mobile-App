@@ -8,13 +8,12 @@
              xmlns:pages="clr-namespace:PUL.GS.App.Pages"
              NavigationPage.HasNavigationBar="False">
   <MasterDetailPage.Master>
-    <pages:MainPageMaster x:Name="MasterPage" />
+    <pages:MasterPage x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <NavigationPage
         BarBackgroundColor="#ffffff"
         BarTextColor="Black"
-        FlowDirection="LeftToRight"
         IconImageSource="hamburguesa.png">
       <x:Arguments>
        <!--- <pages:MainPageDetail />-->

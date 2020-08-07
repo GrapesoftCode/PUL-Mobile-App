@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.EstablishmentDetailPage">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame
+                BorderColor="Black"
+                CornerRadius="100">
+                <Image Source="{Binding CurrentEstablishment.Logo}" 
+                       Aspect="AspectFit"></Image>
+            </Frame>
+
+            <Grid Grid.Row="1">
+                <Frame
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                CornerRadius="2"
+                Margin="0,-20,0,-20">
+                    <StackLayout>
+                        <Label Text="{Binding CurrentEstablishment.id}" ></Label>
+                        <Label Text="{Binding CurrentEstablishment.Name}"></Label>
+                        <Label Text="{Binding CurrentEstablishment.PhoneNumber}"></Label>
+                        <Label Text="{Binding CurrentEstablishment.Email}"></Label>
+                        <Label Text="{Binding CurrentEstablishment.Cover}"></Label>
+                        <Label Text="{Binding CurrentEstablishment.userId}"></Label>
+                        <Button Text="Iniciar con Facebook"
+                            BackgroundColor="#1877f2"
+                            Margin="-30,10,50,0"
+                            Padding="10"
+                            FontFamily="{StaticResource SSPBlack}"
+                            Command="{Binding BookCommand}"></Button>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

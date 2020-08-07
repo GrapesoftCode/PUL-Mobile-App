@@ -8,11 +8,16 @@
              NavigationPage.HasNavigationBar="False"
              Visual="Material">
     <Grid RowSpacing="0" BackgroundColor="#ffffff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" HeightRequest="100">
-            <Frame>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="100">
+            <!--<Frame BorderColor="White" CornerRadius="0">-->
                 <StackLayout>
                     <Label Text="Iniciar Sesión"
                            FontSize="Title"
@@ -25,13 +30,13 @@
                     
                     <Entry Placeholder="Nombre de usuario"
                            Text="{Binding UserName}"
-                           Margin="10,10,-30,0"
+                           Margin="30,0,-30,0"
                            BackgroundColor="#f2f5f5"
                            ></Entry>
 
                     <Entry Placeholder="Contraseña"
                            Text="{Binding Password}"
-                           Margin="10,10,-30,0"
+                           Margin="30,0,-30,0"
                            BackgroundColor="#f2f5f5"
                            IsPassword="True"></Entry>
 
@@ -47,42 +52,37 @@
                             Margin="-30,10,50,0"
                             Padding="10"
                             FontFamily="{StaticResource SSPBlack}"
-                            Command="{Binding LoginFacebookCommand}"></Button>
-
-
-                    <Grid Grid.Row="0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-
-                        <Label Text="¿Olvido su contraseña?" 
-                               HorizontalOptions="StartAndExpand"
-                               VerticalOptions="End"
-                               Margin="0,120,0,0">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TestCommand}" />
-                            </Label.GestureRecognizers>
-
-                        </Label>
-                        <Label Text="Nuevo Cliente" 
-                               HorizontalOptions="EndAndExpand"
-                               VerticalOptions="End"
-                               Margin="0,120,0,0">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RegisterCommand}" />
-                            </Label.GestureRecognizers>
-
-                        </Label>
-                    </Grid>
+                            Command="{Binding LoginFacebookCommand}"></Button>                   
 
                 </StackLayout>
-                
-            </Frame>
+            <!--</Frame>-->
         </Grid>
-        
-        
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100">
+            <Label  
+                Text="¿Olvido su contraseña?" 
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="End"
+                Padding="20,0,0,20">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TestCommand}" />
+                </Label.GestureRecognizers>
+
+            </Label>
+            <Label  
+                Text="Nuevo Cliente" 
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="End"
+                Padding="0,0,20,20">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                </Label.GestureRecognizers>
+
+            </Label>
+        </Grid>
     </Grid>
 </ContentPage>

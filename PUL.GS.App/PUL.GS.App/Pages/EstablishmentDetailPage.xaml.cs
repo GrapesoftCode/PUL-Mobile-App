@@ -1,5 +1,4 @@
-﻿using PUL.GS.App.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PUL.GS.App.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPageDetail : ContentPage
+    public partial class EstablishmentDetailPage : ContentPage
     {
-        public MainPageDetail()
+        public EstablishmentDetailPage()
         {
             InitializeComponent();
         }

@@ -19,6 +19,8 @@ namespace PUL.GS.App.ViewModels
         public string Password { get; set; }
         public bool IsBusy { get; set; }
 
+        public User CurrentUser { get; set; }
+
         private readonly AccountData _accountAgent;
         readonly AppSettings appSettings = new AppSettings()
         {
@@ -45,7 +47,14 @@ namespace PUL.GS.App.ViewModels
                 var token = _accountAgent.GetToken(user);
 
                 if (token.Success)
-                    await CoreMethods.PushPageModel<MainViewModel>(UserName);
+                {
+                    var result = _accountAgent.GetUserByCredentials(UserName, Password, token.objectResult);
+                    if (result.Success)
+                        CurrentUser = result.objectResult;
+                        await CoreMethods.PushPageModel<HomeViewModel>(CurrentUser);
+                }
+
+
 
                 //var masterDetail = new FreshMasterDetailNavigationContainer();
                 //masterDetail.AddPage<MainViewModel>("Inicio");
@@ -90,7 +99,7 @@ namespace PUL.GS.App.ViewModels
         });
 
         //IChatService ChatService;
-        IUserDialogs dialogs;
+        readonly IUserDialogs dialogs;
 
         public LoginViewModel(
             IUserDialogs _userDialogs

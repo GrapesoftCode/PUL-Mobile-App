@@ -37,7 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Controls\" />
   </ItemGroup>
 
@@ -63,6 +62,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Promotion.resx</DependentUpon>
     </Compile>
+    <Compile Update="Infrastructure\ServiceURIs\Table.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Table.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -78,7 +85,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Promotion.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Infrastructure\ServiceURIs\Table.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Table.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\ChatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\EstablishmentDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\HomePage.xaml">
@@ -93,10 +107,7 @@
     <EmbeddedResource Update="Pages\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\MainPageDetail.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\MainPageMaster.xaml">
+    <EmbeddedResource Update="Pages\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\ProfilePage.xaml">

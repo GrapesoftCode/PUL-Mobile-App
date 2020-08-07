@@ -5,11 +5,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.BookPage">
-    <ContentPage.Content>
+    <ScrollView>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid  Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#ffffff">
+                    <Image Source="{Binding CurrentEstablishment.Logo}" Grid.Row="0" Grid.ColumnSpan="2" Aspect="Fill"></Image>
+
+                    <Label FontAttributes="Bold" 
+                           FontSize="Default" 
+                           TextColor="DarkOrange" 
+                           Text="$$$$" 
+                           Grid.Row="0" 
+                           Grid.Column="0" 
+                           VerticalTextAlignment="End" 
+                           HorizontalOptions="StartAndExpand" 
+                           Margin="10"></Label>
+                    <Label FontAttributes="Bold" 
+                           FontSize="Default" 
+                           TextColor="DarkOrange" 
+                           Text="Calificación" 
+                           Grid.Row="0" 
+                           Grid.Column="1" 
+                           VerticalTextAlignment="End" 
+                           HorizontalOptions="EndAndExpand" 
+                           Margin="10"></Label>
+                </Grid>
+                
+                <Grid  Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#ffffff">
+                    <Label FontAttributes="Bold" Text="Número de personas" Grid.Row="1" Grid.Column="0" Padding="5,0,5,0" Margin="0,10,0,10"></Label>
+
+                    <Stepper Minimum="0" Maximum="10" Increment="1" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+
+                <Grid  Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#ffffff" Padding="5,0,5,0" Margin="0,10,0,10">
+                    <Label FontAttributes="Bold" Text="Número de personas" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" ></Label>
+                    <DatePicker Grid.Row="0" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand" />
+
+                    <Label FontAttributes="Bold" Text="Número de personas" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0" ></Label>
+                    <TimePicker  Grid.Row="1" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#ffffff"  Padding="5,10,5,10" Margin="0,10,0,10">
+                    <StackLayout>
+                        <CollectionView 
+                            ItemsSource="{Binding Tables}"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            Grid.Row="1" 
+                            BackgroundColor="#ffffff"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding CurrentTable}"
+                            SelectionChangedCommand="{Binding EnterTableCommand}">
+
+                            <CollectionView.Header>
+                                <StackLayout BackgroundColor="#fffff">
+                                    <Label Margin="10,0,0,10"
+                                           Text="Selecciona tu mesa"
+                                           FontSize="Small"
+                                           FontAttributes="Bold" />
+                                </StackLayout>
+                            </CollectionView.Header>    
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="1"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="0,10,0,10">
+                                        <Frame CornerRadius="15"
+                                               BorderColor="Black"
+                                               IsClippedToBounds="True"
+                                               Grid.ColumnSpan="2">
+                                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="35"></RowDefinition>
+                                                    <RowDefinition Height="35"></RowDefinition>
+                                                    <RowDefinition Height="25"></RowDefinition>
+                                                    <RowDefinition Height="35"></RowDefinition>
+                                                </Grid.RowDefinitions>
+
+                                                <Label Text="{Binding Location}" FontAttributes="Bold" FontSize="Large" Grid.Column="0" Grid.Row="0"></Label>
+                                                <Label Text="{Binding Quantity, StringFormat='{0} personas'}" FontAttributes="Bold" FontSize="Large" Grid.Column="0" Grid.Row="1"></Label>
+                                                <Label Text="$500.00"  FontSize="Caption"  Grid.Column="0" Grid.Row="2"></Label>
+                                                <Label Text="Consumo mínimo por persona"  FontSize="Caption" Grid.Column="0" Grid.Row="3"></Label>
+
+                                                <Image Source="PUL.png" Aspect="AspectFit" Grid.Column="1" Grid.RowSpan="4"></Image>
+
+
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate> 
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </Grid>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

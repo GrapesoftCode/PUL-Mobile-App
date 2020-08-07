@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.MasterPage"
+             Title="Menu">
+    <Grid BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Image BackgroundColor="#ffffff"  Aspect="AspectFill" />
+            <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Frame BorderColor="White" CornerRadius="100">
+                    <Image Source="PUL.png" Aspect="AspectFill" WidthRequest="85" HeightRequest="85" />
+                </Frame>
+                
+                <Label Text="Edy Daniel" TextColor="Black" FontSize="Large" />
+            </StackLayout>
+        </Grid>
+
+
+        <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
+            <ListView x:Name="MenuItemsListView"
+                      RowHeight="60" 
+                      SeparatorVisibility="None" 
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding MenuItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="20">
+                                <Image Source="{Binding Icon}" 
+                                       WidthRequest="40" 
+                                       HeightRequest="40"
+                                       VerticalOptions="Center"/>
+
+                                <Label Text="{Binding Title}"
+                                       FontSize="Medium" 
+                                       VerticalOptions="Center" 
+                                       TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
+
+
+    <!--<StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
+        <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>ProfilePage</x:String>
+                    <x:String>RoomsPage</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.Header>
+                <Grid BackgroundColor="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Label
+              Grid.Column="1"
+              Grid.Row="2"
+              Text="PUL"
+              HorizontalOptions="CenterAndExpand"
+              VerticalOptions="CenterAndExpand"
+              TextColor="#ffffff"
+              Style="{DynamicResource SubtitleStyle}"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <Image Source="{Binding Icon}"
+                        WidthRequest="20"
+                        HeightRequest="20"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        Margin="15,0,0,0"/>
+
+                            <Label VerticalOptions="Center"
+                    VerticalTextAlignment="Center" 
+                    Text="{Binding Title}"
+                    FontSize="20"
+                    Margin="10,0,0,0"
+                    LineBreakMode="TailTruncation"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
+</ContentPage>
