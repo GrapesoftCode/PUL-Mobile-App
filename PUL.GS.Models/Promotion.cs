@@ -10,10 +10,11 @@ namespace PUL.GS.Models
         public string Name { get; set; }
         public double Price { get; set; }
         public string Description { get; set; }
-        public string Logo { get; set; } = "promotion2.jfif";
+        public bool Active { get; set; }
+        public Logo Logo { get; set; }
         public string establishmentId { get; set; }
         public string userId { get; set; }
-        //public Image Image { get; set; }
-        public DateTime DeadDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

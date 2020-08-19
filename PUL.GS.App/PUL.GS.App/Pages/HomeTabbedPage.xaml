@@ -16,7 +16,7 @@
                 <!--<views:ProfilePage/>-->
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Icon="pulear.png">
+        <NavigationPage Icon="message.png">
             <x:Arguments>
                 <!--<views:ProfilePage/>-->
             </x:Arguments>

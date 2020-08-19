@@ -15,31 +15,42 @@ namespace PUL.GS.App.ViewModels
 {
     public class HomeViewModel : FreshBasePageModel
     {
+        
+        public bool IsBusy { get; set; }
+
         private readonly EstablishmentData establishmentAgent;
         private readonly PromotionData promotionAgent;
+        private readonly ComboData comboAgent;
 
-        readonly IUserDialogs dialogs;
+        public ObservableCollection<Promotion> Promotions { get; set; }
+        public ObservableCollection<Establishment> Establishments { get; set; }
+        public ObservableCollection<Combo> Combos { get; set; }
+        public ObservableCollection<Book> Books { get; set; }
+
         public User CurrentUser { get; set; }
-        public bool IsBusy { get; set; }
-        
-
         public Establishment CurrentEstablishment { get; set; }
-        public ICommand EnterEstablishmentCommand { get; set; }
+        public Promotion CurrentPromotion { get; set; }
+        public Combo CurrentCombo { get; set; }
+
+        public Book CurrentBook { get; set; } = new Book();
+
+        public ICommand EstablishmentCommand { get; set; }
+        public ICommand PromotionCommand { get; set; }
+        public ICommand ComboCommand { get; set; }
 
         readonly AppSettings appSettings = new AppSettings()
         {
             baseUrl = "http://grapesoft-001-site13.ctempurl.com/api/",
             timeZoneKey = "Central Standard Time (Mexico)"
         };
-        public ObservableCollection<Promotion> Promotions { get; set; }
-        public ObservableCollection<Establishment> Establishments { get; set; }
-        public ObservableCollection<Book> Books { get; set; }
 
+        readonly IUserDialogs dialogs;
         public HomeViewModel(IUserDialogs _dialogs)
         {
             dialogs = _dialogs;
             establishmentAgent = new EstablishmentData(appSettings);
             promotionAgent = new PromotionData(appSettings);
+            comboAgent = new ComboData(appSettings);
         }
 
         public override void Init(object initData)
@@ -48,7 +59,7 @@ namespace PUL.GS.App.ViewModels
 
             CurrentUser = initData as User;
 
-            EnterEstablishmentCommand = new Command(async () =>
+            EstablishmentCommand = new Command(async () =>
             {
                 if (!IsBusy)
                 {
@@ -56,8 +67,41 @@ namespace PUL.GS.App.ViewModels
 
                     if (CurrentEstablishment != null)
                     {
-                        Establishment establishment = CurrentEstablishment;
-                        await CoreMethods.PushPageModel<BookViewModel>(establishment);
+                        CurrentBook.Establishment = CurrentEstablishment;
+                        CurrentBook.User = CurrentUser;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
+                        CurrentEstablishment = null;
+                    }
+
+                    IsBusy = false;
+                }
+            });
+
+            PromotionCommand = new Command(async () => {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
+
+                    if (CurrentPromotion != null)
+                    {
+                        Promotion promotion = CurrentPromotion;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentUser);
+                        CurrentEstablishment = null;
+                    }
+
+                    IsBusy = false;
+                }
+            });
+
+            ComboCommand = new Command(async () => {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
+
+                    if (CurrentCombo != null)
+                    {
+                        Combo combo = CurrentCombo;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentUser);
                         CurrentEstablishment = null;
                     }
 
@@ -73,9 +117,9 @@ namespace PUL.GS.App.ViewModels
 
             dialogs.ShowLoading("Cargando");
 
-            Establishments = new ObservableCollection<Establishment>(establishmentAgent.GetAll().objectResult.Records);
+            Establishments = new ObservableCollection<Establishment>(establishmentAgent.GetRecordsEstablishment().objectResult.Records);
             Promotions = new ObservableCollection<Promotion>(promotionAgent.GetAll().objectResult.Records);
-            //Rooms = await ChatService.GetRooms();
+            Combos = new ObservableCollection<Combo>(comboAgent.GetAll().objectResult.Records);
 
             dialogs.HideLoading();
         }

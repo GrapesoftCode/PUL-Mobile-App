@@ -17,14 +17,14 @@ namespace PUL.GS.App.Infrastructure
             settings = configuration;
         }
 
-        public Response<Pager<Establishment>> GetAll(int actualPage = 1, int recordsPerPage = 3)
+        public Response<Pager<Establishment>> GetRecordsEstablishment(int actualPage = 1, int recordsPerPage = 3)
         {
             var response = new Response<Pager<Establishment>>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, Pager<Establishment>>();
                 var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Establishment.GetAll}/", HttpVerb.Get).Result;
+                    $"{ServiceURIs.Establishment.GetRecordsEstablishment}/", HttpVerb.Get).Result;
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

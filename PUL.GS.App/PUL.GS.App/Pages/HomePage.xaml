@@ -30,7 +30,7 @@
                         BackgroundColor="#ffffff"
                         SelectionMode="Single"
                         SelectedItem="{Binding CurrentEstablishment}"
-                        SelectionChangedCommand="{Binding EnterEstablishmentCommand}">
+                        SelectionChangedCommand="{Binding EstablishmentCommand}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Horizontal"/>
                         </CollectionView.ItemsLayout>
@@ -38,7 +38,7 @@
                             <DataTemplate>
                                 <Frame Padding="5,0,5,10"
                                     IsClippedToBounds="True">
-                                    <Image Source="{Binding Logo}" Aspect="AspectFit"></Image>
+                                    <Image Source="{Binding Logo.Uri}" Aspect="AspectFit"></Image>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -62,7 +62,7 @@
                                        IsClippedToBounds="True">
                                     <Grid>
                                         <Image 
-                                        Source="{Binding Logo}"
+                                        Source="{Binding Logo.Uri}"
                                         Aspect="AspectFit"></Image>
                                     </Grid>
                                 </Frame>
@@ -78,22 +78,21 @@
                     </Grid.RowDefinitions>
 
                     <Label Text="Paquetes/Combos" Grid.Row="0" Margin="5,0,0,0"></Label>
-                    <CollectionView ItemsSource="{Binding Establishments}" Grid.Row="1" BackgroundColor="#ffffff">
+                    <CollectionView 
+                        ItemsSource="{Binding Combos}" 
+                        Grid.Row="1" 
+                        BackgroundColor="#ffffff"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding CurrentCombo}"
+                        SelectionChangedCommand="{Binding ComboCommand}">
                         <CollectionView.ItemsLayout>
-                            <GridItemsLayout 
-                            Orientation="Horizontal" 
-                             Span="1" />
+                            <GridItemsLayout Orientation="Horizontal"/>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame Padding="5,0,5,10"
-                                   HasShadow="True"
-                                   IsClippedToBounds="True">
-                                    <Grid>
-                                        <Image 
-                                        Source="{Binding Logo}"
-                                        Aspect="AspectFit"></Image>
-                                    </Grid>
+                                    IsClippedToBounds="True">
+                                    <Image Source="{Binding Logo.Uri}" Aspect="AspectFit"></Image>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

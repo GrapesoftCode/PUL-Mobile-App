@@ -61,11 +61,11 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a promotion.
+        ///   Busca una cadena traducida similar a records/GetRecordsPromotion.
         /// </summary>
-        internal static string GetAll {
+        internal static string GetRecordsPromotion {
             get {
-                return ResourceManager.GetString("GetAll", resourceCulture);
+                return ResourceManager.GetString("GetRecordsPromotion", resourceCulture);
             }
         }
     }

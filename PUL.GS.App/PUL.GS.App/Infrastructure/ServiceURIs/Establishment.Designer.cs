@@ -61,11 +61,11 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a establishment.
+        ///   Busca una cadena traducida similar a records/GetRecordsEstablishment.
         /// </summary>
-        internal static string GetAll {
+        internal static string GetRecordsEstablishment {
             get {
-                return ResourceManager.GetString("GetAll", resourceCulture);
+                return ResourceManager.GetString("GetRecordsEstablishment", resourceCulture);
             }
         }
     }
