@@ -18,6 +18,7 @@ namespace PUL.GS.App.Pages
         public MenuPage()
         {
             InitializeComponent();
+            //BindingContext = new MenuViewModel("38da4008-8168-4276-ada3-30bd3ede6381");
 
             //this.Title = "Menú";
 
@@ -30,10 +31,10 @@ namespace PUL.GS.App.Pages
             //    new NamedColor ("Purple", Color.Purple)
             //};
 
-            this.ItemTemplate = new DataTemplate(() =>
-            {
-                return new NamedMenuPage();
-            });
+            //this.ItemTemplate = new DataTemplate(() =>
+            //{
+            //    return new NamedMenuPage();
+            //});
         }
     }
 

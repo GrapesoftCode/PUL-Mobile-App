@@ -23,8 +23,8 @@ namespace PUL.GS.App.Pages
         {
             InitializeComponent();
 
-            BindingContext = new MasterPageViewModel();
-            ListView = MenuItemsListView;
+            //BindingContext = new MasterPageViewModel();
+            //ListView = MenuItemsListView;
         }
     }
 }

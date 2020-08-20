@@ -13,12 +13,12 @@
         </NavigationPage>
         <NavigationPage Icon="browser.png">
             <x:Arguments>
-                <!--<views:ProfilePage/>-->
+                <views:BrowserPage/>
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Icon="message.png">
             <x:Arguments>
-                <!--<views:ProfilePage/>-->
+                <views:RoomsPage/>
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Icon="profile.png">

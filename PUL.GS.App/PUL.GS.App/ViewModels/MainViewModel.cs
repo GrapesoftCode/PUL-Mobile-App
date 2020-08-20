@@ -13,10 +13,15 @@ namespace PUL.GS.App.ViewModels
 {
     public class MainViewModel : FreshBasePageModel
     {
-        public string UserName { get; set; }
-        public bool IsBusy { get; set; }
+        public User CurrentUser { get; set; }
         public MainViewModel()
         {
+        }
+
+
+        public override void Init(object initData)
+        {
+            CurrentUser = initData as User;
         }
     }
 }
