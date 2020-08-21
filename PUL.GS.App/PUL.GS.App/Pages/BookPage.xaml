@@ -52,10 +52,10 @@
                 </Grid>
 
                 <Grid  Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#ffffff" Padding="5,0,5,0" Margin="0,10,0,10">
-                    <Label FontAttributes="Bold" Text="Número de personas" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" ></Label>
+                    <Label FontAttributes="Bold" Text="Fecha" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" ></Label>
                     <DatePicker Grid.Row="0" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand" />
 
-                    <Label FontAttributes="Bold" Text="Número de personas" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0" ></Label>
+                    <Label FontAttributes="Bold" Text="Hora" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0" ></Label>
                     <TimePicker  Grid.Row="1" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand"/>
                 </Grid>
 
