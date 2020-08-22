@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.HomePage"
              Visual="Material"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="True">
     <ContentPage.Content>
         <StackLayout
             Orientation="Horizontal">

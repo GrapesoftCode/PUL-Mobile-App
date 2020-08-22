@@ -57,42 +57,46 @@ namespace PUL.GS.App.ViewModels
                     
                     //await CoreMethods.PushPageModel<MainViewModel>(CurrentUser);
                     var masterDetail = new FreshMasterDetailNavigationContainer();
+                    masterDetail.Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>();
+                    masterDetail.Title = "Hola morros";
                     //masterDetail.AddPage<ProfileViewModel>("Inicio", CurrentUser);
                     //masterDetail.AddPage<RoomsViewModel>("Chat", CurrentUser);
+                    //masterDetail.Init("Menu", "hamburguesa.png");
                     
-                    masterDetail.Init("Menu", "hamburguesa.png");
-                    masterDetail.Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>();
 
-                    var tabbedNavigation = new CustomTabbedPage();
+                    //var tabbedNavigation = new CustomTabbedPage();
+                    //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
+                    //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
+                    //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetElevation(12);
+                    //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsLegacyColorModeEnabled(true);
+                    //var home = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser))
+                    //{
+                    //    IconImageSource = "home.png"
+                    //};
+                    //var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
+                    //{
+                    //    IconImageSource = "browser.png"
+                    //};
+                    //var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+                    //{
+                    //    IconImageSource = "pulear.png"
+                    //};
+                    //tabbedNavigation.Children.Add(home);
+                    //tabbedNavigation.Children.Add(browser);
+                    //tabbedNavigation.Children.Add(room);
+
+                    //NavigationPage.SetHasNavigationBar(masterDetail, true);
+
+                    var tabbedNavigation = new FreshTabbedNavigationContainer();
                     tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
                     tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
-                    tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetElevation(12);
-                    tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsLegacyColorModeEnabled(true);
-                    var home = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser))
-                    {
-                        IconImageSource = "home.png"
-                    };
-                    var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
-                    {
-                        IconImageSource = "browser.png"
-                    };
-                    var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
-                    {
-                        IconImageSource = "pulear.png"
-                    };
-                    tabbedNavigation.Children.Add(home);
-                    tabbedNavigation.Children.Add(browser);
-                    tabbedNavigation.Children.Add(room);
-
-                    NavigationPage.SetHasNavigationBar(masterDetail, true);
-
-
                     //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
                     //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser));
                     //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser));
-                    //tabbedNavigation.AddTab<BrowserViewModel>(null,"browser.png", CurrentUser);
-                    //tabbedNavigation.AddTab<RoomsViewModel>(null, "pulear.png", CurrentUser);
-                    //tabbedNavigation.AddTab<RoomsViewModel>(null, "message.png", CurrentUser);
+                    tabbedNavigation.AddTab<HomeViewModel>(null, "home.png", CurrentUser);
+                    tabbedNavigation.AddTab<BrowserViewModel>(null,"browser.png", CurrentUser);
+                    tabbedNavigation.AddTab<RoomsViewModel>(null, "pulear.png", CurrentUser);
+                    tabbedNavigation.AddTab<RoomsViewModel>(null, "message.png", CurrentUser);
                     masterDetail.Detail = tabbedNavigation;
 
                     Xamarin.Forms.Application.Current.MainPage = masterDetail;
