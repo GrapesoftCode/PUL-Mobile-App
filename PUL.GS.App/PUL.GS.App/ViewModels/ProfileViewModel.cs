@@ -7,7 +7,8 @@ namespace PUL.GS.App.ViewModels
 {
     public class ProfileViewModel: FreshBasePageModel
     {
-        public UserFacebook CurrentUser { get; set; } = new UserFacebook();
+        public UserFacebook CurrentUserFacebook { get; set; } = new UserFacebook();
+        public User CurrentUser { get; set; } = new User();
 
         public ProfileViewModel()
         {
@@ -16,15 +17,15 @@ namespace PUL.GS.App.ViewModels
         public override void Init(object initData)
         {
             base.Init(initData);
-            var user = initData as UserFacebook;
+            CurrentUser = initData as User;
 
-            CurrentUser = new UserFacebook()
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Picture = user.Picture,
-                //Birthday = FacebookAuth.CurrentUser.User.Birthday
-            };
+            //CurrentUser = new User()
+            //{
+            //    Id = user.Id,
+            //    Name = user.Name,
+            //    Picture = user.Picture,
+            //    //Birthday = FacebookAuth.CurrentUser.User.Birthday
+            //};
 
         }
     }

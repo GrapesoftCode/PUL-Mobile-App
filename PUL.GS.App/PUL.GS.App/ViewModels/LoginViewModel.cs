@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using FreshMvvm;
+using PUL.GS.App.Controls;
 using PUL.GS.App.Infrastructure;
 using PUL.GS.App.Pages;
 using PUL.GS.Core.Services;
@@ -10,6 +11,7 @@ using System.Json;
 using System.Windows.Input;
 using Xamarin.Auth;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace PUL.GS.App.ViewModels
 {
@@ -51,18 +53,51 @@ namespace PUL.GS.App.ViewModels
                     var result = _accountAgent.GetUserByCredentials(UserName, Password, token.objectResult);
                     if (result.Success)
                         CurrentUser = result.objectResult;
-                        await CoreMethods.PushPageModel<HomeViewModel>(CurrentUser);
+
+                    
+                    //await CoreMethods.PushPageModel<MainViewModel>(CurrentUser);
+                    var masterDetail = new FreshMasterDetailNavigationContainer();
+                    //masterDetail.AddPage<ProfileViewModel>("Inicio", CurrentUser);
+                    //masterDetail.AddPage<RoomsViewModel>("Chat", CurrentUser);
+                    
+                    masterDetail.Init("Menu", "hamburguesa.png");
+                    masterDetail.Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>();
+
+                    var tabbedNavigation = new CustomTabbedPage();
+                    tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
+                    tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
+                    tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetElevation(12);
+                    tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsLegacyColorModeEnabled(true);
+                    var home = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser))
+                    {
+                        IconImageSource = "home.png"
+                    };
+                    var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
+                    {
+                        IconImageSource = "browser.png"
+                    };
+                    var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+                    {
+                        IconImageSource = "pulear.png"
+                    };
+                    tabbedNavigation.Children.Add(home);
+                    tabbedNavigation.Children.Add(browser);
+                    tabbedNavigation.Children.Add(room);
+
+                    NavigationPage.SetHasNavigationBar(masterDetail, true);
+
+
+                    //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
+                    //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser));
+                    //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser));
+                    //tabbedNavigation.AddTab<BrowserViewModel>(null,"browser.png", CurrentUser);
+                    //tabbedNavigation.AddTab<RoomsViewModel>(null, "pulear.png", CurrentUser);
+                    //tabbedNavigation.AddTab<RoomsViewModel>(null, "message.png", CurrentUser);
+                    masterDetail.Detail = tabbedNavigation;
+
+                    Xamarin.Forms.Application.Current.MainPage = masterDetail;
+
                 }
-
-
-
-                //var masterDetail = new FreshMasterDetailNavigationContainer();
-                //masterDetail.AddPage<MainViewModel>("Inicio");
-                //masterDetail.AddPage<ProfileViewModel>("Perfil", "");
-                //masterDetail.AddPage<RoomsViewModel>("Salas", "");
-
-                //masterDetail.Init("Menu", "logo.png");
-                //Application.Current.MainPage = masterDetail;
 
 
                 dialogs.HideLoading();

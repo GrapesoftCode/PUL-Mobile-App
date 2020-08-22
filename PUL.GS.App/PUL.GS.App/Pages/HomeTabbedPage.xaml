@@ -16,14 +16,15 @@
                 <views:BrowserPage/>
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Icon="message.png">
+        <NavigationPage Icon="pulear.png">
             <x:Arguments>
                 <views:RoomsPage/>
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Icon="profile.png">
+
+        <NavigationPage Icon="message.png">
             <x:Arguments>
-                <views:ProfilePage/>
+                <views:RoomsPage/>
             </x:Arguments>
         </NavigationPage>
     </c1:CustomTabbedPage.Children>
@@ -38,10 +39,10 @@
             HorizontalOptions="End"
             Padding="0,0,20,0">
             <Image
-                Source="hamburguesa.png"
+                Source="location.png"
                 Aspect="AspectFit"
-                WidthRequest="40"
-                HeightRequest="40">
+                WidthRequest="30"
+                HeightRequest="30">
                 <Image.GestureRecognizers>
                     <!--<TapGestureRecognizer
                             Tapped="OnHeaderIconTapped"/>-->
@@ -49,10 +50,10 @@
             </Image>
 
             <Image
-                Source="logo.png"
+                Source="profile.png"
                 Aspect="AspectFit"
-                WidthRequest="40"
-                HeightRequest="40">
+                WidthRequest="30"
+                HeightRequest="30">
                 <Image.GestureRecognizers>
                     <!--<TapGestureRecognizer
                             Tapped="OnHeaderIconTapped"/>-->

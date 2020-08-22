@@ -1,25 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="PUL.GS.App.Pages.MainPage"
-             xmlns:pages="clr-namespace:PUL.GS.App.Pages"
-             NavigationPage.HasNavigationBar="False">
-  <MasterDetailPage.Master>
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:pages="clr-namespace:PUL.GS.App.Pages"
+                mc:Ignorable="d"
+                x:Class="PUL.GS.App.Pages.MainPage"
+                IconImageSource="hamburguesa.png">
+  <!--<MasterDetailPage.Master>
     <pages:MasterPage x:Name="MasterPage" />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
+  </MasterDetailPage.Master>-->
+  <!--<MasterDetailPage.Detail>
     <NavigationPage
         BarBackgroundColor="#ffffff"
         BarTextColor="Black"
         IconImageSource="hamburguesa.png">
       <x:Arguments>
-       <!--- <pages:MainPageDetail />-->
        <pages:HomeTabbedPage></pages:HomeTabbedPage>
       </x:Arguments>
     </NavigationPage>
-  </MasterDetailPage.Detail>
+  </MasterDetailPage.Detail>-->
    
 </MasterDetailPage>

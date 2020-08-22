@@ -15,8 +15,8 @@ namespace PUL.GS.App.ViewModels
         readonly IChatService ChatService;
         readonly IUserDialogs dialogs;
         bool IsBusy = false;
-        string UserName;
 
+        public User CurrentUser { get; set; }
         public List<Room> Rooms { get; set; }
         public Room CurrentRoom { get; set; }
         public ICommand EnterRoomCommand { get; set; }
@@ -33,7 +33,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.Init(initData);
 
-            UserName = initData as string;
+            CurrentUser = initData as User;
 
             EnterRoomCommand = new Command(async () =>
             {
@@ -44,7 +44,7 @@ namespace PUL.GS.App.ViewModels
                     if (CurrentRoom != null)
                     {
                         Tuple<string, string> data =
-                        new Tuple<string, string>(UserName, CurrentRoom.Name);
+                        new Tuple<string, string>(CurrentUser.Username, CurrentRoom.Name);
                         await CoreMethods.PushPageModel<ChatViewModel>(data);
                         CurrentRoom = null;
                     }
@@ -60,7 +60,7 @@ namespace PUL.GS.App.ViewModels
             
             dialogs.ShowLoading("Cargando");
 
-            await ChatService.InitAsync(UserName);
+            await ChatService.InitAsync(CurrentUser.Username);
 
             Rooms = await ChatService.GetRooms();
 
