@@ -24,14 +24,12 @@ namespace PUL.GS.App.Utilities
                     NullValueHandling = NullValueHandling.Ignore
                 });
             }
-            return default(T);
+            return default;
         }
         public static string Encrypt(string str)
         {
             string txt = str;
-            byte[] bs = null;
-
-            bs = Encoding.UTF8.GetBytes(txt);
+            byte[] bs = Encoding.UTF8.GetBytes(txt);
             int[] ns = new int[bs.Length];
 
             for (int i = 0; i <= bs.Length - 1; i++)
@@ -55,13 +53,13 @@ namespace PUL.GS.App.Utilities
             for (int i = 0; i < ArrayHex.Length; i++)
             {
                 ArrayHex[i] = txt[hex].ToString() + txt[hex + 1].ToString();
-                hex = hex + 2;
+                hex += 2;
             }
 
             for (int j = 0; j < ArrayDec.Length; j++)
             {
                 ArrayDec[j] = byte.Parse(ArrayHex[j], NumberStyles.HexNumber);
-                hex = hex + 2;
+                hex += 2;
             }
 
             Encoding utf8 = Encoding.UTF8;

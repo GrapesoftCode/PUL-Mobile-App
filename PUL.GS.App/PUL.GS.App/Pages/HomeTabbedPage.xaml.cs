@@ -16,11 +16,10 @@ namespace PUL.GS.App.Pages
         public HomeTabbedPage()
         {
             InitializeComponent();
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             
-            /*this.BarBackgroundColor = Color.FromHex("#000000");
-            this.BarTextColor = Color.FromHex("#ffffff");
-            this.UnselectedTabColor = Color.FromHex("#000000");*/
+            this.BarBackgroundColor = Color.FromHex("#ffffff");
+            this.BarTextColor = Color.FromHex("#000000");
+            this.UnselectedTabColor = Color.FromHex("#yyyyyy");
         }
         
     }

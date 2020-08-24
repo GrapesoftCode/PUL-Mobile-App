@@ -84,7 +84,7 @@ namespace PUL.GS.App.ViewModels
 
             dialogs.ShowLoading("Cargando");
 
-            var listTables = tableAgent.GetTables(CurrentBook.Establishment.userId, CurrentBook.Establishment.id).objectResult;
+            var listTables = tableAgent.GetTables(CurrentBook.Establishment.UserId, CurrentBook.Establishment.id).objectResult;
             var groups = listTables
                             .GroupBy(x => new { x.Location, x.Quantity, x.MinimumConsumption })
                             .Select(x => new Table{ 

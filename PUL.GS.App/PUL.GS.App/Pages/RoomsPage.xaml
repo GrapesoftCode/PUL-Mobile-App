@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.RoomsPage"
              Visual="Material"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">

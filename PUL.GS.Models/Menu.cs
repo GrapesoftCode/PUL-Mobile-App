@@ -12,8 +12,8 @@ namespace PUL.GS.Models
         public double Price { get; set; }
         public string Description { get; set; }
         public Logo Logo { get; set; }
-        public string userId { get; set; }
-        public string establishmentId { get; set; }
+        public string UserId { get; set; }
+        public string EstablishmentId { get; set; }
         //public Menu(string name)
         //{
         //    this.Name = name;

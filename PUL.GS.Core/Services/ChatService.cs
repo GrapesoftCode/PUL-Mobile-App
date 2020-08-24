@@ -20,7 +20,7 @@ namespace PUL.GS.Core.Services
         public bool IsConnected { get; set; }
 
         public string ConnectionToken { get; set; }
-        private SemaphoreSlim semaphoreSlim =
+        private readonly SemaphoreSlim semaphoreSlim =
             new SemaphoreSlim(1, 1);
         private HttpClient httpClient;
         HubConnection hub;

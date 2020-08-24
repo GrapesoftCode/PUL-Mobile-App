@@ -30,8 +30,10 @@ namespace PUL.GS.App.Pages
             MasterBehavior = MasterBehavior.Popover;
 
             ////Create Detail
-            CustomTabbedPage tabbedPage = new CustomTabbedPage();
-            tabbedPage.BarTextColor = Color.FromHex("#fffff");
+            CustomTabbedPage tabbedPage = new CustomTabbedPage
+            {
+                BarTextColor = Color.FromHex("#fffff")
+            };
             tabbedPage.BarTextColor = Color.Black;
             var home = new NavigationPage(new HomePage())
             {

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace PUL.GS.App.ViewModels
 {
@@ -18,11 +19,11 @@ namespace PUL.GS.App.ViewModels
 
             MenuItems = new ObservableCollection<MainPageMasterMenuItem>(new[]
             {
-                    new MainPageMasterMenuItem { Id = 1, Title = "Inicio", Icon="home.png", TargetType= typeof(RoomsPage) },
-                    new MainPageMasterMenuItem { Id = 0, Title = "Perfil", Icon="profile.png",  TargetType = typeof(ProfilePage) },
-                    new MainPageMasterMenuItem { Id = 1, Title = "Salas", Icon="home2.png", TargetType= typeof(RoomsPage) },
-                    new MainPageMasterMenuItem { Id = 0, Title = "Settings", Icon="setting.png",  TargetType = typeof(SettingsPage) },
-                    new MainPageMasterMenuItem { Id = 0, Title = "About", Icon="help.png",  TargetType = typeof(AboutPage) },
+                    //new MainPageMasterMenuItem { Id = 1, Title = "Inicio", Icon="home.png", TargetType =  new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser)) },
+                    new MainPageMasterMenuItem { Id = 2, Title = "Perfil", Icon="profile.png",  TargetType =  new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>()) },
+                    //new MainPageMasterMenuItem { Id = 3, Title = "Salas", Icon="home2.png", TargetType =  new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser)) },
+                    //new MainPageMasterMenuItem { Id = 4, Title = "Settings", Icon="setting.png",  TargetType =  new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser)) },
+                    //new MainPageMasterMenuItem { Id = 5, Title = "About", Icon="help.png",  TargetType = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser)) },
                 });
         }
 

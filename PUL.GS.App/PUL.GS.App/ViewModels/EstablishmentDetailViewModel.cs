@@ -35,7 +35,7 @@ namespace PUL.GS.App.ViewModels
                 Cover = establishment.Cover,
                 Rfc = establishment.Rfc,
                 Logo = establishment.Logo,
-                userId = establishment.userId
+                UserId = establishment.UserId
             };
 
         }

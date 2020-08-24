@@ -7,7 +7,7 @@ namespace PUL.GS.Models
     public class Establishment
     {
         public string id { get; set; }
-        public string userId { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Rfc { get; set; }
         public string Email { get; set; }

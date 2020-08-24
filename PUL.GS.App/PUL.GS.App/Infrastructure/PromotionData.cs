@@ -24,7 +24,7 @@ namespace PUL.GS.App.Infrastructure
             {
                 var client = new HttpClientWrapper<User, Pager<Promotion>>();
                 var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Promotion.GetRecordsPromotion}/", HttpVerb.Get).Result;
+                    $"{ServiceURIs.Promotion.GetRecordsPromotion}?actualPage={actualPage}&recorsPerPage={recordsPerPage}", HttpVerb.Get).Result;
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

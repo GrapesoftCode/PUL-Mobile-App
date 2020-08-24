@@ -12,8 +12,8 @@ namespace PUL.GS.Models
         public string Description { get; set; }
         public bool Active { get; set; }
         public Logo Logo { get; set; }
-        public string establishmentId { get; set; }
-        public string userId { get; set; }
+        public string EstablishmentId { get; set; }
+        public string UserId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
