@@ -71,9 +71,16 @@ namespace PUL.GS.App.ViewModels
                         {
                             IconImageSource = "pulear.png"
                         };
+
+                        var chat = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+                        {
+                            IconImageSource = "message.png"
+                        };
                         tabbedNavigation.Children.Add(home);
                         tabbedNavigation.Children.Add(browser);
                         tabbedNavigation.Children.Add(room);
+                        tabbedNavigation.Children.Add(chat);
+
 
                         //var tabbedNavigation = new FreshTabbedNavigationContainer();
                         //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);

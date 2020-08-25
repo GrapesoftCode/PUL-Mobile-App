@@ -46,22 +46,22 @@ namespace PUL.GS.App.ViewModels
 
             CurrentUser = initData as User;
 
-            EstablishmentCommand = new Command(async () =>
-            {
-                if (!IsBusy)
-                {
-                    IsBusy = true;
+            //EstablishmentCommand = new Command(async () =>
+            //{
+            //    if (!IsBusy)
+            //    {
+            //        IsBusy = true;
 
-                    if (CurrentEstablishment != null)
-                    {
-                        Establishment establishment = CurrentEstablishment;
-                        await CoreMethods.PushPageModel<BookViewModel>(establishment);
-                        CurrentEstablishment = null;
-                    }
+            //        if (CurrentEstablishment != null)
+            //        {
+            //            Establishment establishment = CurrentEstablishment;
+            //            await CoreMethods.PushPageModel<BookViewModel>(establishment);
+            //            CurrentEstablishment = null;
+            //        }
 
-                    IsBusy = false;
-                }
-            });
+            //        IsBusy = false;
+            //    }
+            //});
         }
 
 

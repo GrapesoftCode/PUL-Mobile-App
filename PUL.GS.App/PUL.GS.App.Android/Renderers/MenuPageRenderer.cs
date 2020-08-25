@@ -23,8 +23,7 @@ namespace PUL.GS.App.Droid.Renderers
         public override void OnViewAdded(Android.Views.View child)
         {
             base.OnViewAdded(child);
-            var tabLayout = child as TabLayout;
-            if (tabLayout != null)
+            if (child is TabLayout tabLayout)
             {
                 tabLayout.TabMode = TabLayout.ModeScrollable;
             }

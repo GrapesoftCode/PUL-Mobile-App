@@ -1,19 +1,22 @@
 ﻿using System;
-
+using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using PUL.GS.App.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-#pragma warning disable CS0612 // El tipo o el miembro están obsoletos
-[assembly: ExportRenderer(typeof(Entry), typeof(SuperEntryRenderer))]
-#pragma warning restore CS0612 // El tipo o el miembro están obsoletos
+[assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
+
 namespace PUL.GS.App.Droid.Renderers
-{
-    [Obsolete]
-    public class SuperEntryRenderer : EntryRenderer
+{ 
+    public class CustomEntryRenderer : EntryRenderer
     {
+        public CustomEntryRenderer(Context context) : base(context)
+        {
+            AutoPackage = false;
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
@@ -24,6 +27,11 @@ namespace PUL.GS.App.Droid.Renderers
                 shape.Paint.Color = Xamarin.Forms.Color.Red.ToAndroid();
                 shape.Paint.SetStyle(Paint.Style.Stroke);
                 nativeEditText.Background = shape;
+            }
+
+            if (Control != null)
+            {
+                Control.Background = new ColorDrawable(Android.Graphics.Color.Transparent);
             }
         }
     }

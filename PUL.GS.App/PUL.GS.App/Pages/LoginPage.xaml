@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PUL.GS.App.Controls"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.LoginPage"
              NavigationPage.HasNavigationBar="False"
@@ -13,73 +14,126 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height=".8*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="100">
             <!--<Frame BorderColor="White" CornerRadius="0">-->
                 <StackLayout>
-                    <Label Text="Iniciar Sesión"
-                           FontSize="Title"
+                    <Label Text="Inicia Sesión"
+                           FontSize="Large"
                            HorizontalTextAlignment="Start"
-                           FontAttributes="Bold"
-                           TextColor="Black"
+                           FontAttributes="None"
+                           TextColor="#414241"
                            Padding="0,100,0,100"
-                           Margin="10,0,0,0"
-                           FontFamily="{StaticResource SSPBlack}"></Label>
-                    
-                    <Entry Placeholder="Nombre de usuario"
+                           Margin="30,0,0,0"
+                           VerticalTextAlignment="Center"
+                           CharacterSpacing="0"
+                           FontFamily="{StaticResource SSPBold}"></Label>
+
+
+                <Frame HasShadow="True"
+                       Padding="0"
+                       CornerRadius="5"
+                       BorderColor="Transparent"
+                       Margin="30,20,0,10"
+                       BackgroundColor="#EDEFEF">
+                    <controls:CustomEntry Placeholder="Usuario"
                            Text="{Binding UserName}"
-                           Margin="30,0,-30,0"
-                           BackgroundColor="#f2f5f5"
-                           ></Entry>
+                           FontFamily="{Binding SSPlt}"
+                           VerticalTextAlignment="Center"
+                           TextColor="Black"
+                           PlaceholderColor="#A9A8A8">
+                    </controls:CustomEntry>
+                </Frame>
 
-                    <Entry Placeholder="Contraseña"
+
+                <Frame HasShadow="True"
+                       Padding="0"
+                       CornerRadius="5"
+                       BorderColor="Transparent"
+                       Margin="30,0,0,0"
+                       BackgroundColor="#EDEFEF">
+                    <controls:CustomEntry Placeholder="Contraseña"
                            Text="{Binding Password}"
-                           Margin="30,0,-30,0"
-                           BackgroundColor="#f2f5f5"
-                           IsPassword="True"></Entry>
+                           FontFamily="{Binding SSPlt}"
+                           VerticalTextAlignment="Center"
+                           TextColor="Black"
+                           PlaceholderColor="#A9A8A8"
+                           IsPassword="True"></controls:CustomEntry>
+                </Frame>
 
-                    <Button Text="Iniciar Sesión"
-                            BackgroundColor="#1877f2"
-                            Margin="-30,10,50,0"
-                            Padding="10"
-                            FontFamily="{StaticResource SSPBlack}"
-                            Command="{Binding LoginCommand}"></Button>
 
-                    <Button Text="Iniciar con Facebook"
-                            BackgroundColor="#1877f2"
-                            Margin="-30,10,50,0"
-                            Padding="10"
-                            FontFamily="{StaticResource SSPBlack}"
-                            Command="{Binding LoginFacebookCommand}"></Button>                   
+                <controls:CustomButton Text="Inicia Sesión"
+                        Margin="-5,100,10,20"
+                        Padding="25,15,20,15"
+                        CornerRadius="1"
+                        HorizontalOptions="StartAndExpand"
+                        StartColor="#000080"
+                        EndColor="#800080"
+                        GradientOrientation="Horizontal"
+                        FontFamily="{StaticResource SSPBold}"
+                        Command="{Binding LoginCommand}"></controls:CustomButton>
 
-                </StackLayout>
+
+
+                <controls:CustomButton Text="Facebook"
+                        Margin="-5,10,10,20"
+                        Padding="25,15,20,15"
+                        CornerRadius="1"
+                        HorizontalOptions="StartAndExpand"
+                        StartColor="#000080"
+                        EndColor="#800080"
+                        GradientOrientation="Horizontal"
+                        FontFamily="{StaticResource SSPBold}"
+                        Command="{Binding LoginFacebookCommand}"></controls:CustomButton>
+
+            </StackLayout>
             <!--</Frame>-->
         </Grid>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Label  
-                Text="¿Olvido su contraseña?" 
+                Text="¿Olvidaste tu contraseña?" 
                 Grid.Row="1"
                 Grid.Column="0"
-                HorizontalOptions="StartAndExpand"
+                Margin="20"
+                HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"
-                Padding="20,0,0,20">
+                TextColor="#A9A8A8">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TestCommand}" />
                 </Label.GestureRecognizers>
 
             </Label>
             <Label  
-                Text="Nuevo Cliente" 
+                Text="¿Eres nuevo?" 
                 Grid.Row="1"
                 Grid.Column="1"
-                HorizontalOptions="EndAndExpand"
+                Margin="20"
+                HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"
-                Padding="0,0,20,20">
+                TextColor="#A9A8A8">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                </Label.GestureRecognizers>
+
+            </Label>
+        </Grid>
+
+        <Grid  Grid.Row="2"
+               Grid.ColumnSpan="2"
+               Margin="0"
+               Padding="0">
+            <Label  
+                Text="__________________" 
+                Margin="0,0,0,10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="#A9A8A8">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TestCommand}" />
                 </Label.GestureRecognizers>
 
             </Label>

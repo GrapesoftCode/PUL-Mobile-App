@@ -93,11 +93,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderers\CustomButtonRenderer.cs" />
+    <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\LoginRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\CustomNavigationPageRenderer.cs" />
     <Compile Include="Renderers\MenuPageRenderer.cs" />
-    <Compile Include="Renderers\SuperEntryRenderer.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
