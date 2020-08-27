@@ -73,6 +73,7 @@ namespace PUL.GS.App.Droid.Renderers
 
             _gradient = new GradientDrawable(orientation, new[] {
                 button.StartColor.ToAndroid().ToArgb(),
+                button.MiddleColor.ToAndroid().ToArgb(),
                 button.EndColor.ToAndroid().ToArgb(),
             });
 

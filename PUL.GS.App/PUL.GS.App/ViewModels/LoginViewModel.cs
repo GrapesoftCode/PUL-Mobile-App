@@ -7,6 +7,7 @@ using PUL.GS.Core.Services;
 using PUL.GS.Models;
 using PUL.GS.Models.Common;
 using System;
+using System.Collections.Generic;
 using System.Json;
 using System.Windows.Input;
 using Xamarin.Auth;
@@ -82,6 +83,8 @@ namespace PUL.GS.App.ViewModels
                         tabbedNavigation.Children.Add(chat);
 
 
+                        
+
                         //var tabbedNavigation = new FreshTabbedNavigationContainer();
                         //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
                         //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
@@ -100,15 +103,45 @@ namespace PUL.GS.App.ViewModels
                         //tabbedNavigation.Children.Add(home);
                         //tabbedNavigation.Children.Add(browser);
                         //tabbedNavigation.Children.Add(room);
+                        var profile = new ToolbarItem {
+                            IconImageSource = "profile.png",
+                            Priority = 1,
+                            Order= ToolbarItemOrder.Primary
+                        };
+                        var location = new ToolbarItem
+                        {
+                            IconImageSource = "location.png",
+                            Priority = 2,
+                            Order = ToolbarItemOrder.Primary,
+                            Text = "location"
+                        };
 
-                        var masterDetail = new FreshMasterDetailNavigationContainer
+                        //var masterDetail = new FreshMasterDetailNavigationContainer()
+                        //{
+                        //    Title = "Hola morros",
+                        //    BackgroundColor = Color.FromHex("#ffffff"),
+                        //    Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
+                        //    Detail = new NavigationPage(tabbedNavigation)
+                        //};
+
+
+                        //var masterDetailNav = new FreshMasterDetailNavigationContainer();
+                        //masterDetailNav.Init("Menu");
+                        //masterDetailNav.AddPage<ProfileViewModel>("First", CurrentUser);
+
+                        var masterDetail = new CustomMasterDetailPage()
                         {
                             Title = "Hola morros",
-                            BackgroundColor = Color.FromHex("#ffffff"),
-                            BackgroundImageSource = "PUL.png",
+                            //BackgroundColor = Color.FromHex("#ffffff"),
                             Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
-                            Detail = new NavigationPage(tabbedNavigation)
+                            Detail = new NavigationPage(tabbedNavigation),
                         };
+
+                        masterDetail.MasterBehavior = MasterBehavior.Split;
+
+                        masterDetail.BackgroundColor = Color.FromHex("#fffff");
+                        masterDetail.ToolbarItems.Add(profile);
+                        masterDetail.ToolbarItems.Add(location);
 
                         //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
                         //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser));

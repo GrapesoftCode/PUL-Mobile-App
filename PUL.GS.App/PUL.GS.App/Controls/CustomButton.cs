@@ -24,6 +24,13 @@ namespace PUL.GS.App.Controls
                 typeof(CustomButton),
                 default(Color));
 
+        public static readonly BindableProperty MiddleColorProperty =
+            BindableProperty.Create(
+                nameof(MiddleColor),
+                typeof(Color),
+                typeof(CustomButton),
+                default(Color));
+
         public static readonly BindableProperty EndColorProperty =
             BindableProperty.Create(
                 nameof(EndColor),
@@ -47,6 +54,15 @@ namespace PUL.GS.App.Controls
         {
             get => (Color)GetValue(StartColorProperty);
             set => SetValue(StartColorProperty, value);
+        }
+
+        /// <summary>
+        /// The start color of the gradient background
+        /// </summary>
+        public Color MiddleColor
+        {
+            get => (Color)GetValue(MiddleColorProperty);
+            set => SetValue(MiddleColorProperty, value);
         }
 
         /// <summary>

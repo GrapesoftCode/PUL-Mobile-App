@@ -97,7 +97,7 @@
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\LoginRenderer.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renderers\CustomNavigationPageRenderer.cs" />
+    <Compile Include="Renderers\CustomMasterDetailPageRenderer.cs" />
     <Compile Include="Renderers\MenuPageRenderer.cs" />
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -691,6 +691,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\style.css" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
