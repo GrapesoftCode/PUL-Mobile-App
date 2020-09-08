@@ -6,6 +6,7 @@ using PUL.GS.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
@@ -15,49 +16,66 @@ using Xamarin.Forms;
 
 namespace PUL.GS.App.ViewModels
 {
-    public class BookViewModel : FreshBasePageModel
+    public class BookViewModel : BaseViewModel
     {
+       
+        public DateTime Hour
+        {
+            get => hour; set
+            {
+                hour = value;
+                BookViewModel_PropertyChanged(this, new PropertyChangedEventArgs("Hour"));
+            }
+        }
+
+        public DateTime MinimumDate
+        {
+            get => minimumDate;
+            set
+            {
+                minimumDate = value;
+                BookViewModel_PropertyChanged(this, new PropertyChangedEventArgs("MinimumDate"));
+            }
+        }
+
+        public DateTime Date
+        {
+            get => date;
+            set
+            {
+                date = value;
+                BookViewModel_PropertyChanged(this, new PropertyChangedEventArgs("Date"));
+            }
+        }
+
+        private void BookViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            //Date = e.PropertyName.ToString();
+        }
+
         public Establishment CurrentEstablishment { get; set; } = new Establishment();
         public Book CurrentBook { get; set; } = new Book();
         public Table CurrentTable { get; set; } = new Table();
 
         public ICommand TableCommand { get; set; }
+        public readonly IUserDialogs dialogs;
 
-        private readonly TableData tableAgent;
-        public bool IsBusy { get; set; }
-
-        readonly IUserDialogs dialogs;
         public ObservableCollection<Table> Tables { get; set; }
 
-        readonly AppSettings appSettings = new AppSettings()
-        {
-            baseUrl = "http://grapesoft-001-site13.ctempurl.com/api/",
-            timeZoneKey = "Central Standard Time (Mexico)"
-        };
-
+        private DateTime date = DateTime.Now;
+        private DateTime minimumDate = DateTime.Now;
+        private DateTime hour = DateTime.Now.ToLocalTime();
+        public int Persons { get; set; } = 0;
 
         public BookViewModel(IUserDialogs _userDialogs)
         {
             dialogs = _userDialogs;
-            tableAgent = new TableData(appSettings);
         }
 
         public override void Init(object initData)
         {
             base.Init(initData);
             CurrentBook = initData as Book;
-
-            //CurrentEstablishment = new Establishment()
-            //{
-            //    id = establishment.id,
-            //    //Name = establishment.Name,
-            //    //PhoneNumber = establishment.PhoneNumber,
-            //    //Email = establishment.Email,
-            //    //Cover = establishment.Cover,
-            //    //Rfc = establishment.Rfc,
-            //    //Logo = establishment.Logo,
-            //    //userId = establishment.userId
-            //};
 
             TableCommand = new Command(async () =>
             {
@@ -67,8 +85,18 @@ namespace PUL.GS.App.ViewModels
 
                     if (CurrentTable != null)
                     {
-                        CurrentBook.Table = CurrentTable;
-                        await CoreMethods.PushPageModel<MenuViewModel>(CurrentBook);
+                        if (Persons > 0)
+                        {
+                            CurrentBook.Table = CurrentTable;
+                            CurrentBook.Persons = Persons;
+                            CurrentBook.Hour = Hour.ToString("hh:mm:ss tt");
+                            CurrentBook.Date = Date.ToString("dd/MM/yyyy");
+                            CurrentBook.SubTotal = CurrentTable.MinimumConsumption * Persons;
+                            await CoreMethods.PushPageModel<BookMenuViewModel>(CurrentBook);
+                            CurrentTable = null;
+                        }
+
+                        //Tables.CollectionChanged += Tables_CollectionChanged;
                         CurrentTable = null;
                     }
 
@@ -78,6 +106,15 @@ namespace PUL.GS.App.ViewModels
 
         }
 
+        //private void Tables_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    if (e is null) return;
+        //    ((CollectionView)sender).SelectedItem = null;
+        //    e.CurrentSelection = null;
+        //    IngredientCollectionView.SelectedItem = null;
+        //}
+
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
@@ -85,21 +122,25 @@ namespace PUL.GS.App.ViewModels
             dialogs.ShowLoading("Cargando");
 
             var listTables = tableAgent.GetTables(CurrentBook.Establishment.UserId, CurrentBook.Establishment.id).objectResult;
-            var groups = listTables
-                            .GroupBy(x => new { x.Location, x.Quantity, x.MinimumConsumption })
-                            .Select(x => new Table{ 
-                                Location = x.Key.Location,
-                                Quantity = x.Key.Quantity,
-                                MinimumConsumption = x.Key.MinimumConsumption,
-                                Count = x.Select(z=>z.id).Distinct().Count(),
-                            });
+
+            if (listTables != null)
+            {
+                var groups = listTables
+                                .GroupBy(x => new { x.Location, x.Quantity, x.MinimumConsumption })
+                                .Select(x => new Table
+                                {
+                                    Location = x.Key.Location,
+                                    Quantity = x.Key.Quantity,
+                                    MinimumConsumption = x.Key.MinimumConsumption,
+                                    Count = x.Select(z => z.id).Distinct().Count(),
+                                });
+
+                Tables = new ObservableCollection<Table>(groups);
+            }
 
             //var queries2 = listTables.GroupBy(g => new { g.Location, g.Quantity, g.MinimumConsumption })
             //             .Select(g => g.First())
             //             .ToList();
-
-            Tables = new ObservableCollection<Table>(groups);
-
             dialogs.HideLoading();
         }
 

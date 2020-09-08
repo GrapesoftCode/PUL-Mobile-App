@@ -52,5 +52,23 @@ namespace PUL.GS.App.Infrastructure
             }
             return response;
         }
+
+        public Response<IEnumerable<Menu>> GetListFoods(string establishmentId)
+        {
+            var response = new Response<IEnumerable<Menu>>() { Success = true };
+            try
+            {
+                var client = new HttpClientWrapper<User, IEnumerable<Menu>>();
+                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Menu.GetListFoods}/{establishmentId}", HttpVerb.Get).Result;
+                response.objectResult = serviceResponse;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Error = new Error() { Message = ex.Message };
+            }
+            return response;
+        }
     }
 }

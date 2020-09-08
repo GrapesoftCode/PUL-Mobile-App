@@ -5,7 +5,7 @@ using PUL.GS.Models;
 
 namespace PUL.GS.App.ViewModels
 {
-    public class ProfileViewModel: FreshBasePageModel
+    public class ProfileViewModel: BaseViewModel
     {
         public UserFacebook CurrentUserFacebook { get; set; } = new UserFacebook();
         public User CurrentUser { get; set; } = new User();

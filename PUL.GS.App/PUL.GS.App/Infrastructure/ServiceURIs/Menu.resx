@@ -120,6 +120,9 @@
   <data name="GetCategoriesFood" xml:space="preserve">
     <value>menu</value>
   </data>
+  <data name="GetListFoods" xml:space="preserve">
+    <value>menu/getListFoods</value>
+  </data>
   <data name="GetListFoodsByCategory" xml:space="preserve">
     <value>menu</value>
   </data>

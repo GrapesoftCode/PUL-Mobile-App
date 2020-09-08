@@ -13,15 +13,8 @@ using Xamarin.Forms;
 
 namespace PUL.GS.App.ViewModels
 {
-    public class HomeViewModel : FreshBasePageModel
+    public class HomeViewModel : BaseViewModel
     {
-        
-        public bool IsBusy { get; set; }
-
-        private readonly EstablishmentData establishmentAgent;
-        private readonly PromotionData promotionAgent;
-        private readonly ComboData comboAgent;
-
         public ObservableCollection<Promotion> Promotions { get; set; }
         public ObservableCollection<Establishment> Establishments { get; set; }
         public ObservableCollection<Combo> Combos { get; set; }
@@ -48,9 +41,6 @@ namespace PUL.GS.App.ViewModels
         public HomeViewModel(IUserDialogs _dialogs)
         {
             dialogs = _dialogs;
-            establishmentAgent = new EstablishmentData(appSettings);
-            promotionAgent = new PromotionData(appSettings);
-            comboAgent = new ComboData(appSettings);
         }
 
         public override void Init(object initData)

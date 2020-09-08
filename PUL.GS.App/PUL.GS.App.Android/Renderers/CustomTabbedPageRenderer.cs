@@ -12,9 +12,12 @@ namespace PUL.GS.App.Droid.Renderers
 {
     public class CustomTabbedPageRenderer : TabbedPageRenderer
     {
+        //private CustomTabbedPage _page;
         public CustomTabbedPageRenderer(Context context) : base(context)
         {
         }
+
+
         protected override void OnElementChanged(ElementChangedEventArgs<TabbedPage> e)
         {
             base.OnElementChanged(e);
@@ -38,5 +41,10 @@ namespace PUL.GS.App.Droid.Renderers
                 }
             }
         }
+
+        //async void TabLayout.IOnTabSelectedListener.OnTabReselected(TabLayout.Tab tab)
+        //{
+        //    await _page.CurrentPage.Navigation.PopToRootAsync();
+        //}
     }
 }

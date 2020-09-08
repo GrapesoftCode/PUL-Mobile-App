@@ -26,33 +26,59 @@ namespace PUL.GS.App.Pages
 
             NavigationPage.SetHasNavigationBar(this, false);
 
-            this.Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>();
-            MasterBehavior = MasterBehavior.Popover;
+            //var tabbedNavigation = new CustomTabbedPage();
+            //var home = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser))
+            //{
+            //    IconImageSource = "home.png"
+            //};
+            //var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
+            //{
+            //    IconImageSource = "browser.png"
+            //};
+            //var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+            //{
+            //    IconImageSource = "pulear.png"
+            //};
 
-            ////Create Detail
-            CustomTabbedPage tabbedPage = new CustomTabbedPage
-            {
-                BarTextColor = Color.FromHex("#fffff")
-            };
-            tabbedPage.BarTextColor = Color.Black;
-            var home = new NavigationPage(new HomePage())
-            {
-                IconImageSource = "home.png"
-            };
-            var browser = new NavigationPage(new BrowserPage())
-            {
-                IconImageSource = "browser.png"
-            };
-            var room = new NavigationPage(new RoomsPage())
-            {
-                IconImageSource = "pulear.png"
-            };
-            tabbedPage.Children.Add(home);
-            tabbedPage.Children.Add(browser);
-            tabbedPage.Children.Add(room);
-            this.Detail = tabbedPage;
+            //var chat = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+            //{
+            //    IconImageSource = "message.png"
+            //};
+            //tabbedNavigation.Children.Add(home);
+            //tabbedNavigation.Children.Add(browser);
+            //tabbedNavigation.Children.Add(room);
+            //tabbedNavigation.Children.Add(chat);
 
-            //BindingContext = new MainViewModel();
+
+            //var profile = new ToolbarItem {
+            //    IconImageSource = "profile.png",
+            //    Priority = 1,
+            //    Order= ToolbarItemOrder.Primary
+            //};
+            //var location = new ToolbarItem
+            //{
+            //    IconImageSource = "location.png",
+            //    Priority = 2,
+            //    Order = ToolbarItemOrder.Primary,
+            //    Text = "location"
+            //};
+
+            //Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>();
+            //Detail = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeTabbedViewModel>());
+
+            //var masterDetail = new CustomTabbedPage()
+            //{
+            //    Title = "Hola morros",
+            //    //BackgroundColor = Color.FromHex("#ffffff"),
+            //    Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
+            //    Detail = new NavigationPage(tabbedNavigation),
+            //};
+
+            //Detail.MasterBehavior = MasterBehavior.Split;
+
+            //masterDetail.BackgroundColor = Color.FromHex("#fffff");
+            //masterDetail.ToolbarItems.Add(profile);
+            //masterDetail.ToolbarItems.Add(location);
             //MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
 

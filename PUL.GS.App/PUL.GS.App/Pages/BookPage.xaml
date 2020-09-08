@@ -3,122 +3,211 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PUL.GS.App.Controls"
              mc:Ignorable="d"
+             xmlns:converters="clr-namespace:PUL.GS.App.Converters"
              x:Class="PUL.GS.App.Pages.BookPage">
-    <ScrollView>
-        <StackLayout>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                </Grid.RowDefinitions>
+    <ContentPage.Resources>
+        <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"></converters:DateTimeToTimeSpanConverter>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="#e8e8e8" ColumnSpacing="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
 
-                <Grid  Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#ffffff">
-                    <Image Source="{Binding CurrentBook.Establishment.Logo.Uri}" 
-                           Grid.Row="0" 
-                           Grid.ColumnSpan="2" 
-                           Aspect="Fill"
-                           HeightRequest="300"></Image>
+        <Grid Grid.Row="0" Margin="0,0,0,10" BackgroundColor="#ffffff">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Source="{Binding CurrentBook.Establishment.Logo.Uri}"
+                   Aspect="Fill"
+                   HeightRequest="250"></Image>
 
-                    <Label FontAttributes="Bold" 
-                           FontSize="Default" 
-                           TextColor="DarkOrange" 
-                           Text="$$$$" 
-                           Grid.Row="0" 
-                           Grid.Column="0" 
-                           VerticalTextAlignment="End" 
-                           HorizontalOptions="StartAndExpand" 
-                           Margin="10"></Label>
-                    
-                    <Image Grid.Row="0" 
-                           Grid.Column="1"
-                           VerticalOptions="End"
-                           HorizontalOptions="EndAndExpand"
-                           Margin="10"
-                           Source="star.png">
-                    </Image>
-                </Grid>
-                
-                <Grid  Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#ffffff">
-                    <Label FontAttributes="Bold" Text="Número de personas" Grid.Row="1" Grid.Column="0" Padding="5,0,5,0" Margin="0,10,0,10"></Label>
+            <Label FontAttributes="Bold" 
+                   FontSize="30"
+                   TextColor="#FFFFFF"
+                   Text="{Binding CurrentBook.Establishment.Name}" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"></Label>
 
-                    <Stepper Minimum="0" Maximum="10" Increment="1" Grid.Row="1" Grid.Column="1"/>
-                </Grid>
+            <Label FontAttributes="None" 
+                   FontSize="Default" 
+                   TextColor="#FFFFFF" 
+                   Text="$$$$" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   VerticalTextAlignment="End" 
+                   HorizontalOptions="StartAndExpand" 
+                   Margin="10"></Label>
 
-                <Grid  Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#ffffff" Padding="5,0,5,0" Margin="0,10,0,10">
-                    <Label FontAttributes="Bold" Text="Fecha" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" ></Label>
-                    <DatePicker Grid.Row="0" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand" />
+            <Label FontAttributes="None" 
+                   FontSize="14"
+                   TextColor="#FFFFFF"
+                   Text="{Binding CurrentBook.Establishment.MusicalGenre}" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="2"
+                   VerticalOptions="End"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="10"></Label>
 
-                    <Label FontAttributes="Bold" Text="Hora" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0" ></Label>
-                    <TimePicker  Grid.Row="1" Grid.Column="1" TextColor="Black" VerticalOptions="CenterAndExpand"/>
-                </Grid>
+            <Image Grid.Row="0" 
+                        Grid.Column="1"
+                        VerticalOptions="End"
+                        HorizontalOptions="EndAndExpand"
+                        Margin="10"
+                        Source="star.png">
+            </Image>
 
-                <Grid Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#ffffff"  Padding="5,10,5,10" Margin="0,10,0,10">
-                    <StackLayout>
-                        <CollectionView 
-                            ItemsSource="{Binding Tables}"
-                            VerticalOptions="Center" 
+            <Label  Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Número de personas" VerticalOptions="Center" Padding="20,0,0,0"
+                    TextColor="#121112" FontSize="16"></Label>
+            <Frame Grid.Row="1" Grid.Column="1"  HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,5,5" Padding="5,0,5,0" CornerRadius="0" 
+                   HorizontalOptions="Center">            
+                <controls:CustomStepper  Text="{Binding Persons}"></controls:CustomStepper>
+            </Frame>
+
+        </Grid>
+
+        <Grid Grid.Row="2"  BackgroundColor="#ffffff" Padding="5" Margin="0,0,0,10" VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="Fecha" VerticalOptions="Center" Padding="20,0,0,0"
+                   TextColor="#121112" FontSize="16"></Label>
+            <Frame Grid.Row="0" Grid.Column="1" HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,0,5" Padding="10,0,10,0" CornerRadius="0"
+                   HorizontalOptions="CenterAndExpand">
+                <DatePicker Date="{Binding Date}" 
+                            TextColor="#040505" 
                             HorizontalOptions="Center" 
-                            Grid.Row="1" 
-                            BackgroundColor="#ffffff"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding CurrentTable}"
-                            SelectionChangedCommand="{Binding TableCommand}">
-
-                            <CollectionView.Header>
-                                <StackLayout BackgroundColor="#fffff">
-                                    <Label Margin="10,0,0,10"
-                                           Text="Selecciona tu mesa"
-                                           FontSize="Small"
-                                           FontAttributes="Bold" />
-                                </StackLayout>
-                            </CollectionView.Header>    
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Vertical" Span="1"/>
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Padding="0,10,0,10">
-                                        <Frame CornerRadius="15"
-                                               BorderColor="Black"
-                                               IsClippedToBounds="True"
-                                               Grid.ColumnSpan="2">
-                                            <Grid ColumnSpacing="0" RowSpacing="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"></RowDefinition>
-                                                    <RowDefinition Height="*"></RowDefinition>
-                                                    <RowDefinition Height="*"></RowDefinition>
-                                                    <RowDefinition Height="*"></RowDefinition>
-                                                </Grid.RowDefinitions>
-
-                                                <Label Text="{Binding Location}" FontAttributes="Bold" FontSize="Large" Grid.Column="0" Grid.Row="0"></Label>
-                                                <Label Text="{Binding Quantity, StringFormat='{0} personas'}" FontAttributes="Bold" FontSize="Large" Grid.Column="0" Grid.Row="1"></Label>
-                                                <Label Text="{Binding MinimumConsumption, StringFormat='${0} pesos'}"  FontSize="Caption"  Grid.Column="0" Grid.Row="2"></Label>
-                                                <Label Text="Consumo mínimo por persona"  FontSize="Caption" Grid.Column="0" Grid.Row="3"></Label>
-
-                                                <Image Source="available.png" Aspect="AspectFit" Grid.Column="1" Grid.RowSpan="4"></Image>
+                            VerticalOptions="Center"
+                            Format="dd/MM/yyyy" 
+                            MinimumDate="{Binding MinimumDate}"
+                            FontSize="16"
+                            Margin="0"
+                            WidthRequest="120"/>
+            </Frame>
 
 
-                                            </Grid>
-                                        </Frame>
-                                    </StackLayout>
-                                </DataTemplate> 
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </Grid>                
-            </Grid>
-        </StackLayout>
-    </ScrollView>
+            <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Hora" VerticalOptions="StartAndExpand" Padding="20,0,0,0"
+                   TextColor="#121112" FontSize="16"></Label>
+            <Label Grid.Row="1" Grid.Column="0" FontAttributes="Italic" Text="Tienes 15 minutos de tolerancia o si no se cancela tu reserva"
+                   VerticalOptions="EndAndExpand" Padding="20,0,0,0"
+                   TextColor="Gray" FontSize="9"></Label>
+            <Frame Grid.Row="1" Grid.Column="1" HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,0,5" Padding="10,0,10,0" CornerRadius="0"
+                   HorizontalOptions="Center">
+                <TimePicker Time="{Binding Hour, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
+                            TextColor="#040505"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Format="hh:mm tt"
+                            FontSize="16"
+                            Margin="0"
+                            WidthRequest="120"/>
+            </Frame>
+        </Grid>
+
+        <Grid Grid.Row="3" BackgroundColor="#ffffff"  Padding="5,10,5,10" Margin="0,0,0,10">
+            <StackLayout>
+                <CollectionView 
+                        ItemsSource="{Binding Tables}"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" 
+                        Grid.Row="1" 
+                        BackgroundColor="#ffffff"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding CurrentTable}"
+                        SelectionChangedCommand="{Binding TableCommand}">
+                    <CollectionView.EmptyView>
+                        <Label FontAttributes="Bold"
+                               FontSize="Large"
+                               TextColor="#121112"
+                               HorizontalTextAlignment="Center"
+                               Text="No hay mesas en este establecimiento"></Label>
+                    </CollectionView.EmptyView>
+                    <CollectionView.Header>
+                        <StackLayout BackgroundColor="#fffff">
+                            <Label Text="Selecciona tu mesa"
+                                   TextColor="#121112"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start"
+                                   Padding="20,0,0,0"/>
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Frame BorderColor="#EDEFEF"
+                                       CornerRadius="10"
+                                       Padding="30"
+                                       HasShadow="True"
+                                       Margin="5"
+                                       Grid.ColumnSpan="2">
+                                    <Grid ColumnSpacing="0" RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Text="{Binding Location}" FontAttributes="Bold" TextColor="#121112" FontSize="Large" 
+                                               Grid.Column="0" 
+                                               Grid.Row="0" 
+                                               HorizontalOptions="Start"></Label>
+                                        <Label Text="{Binding Quantity, StringFormat='{0} personas'}" FontAttributes="None" FontSize="Small" 
+                                               TextColor="#121112" 
+                                               Grid.Column="0" 
+                                               Grid.Row="1" 
+                                               HorizontalOptions="Start"></Label>
+                                        <Label Text="{Binding MinimumConsumption, StringFormat='${0}'}" FontAttributes="None" FontSize="9" 
+                                               Grid.Column="0" 
+                                               Grid.Row="2" 
+                                               HorizontalOptions="Start"></Label>
+                                        <Label Text="Consumo mínimo por persona"  FontAttributes="None" FontSize="9" 
+                                               Grid.Column="0" 
+                                               Grid.Row="3" 
+                                               HorizontalOptions="Start"></Label>
+                                        <Image Source="available.png" Aspect="AspectFit" Grid.Column="1" Grid.RowSpan="4" 
+                                               HeightRequest="80" 
+                                               WidthRequest="80"></Image>
+                                        <!--<controls:CustomStepper Grid.Row="4" Grid.Column="1" Text="{Binding TableQuantity}"></controls:CustomStepper>-->
+
+
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>

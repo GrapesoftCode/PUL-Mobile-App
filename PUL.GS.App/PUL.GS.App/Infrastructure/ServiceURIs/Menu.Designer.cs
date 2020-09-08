@@ -70,6 +70,15 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a menu/getListFoods.
+        /// </summary>
+        internal static string GetListFoods {
+            get {
+                return ResourceManager.GetString("GetListFoods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a menu.
         /// </summary>
         internal static string GetListFoodsByCategory {

@@ -6,157 +6,152 @@
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.BrowserPage"
              Visual="Material"
-             NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>
-        <StackLayout
-            Orientation="Horizontal">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height=".8*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height=".8*"></RowDefinition>
-                </Grid.RowDefinitions>
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.IconColor="Azure">
+    <Grid BackgroundColor="#e8e8e8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".8*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height=".8*"></RowDefinition>
+        </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" BackgroundColor="#ffffff" Margin="0,20,0,20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
+        <Grid Grid.Row="0" BackgroundColor="#ffffff" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
 
-                    <Label Text="¿A qué lugar quieres salir?" FontAttributes="Bold" Grid.Row="0" Margin="5,0,0,0"></Label>
-                    <CollectionView 
-                        ItemsSource="{Binding Establishments}" 
-                        Grid.Row="1" 
-                        BackgroundColor="#ffffff"
-                        SelectionMode="Single"
-                        SelectedItem="{Binding CurrentEstablishment}"
-                        SelectionChangedCommand="{Binding EstablishmentCommand}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Frame BorderColor="White"
-                                           HeightRequest="200"
-                                           CornerRadius="10"
-                                           Padding="0"
-                                           HasShadow="True"
-                                           Margin="5">
-                                        <Grid ColumnSpacing="0"
-                                              RowSpacing="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Image Source="{Binding Logo.Uri}" Aspect="Fill"></Image>
-                                            <Label Text="{Binding Type}"
-                                                   HorizontalOptions="Center" 
-                                                   VerticalOptions="EndAndExpand" 
-                                                   TextColor="WhiteSmoke" 
-                                                   FontAttributes="Bold"></Label>
-                                        </Grid>
-                                    </Frame>
-                                </Grid>                                
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </Grid>
-
-                <Grid Grid.Row="1" BackgroundColor="#ffffff" Margin="0,20,0,20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <Label Text="¿Qué tipo de música te gusta?" FontAttributes="Bold" Grid.Row="0" Margin="5,0,0,0"></Label>
-                    <CollectionView 
-                            ItemsSource="{Binding Establishments}"
-                            Grid.Row="1"
-                            BackgroundColor="#ffffff"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding CurrentEstablishment}"
-                            SelectionChangedCommand="{Binding EstablishmentCommand}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Frame BorderColor="White"
-                                           HeightRequest="200"
-                                           CornerRadius="10"
-                                           Padding="0"
-                                           HasShadow="True"
-                                           Margin="5">
-                                        <Grid RowSpacing="0"
-                                              ColumnSpacing="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Image Source="{Binding Logo.Uri}" Aspect="AspectFill"></Image>
-                                            <Label Text="{Binding MusicalGenre}" 
-                                                   HorizontalOptions="Center" 
-                                                   VerticalOptions="EndAndExpand" 
-                                                   TextColor="WhiteSmoke" 
-                                                   FontAttributes="Bold"></Label>
-                                        </Grid>
-                                    </Frame>
+            <Label Text="¿A qué lugar quieres salir?" TextColor="Black" FontAttributes="Bold" Grid.Row="0" Margin="5,0,0,0"></Label>
+            <CollectionView 
+                    ItemsSource="{Binding EstablishmentTypes}" 
+                    Grid.Row="1" 
+                    BackgroundColor="#ffffff"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding CurrentEstablishment}"
+                    SelectionChangedCommand="{Binding EstablishmentCommand}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame BorderColor="White"
+                                        HeightRequest="200"
+                                        CornerRadius="10"
+                                        Padding="0"
+                                        HasShadow="True"
+                                        Margin="5">
+                                <Grid ColumnSpacing="0"
+                                            RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding Logo}" Aspect="AspectFill"></Image>
+                                    <Label Text="{Binding Name}"
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="EndAndExpand" 
+                                                TextColor="WhiteSmoke" 
+                                                FontAttributes="Bold"></Label>
                                 </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
 
-                <Grid Grid.Row="2" BackgroundColor="#ffffff" Margin="0,20,0,20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
+        <Grid Grid.Row="1" BackgroundColor="#ffffff" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
 
-                    <Label Text="¿Cuánto quieres gastar hoy?" FontAttributes="Bold" Grid.Row="0" Margin="5,0,0,0"></Label>
-                    <CollectionView 
-                        ItemsSource="{Binding Establishments}"
+            <Label Text="¿Qué tipo de música te gusta?" FontAttributes="Bold" TextColor="Black" Grid.Row="0" Margin="5,0,0,0"></Label>
+            <CollectionView 
+                        ItemsSource="{Binding MusicalGenres}"
                         Grid.Row="1"
                         BackgroundColor="#ffffff"
                         SelectionMode="Single"
                         SelectedItem="{Binding CurrentEstablishment}"
                         SelectionChangedCommand="{Binding EstablishmentCommand}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame BorderColor="White"
+                                        HeightRequest="200"
+                                        CornerRadius="10"
+                                        Padding="0"
+                                        HasShadow="True"
+                                        Margin="5">
+                                <Grid RowSpacing="0"
+                                            ColumnSpacing="0">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height=".9*"></RowDefinition>
-                                        <RowDefinition Height="auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Frame BorderColor="White"
-                                           HeightRequest="200"
-                                           CornerRadius="10"
-                                           Padding="0"
-                                           HasShadow="True"
-                                           Margin="5"
-                                           Grid.Row="0">
-                                        <Grid RowSpacing="0"
-                                              ColumnSpacing="0">
-                                            <Image Source="{Binding Logo.Uri}" Aspect="AspectFill"></Image>
-                                           
-                                        </Grid>
-                                    </Frame>
-                                    <Label Text="{Binding CostLevel}" 
-                                                   Grid.Row="1" 
-                                                   HorizontalOptions="Center" 
-                                                   VerticalOptions="EndAndExpand" 
-                                                   TextColor="Black" 
-                                                   FontAttributes="Bold"></Label>
+                                    <Image Source="{Binding Logo}" Aspect="AspectFill"></Image>
+                                    <Label Text="{Binding Name}" 
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="EndAndExpand" 
+                                                TextColor="WhiteSmoke" 
+                                                FontAttributes="Bold"></Label>
                                 </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </Grid>
-            </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
 
-        </StackLayout>
-    </ContentPage.Content>
+        <Grid Grid.Row="2" BackgroundColor="#ffffff" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Text="¿Cuánto quieres gastar hoy?" FontAttributes="Bold" TextColor="Black" Grid.Row="0" Margin="5,0,0,0"></Label>
+            <CollectionView 
+                    ItemsSource="{Binding CostLevels}"
+                    Grid.Row="1"
+                    BackgroundColor="#ffffff"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding CurrentEstablishment}"
+                    SelectionChangedCommand="{Binding EstablishmentCommand}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".9*"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Frame BorderColor="White"
+                                        HeightRequest="200"
+                                        CornerRadius="10"
+                                        Padding="0"
+                                        HasShadow="True"
+                                        Margin="5"
+                                        Grid.Row="0">
+                                <Grid RowSpacing="0"
+                                            ColumnSpacing="0">
+                                    <Image Source="{Binding Logo}" Aspect="AspectFill"></Image>
+
+                                </Grid>
+                            </Frame>
+                            <Label Text="{Binding Name}" 
+                                                Grid.Row="1" 
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="EndAndExpand" 
+                                                TextColor="Black" 
+                                                FontAttributes="Bold"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
 </ContentPage>

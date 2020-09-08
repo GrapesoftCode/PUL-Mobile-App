@@ -10,11 +10,10 @@ using Xamarin.Forms;
 
 namespace PUL.GS.App.ViewModels
 {
-    public class RoomsViewModel: FreshBasePageModel
+    public class RoomsViewModel: BaseViewModel
     {
         readonly IChatService ChatService;
         readonly IUserDialogs dialogs;
-        readonly bool IsBusy = false;
 
         public User CurrentUser { get; set; }
         public List<Room> Rooms { get; set; }
@@ -35,23 +34,23 @@ namespace PUL.GS.App.ViewModels
 
             CurrentUser = initData as User;
 
-            //EnterRoomCommand = new Command(async () =>
-            //{
-            //    if (!IsBusy)
-            //    {
-            //        IsBusy = true;
+            EnterRoomCommand = new Command(async () =>
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
 
-            //        if (CurrentRoom != null)
-            //        {
-            //            Tuple<string, string> data =
-            //            new Tuple<string, string>(CurrentUser.Username, CurrentRoom.Name);
-            //            await CoreMethods.PushPageModel<ChatViewModel>(data);
-            //            CurrentRoom = null;
-            //        }
+                    if (CurrentRoom != null)
+                    {
+                        Tuple<string, string> data =
+                        new Tuple<string, string>(CurrentUser.Username, CurrentRoom.Name);
+                        await CoreMethods.PushPageModel<ChatViewModel>(data);
+                        CurrentRoom = null;
+                    }
 
-            //        IsBusy = false;
-            //    }
-            //});
+                    IsBusy = false;
+                }
+            });
         }
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)

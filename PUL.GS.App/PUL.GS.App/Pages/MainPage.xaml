@@ -8,7 +8,7 @@
                 x:Class="PUL.GS.App.Pages.MainPage"
                 IconImageSource="hamburguesa.png">
   <!--<MasterDetailPage.Master>
-    <pages:MasterPage x:Name="MasterPage" />
+    --><!--<pages:MasterPage x:Name="MasterPage" />--><!--
   </MasterDetailPage.Master>-->
   <!--<MasterDetailPage.Detail>
     <NavigationPage

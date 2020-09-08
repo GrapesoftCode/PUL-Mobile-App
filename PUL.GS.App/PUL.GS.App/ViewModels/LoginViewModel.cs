@@ -17,11 +17,10 @@ using Application = Xamarin.Forms.Application;
 
 namespace PUL.GS.App.ViewModels
 {
-    public class LoginViewModel : FreshBasePageModel
+    public class LoginViewModel : BaseViewModel
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public bool IsBusy { get; set; }
 
         public User CurrentUser { get; set; }
 
@@ -60,53 +59,43 @@ namespace PUL.GS.App.ViewModels
 
 
                         var tabbedNavigation = new CustomTabbedPage();
-                        var home = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser))
-                        {
-                            IconImageSource = "home.png"
-                        };
+                        
+                        var home = new NavigationPage();
+                        await home.PushAsync(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
+                        home.BarTextColor = Color.Purple;
+                        home.IconImageSource = "home.png";
+
                         var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
                         {
-                            IconImageSource = "browser.png"
+                            IconImageSource = "browser.png",
+                            BarBackgroundColor = Color.Blue,
+                            BarTextColor = Color.Purple
                         };
                         var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
                         {
-                            IconImageSource = "pulear.png"
+                            IconImageSource = "pulear.png",
+                            BarBackgroundColor = Color.Blue,
+                            BarTextColor = Color.Purple
                         };
 
                         var chat = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
                         {
-                            IconImageSource = "message.png"
+                            IconImageSource = "message.png",
+                            BarBackgroundColor = Color.Blue,
+                            BarTextColor = Color.Purple
                         };
                         tabbedNavigation.Children.Add(home);
                         tabbedNavigation.Children.Add(browser);
                         tabbedNavigation.Children.Add(room);
                         tabbedNavigation.Children.Add(chat);
+                        tabbedNavigation.BarTextColor = Color.Red;
 
 
-                        
-
-                        //var tabbedNavigation = new FreshTabbedNavigationContainer();
-                        //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
-                        //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
-                        //var home = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser))
-                        //{
-                        //    IconImageSource = "home.png"
-                        //};
-                        //var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
-                        //{
-                        //    IconImageSource = "browser.png"
-                        //};
-                        //var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
-                        //{
-                        //    IconImageSource = "pulear.png"
-                        //};
-                        //tabbedNavigation.Children.Add(home);
-                        //tabbedNavigation.Children.Add(browser);
-                        //tabbedNavigation.Children.Add(room);
-                        var profile = new ToolbarItem {
+                        var profile = new ToolbarItem
+                        {
                             IconImageSource = "profile.png",
                             Priority = 1,
-                            Order= ToolbarItemOrder.Primary
+                            Order = ToolbarItemOrder.Primary
                         };
                         var location = new ToolbarItem
                         {
@@ -116,47 +105,29 @@ namespace PUL.GS.App.ViewModels
                             Text = "location"
                         };
 
-                        //var masterDetail = new FreshMasterDetailNavigationContainer()
-                        //{
-                        //    Title = "Hola morros",
-                        //    BackgroundColor = Color.FromHex("#ffffff"),
-                        //    Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
-                        //    Detail = new NavigationPage(tabbedNavigation)
-                        //};
 
-
-                        //var masterDetailNav = new FreshMasterDetailNavigationContainer();
-                        //masterDetailNav.Init("Menu");
-                        //masterDetailNav.AddPage<ProfileViewModel>("First", CurrentUser);
-
-                        var masterDetail = new CustomMasterDetailPage()
+                        var masterDetail = new MasterDetailPage()
                         {
-                            Title = "Hola morros",
-                            //BackgroundColor = Color.FromHex("#ffffff"),
                             Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
                             Detail = new NavigationPage(tabbedNavigation),
                         };
 
-                        masterDetail.MasterBehavior = MasterBehavior.Split;
-
-                        masterDetail.BackgroundColor = Color.FromHex("#fffff");
+                        //masterDetail.MasterBehavior = MasterBehavior.Split;
+                        //masterDetail.Master.BackgroundColor = Color.Red;
+                        //masterDetail.Detail.BackgroundColor = Color.Blue;
+                        //masterDetail.BackgroundColor = Color.Yellow;
                         masterDetail.ToolbarItems.Add(profile);
                         masterDetail.ToolbarItems.Add(location);
 
-                        //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
-                        //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser));
-                        //tabbedNavigation.Children.Add(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser));
-                        //tabbedNavigation.AddTab<HomeViewModel>(null, "home.png", CurrentUser);
-                        //tabbedNavigation.AddTab<BrowserViewModel>(null, "browser.png", CurrentUser);
-                        //tabbedNavigation.AddTab<RoomsViewModel>(null, "pulear.png", CurrentUser);
-                        //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
-                        //tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
-                        //masterDetail.Detail = new NavigationPage(tabbedNavigation);
-                        //masterDetail.Detail = new NavigationPage(FreshPageModelResolver.ResolvePageModel<HomeTabbedViewModel>(CurrentUser));
-
-                        //Application.Current.MainPage = masterDetail;
                         NavigationPage.SetHasNavigationBar(masterDetail, false);
-                        await App.Current.MainPage.Navigation.PushAsync(masterDetail);
+
+                        ThemeManager.LoadTheme();
+
+                        //if (IsInitialized)
+                        //{
+                            await App.Current.MainPage.Navigation.PushAsync(masterDetail);
+                        //    IsInitialized = false;
+                        //}
                     }
 
                 }

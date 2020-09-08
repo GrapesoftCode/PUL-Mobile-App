@@ -11,7 +11,7 @@ namespace PUL.GS.App
 {
     public class SplashPage : ContentPage
     {
-        Image splashImage;
+        readonly Image splashImage;
         public SplashPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);

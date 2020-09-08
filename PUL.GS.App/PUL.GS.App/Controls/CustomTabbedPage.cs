@@ -18,6 +18,7 @@ namespace PUL.GS.App.Controls
         {
             this.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             this.On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
+            this.BarTextColor = Color.FromHex("#fffff");
         }
     }
 }

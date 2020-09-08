@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PUL.GS.App.Controls"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.BookMenuPage"
+             Title="Menu">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Total, StringFormat='${0} pesos'}"></Label>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView
+                ItemsSource="{Binding Customers}"
+                BackgroundColor="#fffff"
+                SelectionMode="Single"
+                SelectedItem="{Binding CurrentGroup}"
+                SelectionChangedCommand="{Binding CategoryScrollCommand}"
+                HeightRequest="50">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal">
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Button 
+                                WidthRequest="100"
+                                Padding="0"
+                                Margin="5"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                TextColor="Black"
+                                Text="{Binding Category}"
+                                FontFamily="{StaticResource SSPBold}"></Button>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <RefreshView Command="{Binding RefreshCommand}"
+                         IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView 
+                            x:Name="collectionView"
+                            ItemsSource="{Binding Customers}"
+                            IsGrouped="True"
+                            BackgroundColor="#ffffff"
+                            SelectionMode="Multiple"
+                            SelectedItems="{Binding SelectedMenu, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding MenuChangedCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={x:Reference collectionView}, Path=SelectedItems}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                    Span="2"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Frame BorderColor="#EDEFEF"
+                                        HeightRequest="130"
+                                        CornerRadius="10"
+                                        Padding="20,10,20,5"
+                                        HasShadow="True"
+                                        Margin="20,10,20,10">
+                                    <Grid ColumnSpacing="0"
+                                                    RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <!--<RowDefinition Height="auto"></RowDefinition>-->
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Logo.Uri}" Aspect="AspectFit" VerticalOptions="StartAndExpand" HorizontalOptions="Center"></Image>
+                                        <Frame CornerRadius="50" BorderColor="#fffff" Margin="0" Padding="5" HorizontalOptions="End" VerticalOptions="StartAndExpand" HeightRequest="25" WidthRequest="25">
+                                            <Label Text="{Binding Quantity}" HorizontalTextAlignment="Center" TextColor="#fffff"></Label>
+                                        </Frame>
+                                        <!--<controls:MenuStepper Grid.Row="1" Text="{Binding Quantity}"></controls:MenuStepper>-->
+                                        <Label Grid.Row="1" Text="{Binding Price, StringFormat='${0} pesos'}" HorizontalTextAlignment="Start"  
+                                               FontAttributes="Bold" 
+                                               TextColor="#121112" 
+                                               FontSize="14"
+                                               VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                        <Label Grid.Row="2" Text="{Binding Name}" HorizontalTextAlignment="Start" 
+                                               FontAttributes="None" 
+                                               FontSize="Small" 
+                                               TextColor="#121112" 
+                                               VerticalOptions="EndAndExpand" 
+                                               HorizontalOptions="Start"></Label>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Label BackgroundColor="LightGray"
+                                   FontAttributes="Bold"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   FontSize="Large"
+                                   Text="{Binding Category}"
+                                   TextColor="#fffff"></Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+                </CollectionView>
+
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

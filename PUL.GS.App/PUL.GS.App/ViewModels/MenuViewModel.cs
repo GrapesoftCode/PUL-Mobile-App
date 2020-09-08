@@ -5,16 +5,20 @@ using PUL.GS.Models;
 using PUL.GS.Models.Common;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
+using Menu = PUL.GS.Models.Menu;
 
 namespace PUL.GS.App.ViewModels
 {
     public class MenuViewModel : FreshBasePageModel
     {
+        public bool IsBusy { get; set; }
         //public ObservableCollection<TabViewModel> Tabs { set; get; }
+
+        public ICommand MenuCommand { get; set; }
+        public Menu CurrentMenu { get; set; } = new Menu();
         public ObservableCollection<TabViewModel> Categories { get; set; }
-
-        //public bool IsBusy { get; set; }
-
         private readonly MenuData menuAgent;
         public Book CurrentBook { get; set; } = new Book();
 
@@ -24,15 +28,11 @@ namespace PUL.GS.App.ViewModels
             timeZoneKey = "Central Standard Time (Mexico)"
         };
 
-        public override void Init(object initData)
-        {
-            base.Init(initData);
-            CurrentBook = initData as Book;
-        }
-
-        public MenuViewModel()
+        readonly IUserDialogs dialogs;
+        public MenuViewModel(IUserDialogs _dialogs)
         {
             menuAgent = new MenuData(appSettings);
+            dialogs = _dialogs;
             //var listCategories = menuAgent.GetCategoriesFood("38da4008-8168-4276-ada3-30bd3ede6381").objectResult;
             //Categories = new ObservableCollection<TabViewModel>();
             //foreach (var category in listCategories)
@@ -41,20 +41,27 @@ namespace PUL.GS.App.ViewModels
             //}
         }
 
+        public override void Init(object initData)
+        {
+            base.Init(initData);
+            CurrentBook = initData as Book;
+        }
+
 
 
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
 
-            //dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando");
             var listCategories = menuAgent.GetCategoriesFood(CurrentBook.Establishment.id).objectResult;
             Categories = new ObservableCollection<TabViewModel>();
             foreach (var category in listCategories)
             {
                 Categories.Add(new TabViewModel(category.Name, CurrentBook.Establishment.id) { Name = category.Name });
             }
-            //dialogs.HideLoading();
+
+            dialogs.HideLoading();
         }
     }
 
