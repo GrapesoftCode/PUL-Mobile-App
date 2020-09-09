@@ -164,24 +164,24 @@ namespace PUL.GS.App.ViewModels
 
                 if (last != null)
                     last.Quantity = CurrentMenu.Quantity;
-
-                RefreshItems();
             }
+            RefreshItems();
+            
             //SelectedMenu = new ObservableCollection<object>();
         }
 
 
         private void RefreshItems()
         {
-            var costumers = menuAgent.GetListFoods(CurrentBook.Establishment.id).objectResult;
+            var grouped = menuAgent.GetListFoods(CurrentBook.Establishment.id).objectResult;
 
-            var grouped =
-                from c in costumers
-                orderby c.Category
-                group c by c.Category
-                into groups
-                select
-                    new CustomerGroup(groups.Key, groups.ToList());
+            //var grouped =
+            //    from c in costumers
+            //    orderby c.Category
+            //    group c by c.Category
+            //    into groups
+            //    select
+            //        new CustomerGroup(groups.Key, groups.ToList());
 
             int index = 0;
             double account = 0;
@@ -191,6 +191,7 @@ namespace PUL.GS.App.ViewModels
                 {
                     double accountItem = 0;
                     item.Index = index;
+                    item.Quantity = 0;
                     if (Menus != null)
                     {
                         item.Quantity = Menus.Where(x => x.id == item.id).Select(x => x.Quantity).LastOrDefault();

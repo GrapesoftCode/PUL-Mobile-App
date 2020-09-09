@@ -8,7 +8,19 @@
              x:Class="PUL.GS.App.Pages.BookMenuPage"
              Title="Menu">
     <NavigationPage.TitleView>
-        <Label Text="{Binding Total, StringFormat='${0} pesos'}"></Label>
+
+        <controls:CustomButton Text="{Binding Total, StringFormat='${0} pesos'}"
+                        Margin="-5,10,10,20"
+                        Padding="25,15,20,15"
+                        CornerRadius="1"
+                        HorizontalOptions="StartAndExpand"
+                        StartColor="#130E1F"
+                        MiddleColor="#E51320"
+                        EndColor="#FB910D"
+                        TextColor="White"
+                        GradientOrientation="Horizontal"
+                        FontFamily="{StaticResource SSPBold}"
+                        Command="{Binding LoginFacebookCommand}"></controls:CustomButton>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
@@ -72,9 +84,12 @@
                                             <!--<RowDefinition Height="auto"></RowDefinition>-->
                                             <RowDefinition Height="auto"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <Image Source="{Binding Logo.Uri}" Aspect="AspectFit" VerticalOptions="StartAndExpand" HorizontalOptions="Center"></Image>
-                                        <Frame CornerRadius="50" BorderColor="#fffff" Margin="0" Padding="5" HorizontalOptions="End" VerticalOptions="StartAndExpand" HeightRequest="25" WidthRequest="25">
-                                            <Label Text="{Binding Quantity}" HorizontalTextAlignment="Center" TextColor="#fffff"></Label>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Row="0" Source="{Binding Logo.Uri}" Aspect="AspectFit"></Image>
+                                        <Frame Grid.Row="0" CornerRadius="50" BorderColor="#EDEFEF" HasShadow="True" Margin="0" Padding="5" HorizontalOptions="End" VerticalOptions="StartAndExpand" HeightRequest="25" WidthRequest="25">
+                                            <Label Text="{Binding Quantity}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" HorizontalOptions="Center"></Label>
                                         </Frame>
                                         <!--<controls:MenuStepper Grid.Row="1" Text="{Binding Quantity}"></controls:MenuStepper>-->
                                         <Label Grid.Row="1" Text="{Binding Price, StringFormat='${0} pesos'}" HorizontalTextAlignment="Start"  

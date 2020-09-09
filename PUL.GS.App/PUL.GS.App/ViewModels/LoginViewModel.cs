@@ -37,7 +37,7 @@ namespace PUL.GS.App.ViewModels
             {
                 IsBusy = true;
 
-                dialogs.ShowLoading("Cargando");
+                dialogs.ShowLoading("Cargando", MaskType.Gradient);
 
                 //await ChatService.InitAsync(UserName);
 
@@ -121,7 +121,7 @@ namespace PUL.GS.App.ViewModels
 
                         NavigationPage.SetHasNavigationBar(masterDetail, false);
 
-                        ThemeManager.LoadTheme();
+                        //ThemeManager.LoadTheme();
 
                         //if (IsInitialized)
                         //{
