@@ -57,11 +57,13 @@ namespace PUL.GS.App.Controls
                 Keyboard = Keyboard.Numeric,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
-                HeightRequest = 50,
                 WidthRequest = 40,
                 Margin = 0,
                 BackgroundColor = Color.Transparent,
                 FontSize = 14,
+                FontFamily = "SSPRegular",
+                FontAttributes = FontAttributes.None,
+                TextColor = Color.FromHex("#121112")
             };
             Entry.SetBinding(Entry.TextProperty, new Binding(nameof(Text), BindingMode.TwoWay, source: this));
             //Entry.SetBinding(Entry.HeightProperty, new Binding(nameof(HeightRequest), BindingMode.TwoWay, source: this));

@@ -32,11 +32,12 @@ namespace PUL.GS.App.ViewModels
         public ICommand RefreshCommand { get; set; }
         public ICommand MenuChangedCommand { get; set; }
         public ICommand CategoryScrollCommand { get; set; }
-        public double Total { get; set; } = 0;
+        public ICommand FoodCartCommand { get; set; }
+        public double SubTotal { get; set; } = 0;
         public Book CurrentBook { get; set; }
         public Menu CurrentMenu { get; set; }
         public CustomerGroup CurrentGroup { get; set; }
-        public ObservableCollection<Menu> Menus { get; set; }
+        public List<Menu> Menus { get; set; }
         public ObservableCollection<object> SelectedMenu
         {
             get => selectedMenu; 
@@ -72,51 +73,13 @@ namespace PUL.GS.App.ViewModels
                 if (!IsBusy)
                 {
                     IsBusy = true;
-
-                    //double account = 0;
-                    //foreach (var obj in menuList)
-                    //{
-                    //    double accountPerItem = 0;
-                    //    var item = (Menu)obj;
-                    //    if (item.Quantity == 0)
-                    //        item.Quantity = 1;
-                    //    accountPerItem = item.Price * item.Quantity;
-                    //    account += accountPerItem;
-                    //}
-
-                    //await CoreMethods.PushNewNavigationServiceModal(basiNavContainer, bookMenuDetail.GetModel());
-
                     if (!IsInitialized)
                     {
-                        //Menus = new List<Menu>();
-                        //Menus.Add((Menu)SelectedMenu.LastOrDefault());
-                        //CurrentBook.Menus = Menus;
-                        //await CoreMethods.PushPageModel<BookMenuDetailViewModel>(CurrentBook);
-                        //Menus.Add();
-
-                        Menus.Add((Menu)SelectedMenu.LastOrDefault());
-                        
                         await CoreMethods.PushPageModel<BookMenuDetailViewModel>((Menu)SelectedMenu.LastOrDefault());
                         IsInitialized = false;
+
+                        IsBusy = false;
                     }
-                    //if (account >= currentBook.SubTotal)
-                    //{
-                    //    //CurrentBook.SubTotal = account;
-                    //    //CurrentBook.Total = 0;
-                    //    //CurrentBook.PerPerson = CurrentBook.Table.MinimumConsumption;
-                    //    //var menus = new List<Menu>();
-                    //    //foreach (var obj in menuList)
-                    //    //{
-                    //    //    var item = (Menu)obj;
-                    //    //    menus.Add(item);
-                    //    //}
-                    //    //CurrentBook.Menus = menus;
-                    //    //await CoreMethods.PushPageModel<BookDetailViewModel>(CurrentBook);
-
-
-                    //}
-
-                    IsBusy = false;
                 }
             });
 
@@ -134,6 +97,16 @@ namespace PUL.GS.App.ViewModels
                 }
             });
 
+            FoodCartCommand = new Command(async () => {
+                if (SubTotal >= CurrentBook.TotalMinimumConsumption)
+                {
+                    CurrentBook.Menus = Menus;
+                    CurrentBook.SubTotal = SubTotal;
+                    CurrentBook.Total = SubTotal;
+                    await CoreMethods.PushPageModel<BookDetailViewModel>(CurrentBook);
+                }
+            });
+
             RefreshCommand = new Command(async () =>
             {
                 IsRefreshing = true;
@@ -147,9 +120,9 @@ namespace PUL.GS.App.ViewModels
         {
             base.Init(initData);
             CurrentBook = initData as Book;
-            Menus = CurrentBook.Menus;
+            //Menus = CurrentBook.Menus;
             RefreshItems();
-            Menus = new ObservableCollection<Menu>();
+            Menus = new List<Menu>();
             SelectedMenu = new ObservableCollection<object>();
         }
 
@@ -164,24 +137,45 @@ namespace PUL.GS.App.ViewModels
 
                 if (last != null)
                     last.Quantity = CurrentMenu.Quantity;
+
+                var Items = new List<Menu>();
+                foreach (var obj in SelectedMenu)
+                {
+                    var item = (Menu)obj;
+                    if (Items.Count == 0)
+                        Items.Add(item);
+                    else {
+                        var update = Items.Where(x => x.id == item.id).SingleOrDefault();
+                        if (update != null)
+                            update.Quantity = item.Quantity;
+                        else {
+                            Items.Add(item);
+                        }
+                    }
+                }
+                Menus = Items;
+
             }
             RefreshItems();
-            
-            //SelectedMenu = new ObservableCollection<object>();
+        }
+
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            base.ViewIsAppearing(sender, e);
         }
 
 
         private void RefreshItems()
         {
-            var grouped = menuAgent.GetListFoods(CurrentBook.Establishment.id).objectResult;
+            var menus = menuAgent.GetListFoods(CurrentBook.Establishment.id).objectResult;
 
-            //var grouped =
-            //    from c in costumers
-            //    orderby c.Category
-            //    group c by c.Category
-            //    into groups
-            //    select
-            //        new CustomerGroup(groups.Key, groups.ToList());
+            var grouped =
+                from c in menus
+                orderby c.Category
+                group c by c.Category
+                into groups
+                select
+                    new CustomerGroup(groups.Key, groups.ToList());
 
             int index = 0;
             double account = 0;
@@ -197,12 +191,11 @@ namespace PUL.GS.App.ViewModels
                         item.Quantity = Menus.Where(x => x.id == item.id).Select(x => x.Quantity).LastOrDefault();
                         accountItem = item.Quantity * item.Price;
                         account += accountItem;
-                        Total = account;
+                        SubTotal = account;
                     }
                     index++;
                 }
             }
-
             Customers =
                 new ObservableCollection<CustomerGroup>(grouped);
 

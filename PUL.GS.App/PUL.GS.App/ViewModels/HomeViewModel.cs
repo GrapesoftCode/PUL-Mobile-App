@@ -58,7 +58,9 @@ namespace PUL.GS.App.ViewModels
                     if (CurrentEstablishment != null)
                     {
                         CurrentBook.Establishment = CurrentEstablishment;
+                        CurrentBook.establishmentId = CurrentEstablishment.id;
                         CurrentBook.User = CurrentUser;
+                        CurrentBook.userId = CurrentUser.id;
                         await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
                         CurrentEstablishment = null;
                     }

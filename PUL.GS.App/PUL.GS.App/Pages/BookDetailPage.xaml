@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:PUL.GS.App.Controls"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.BookDetailPage">
-    <ScrollView>
+    <StackLayout>
         <Grid BackgroundColor="#ffff" Padding="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -19,10 +19,10 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Frame HasShadow="True" BorderColor="Black" Padding="15" CornerRadius="15">
+                <controls:CustomFrame HasShadow="True" BorderColor="Black" CornerRadius="15" Padding="35,20,35,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition  Width="auto"></ColumnDefinition>
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
                             <ColumnDefinition  Width="*"></ColumnDefinition>
                             <ColumnDefinition  Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
@@ -31,17 +31,45 @@
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Grid.ColumnSpan="3" Grid.Row="0" Text="Haciendo Reserva" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
-                        <Image Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Source="PUL.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100" BackgroundColor="AliceBlue"></Image>
-                        <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding CurrentBook.Establishment.Name}" FontSize="Title" FontAttributes="Bold" TextColor="Black"></Label>
-                        <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding CurrentBook.Table.Location, StringFormat='Mesa {0}'}" FontSize="Small" FontAttributes="Bold" TextColor="Black"></Label>
+                        <Label Grid.ColumnSpan="3" Grid.Row="0" Text="HACIENDO RESERVA" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                               FontSize="10" 
+                               FontAttributes="None" 
+                               TextColor="#121112"
+                               FontFamily="{StaticResource SSPSemibold}"></Label>
+                        <Image Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Source="PUL.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100" BackgroundColor="AliceBlue"></Image>
+                        <Label Grid.Column="1"
+                               Grid.ColumnSpan="2" 
+                               Grid.Row="2" 
+                               Text="{Binding CurrentBook.Establishment.Name}" 
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="End"
+                               FontSize="30"
+                               FontAttributes="None"
+                               TextColor="#121112"
+                               Margin="0"
+                               FontFamily="{StaticResource SSPBold}"></Label>
+                        <Label Grid.Column="1" 
+                               Grid.ColumnSpan="2" 
+                               Grid.Row="3" 
+                               Margin="0"
+                               Text="{Binding CurrentBook.Table.Location, StringFormat='Mesa {0}'}" 
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="Start"
+                               FontSize="16"
+                               FontAttributes="None"
+                               TextColor="#121112"
+                               FontFamily="{StaticResource SSPSemibold}"></Label>
 
-                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding CurrentBook.Persons, StringFormat='{0} personas'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black"></Label>
-                        <Label Grid.Column="2" Grid.Row="3" Text="{Binding CurrentBook.Hour, StringFormat='{0}'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black"></Label>
-                        <Label Grid.Column="3" Grid.Row="3" Text="{Binding CurrentBook.Date, StringFormat='{0}'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black"></Label>
+                        <Image Grid.Column="0" Grid.Row="4" Source="persons.png" HorizontalOptions="StartAndExpand"
+                               HeightRequest="14"
+                               WidthRequest="14"></Image>
+                        <Label Grid.Column="0" Grid.Row="4" Text="{Binding CurrentBook.Persons, StringFormat='{0} personas'}" FontSize="12" FontAttributes="Bold" TextColor="Gray" FontFamily="{StaticResource SSPRegular}" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentBook.Hour, StringFormat='{0}'}" FontSize="12" FontAttributes="Bold" TextColor="Gray" FontFamily="{StaticResource SSPRegular}" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label Grid.Column="2" Grid.Row="4" Text="{Binding CurrentBook.Date, StringFormat='{0}'}" FontSize="12" FontAttributes="Bold" TextColor="Gray" FontFamily="{StaticResource SSPRegular}" HorizontalOptions="EndAndExpand"></Label>
                     </Grid>
-                </Frame>
+                </controls:CustomFrame>
             </Grid>
        
 
@@ -67,10 +95,12 @@
                     <CollectionView.Header>
                         <StackLayout BackgroundColor="#fffff">
                             <Label Padding="5"
-                                Text="Tu pedido"
-                                FontSize="Small"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="Start"/>
+                                   Text="Tu pedido"
+                                   FontSize="16" 
+                                   FontAttributes="None" 
+                                   TextColor="#121112" 
+                                   FontFamily="{StaticResource SSPSemibold}"
+                                   HorizontalTextAlignment="Start"/>
                         </StackLayout>
                     </CollectionView.Header>
                     <CollectionView.ItemsLayout>
@@ -88,8 +118,22 @@
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
 
-                                <Label Text="{Binding Detail}" FontAttributes="Bold" HorizontalOptions="StartAndExpand"  Grid.Column="0" Grid.Row="0"></Label>
-                                <Label Text="{Binding DetailPrice}" FontAttributes="Bold" HorizontalOptions="EndAndExpand"  Grid.Column="1" Grid.Row="0"></Label>
+                                <Label Grid.Column="0" 
+                                       Grid.Row="0"
+                                       Text="{Binding Detail}" 
+                                       HorizontalOptions="StartAndExpand"  
+                                       FontSize="16" 
+                                       FontAttributes="None" 
+                                       TextColor="#121112" 
+                                       FontFamily="{StaticResource SSPSemibold}"></Label>
+                                <Label Grid.Column="1" 
+                                       Grid.Row="0" 
+                                       Text="{Binding DetailPrice}" 
+                                       HorizontalOptions="EndAndExpand"
+                                       FontSize="16" 
+                                       FontAttributes="None" 
+                                       TextColor="Gray" 
+                                       FontFamily="{StaticResource SSPSemibold}"></Label>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -97,7 +141,22 @@
             </Grid>
 
             <Grid Grid.Row="2">
-                <Label Text="Agregar extras" TextColor="Black"></Label>
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="1"
+                           WidthRequest="300"
+                   Color="#5b5d68"></BoxView>   
+                <Label Text="Agregar extras" 
+                       FontSize="16" 
+                       FontAttributes="None" 
+                       TextColor="#121112" 
+                       FontFamily="{StaticResource SSPSemibold}"></Label>
+
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="1"
+                   WidthRequest="50"  
+                   Color="#5b5d68"></BoxView>
             </Grid>
 
             <Grid Grid.Row="3">
@@ -108,23 +167,47 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Text="Propina" TextColor="Black"></Label>
+                <Label Text="Propina" 
+                       FontSize="16" 
+                       FontAttributes="None" 
+                       TextColor="#121112" 
+                       FontFamily="{StaticResource SSPSemibold}"></Label>
 
+                <Frame Grid.Column="1" WidthRequest="75" HeightRequest="20" CornerRadius="25" BorderColor="OrangeRed"
+                       Margin="0" Padding="0">
+                    <Label Text="5%" 
+                           HorizontalTextAlignment="Center"
+                           FontSize="16" 
+                           FontAttributes="None" 
+                           TextColor="#121112" 
+                           FontFamily="{StaticResource SSPSemibold}"></Label>
+                </Frame>
                 <Frame Grid.Column="2" WidthRequest="75" HeightRequest="20" CornerRadius="25" BorderColor="OrangeRed"
                        Margin="0" Padding="0">
-                    <Label Text="5%" TextColor="Black" HorizontalTextAlignment="Center"></Label>
+                    <Label Text="10%" 
+                           HorizontalTextAlignment="Center"
+                           FontSize="16" 
+                           FontAttributes="None" 
+                           TextColor="#121112" 
+                           FontFamily="{StaticResource SSPSemibold}"></Label>
                 </Frame>
                 <Frame Grid.Column="3" WidthRequest="75" HeightRequest="20" CornerRadius="25" BorderColor="OrangeRed"
                        Margin="0" Padding="0">
-                    <Label Text="10%" TextColor="Black" HorizontalTextAlignment="Center"></Label>
+                    <Label Text="20%" 
+                           HorizontalTextAlignment="Center"
+                           FontSize="16" 
+                           FontAttributes="None" 
+                           TextColor="#121112" 
+                           FontFamily="{StaticResource SSPSemibold}"></Label>
                 </Frame>
                 <Frame Grid.Column="4" WidthRequest="75" HeightRequest="20" CornerRadius="25" BorderColor="OrangeRed"
                        Margin="0" Padding="0">
-                    <Label Text="20%" TextColor="Black" HorizontalTextAlignment="Center"></Label>
-                </Frame>
-                <Frame Grid.Column="5" WidthRequest="75" HeightRequest="20" CornerRadius="25" BorderColor="OrangeRed"
-                       Margin="0" Padding="0">
-                    <Label Text="25%" TextColor="Black" HorizontalTextAlignment="Center"></Label>
+                    <Label Text="25%" 
+                           HorizontalTextAlignment="Center"
+                           FontSize="16" 
+                           FontAttributes="None" 
+                           TextColor="#121112" 
+                           FontFamily="{StaticResource SSPSemibold}"></Label>
                 </Frame>
             </Grid>
 
@@ -135,19 +218,57 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                
-                <Label Grid.ColumnSpan="2" Grid.Row="0" Text="Resumen" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
-                <Label Grid.Column="0" Grid.Row="1" Text="Subtotal" FontSize="Small" FontAttributes="Bold" TextColor="Black"></Label>
-                <Label Grid.Column="0" Grid.Row="2" Text="Comision" FontSize="Small" FontAttributes="Bold" TextColor="Black"></Label>
-                <Label Grid.Column="0" Grid.Row="3" Text="Personal" FontSize="Small" FontAttributes="Bold" TextColor="Black"></Label>
 
-                <Label Grid.Column="2" Grid.Row="1" Text="{Binding CurrentBook.SubTotal, StringFormat='{0}'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black" HorizontalOptions="End"></Label>
-                <Label Grid.Column="2" Grid.Row="2" Text="{Binding CurrentBook.Commission, StringFormat='{0}'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black" HorizontalOptions="End"></Label>
-                <Label Grid.Column="2" Grid.Row="3" Text="{Binding CurrentBook.PerPerson, StringFormat='{0}'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black" HorizontalOptions="End"></Label>
+                <Label Grid.ColumnSpan="2" 
+                       Grid.Row="0" 
+                       Text="Resumen"  
+                       FontAttributes="None"
+                       FontSize="20"
+                       FontFamily="{StaticResource SSPBlack}"
+                       TextColor="#121112"></Label>
+                <Label Grid.Column="0" 
+                       Grid.Row="1" 
+                       Text="Subtotal"
+                       FontAttributes="None"
+                       FontSize="16"
+                       FontFamily="{StaticResource SSPSemibold}"
+                       TextColor="#121112"></Label>
+                <Label Grid.Column="0" 
+                       Grid.Row="2" 
+                       Text="Comision"
+                       FontAttributes="None"
+                       FontSize="16"
+                       FontFamily="{StaticResource SSPSemibold}"
+                       TextColor="#121112"></Label>
+                <!--<Label Grid.Column="0" 
+                       Grid.Row="3" 
+                       Text="Personal" 
+                       FontAttributes="None"
+                       FontSize="16"
+                       FontFamily="{StaticResource SSPBold}"
+                       TextColor="#121112"></Label>-->
+
+                <Label Grid.Column="2" 
+                       Grid.Row="1" 
+                       Text="{Binding CurrentBook.SubTotal, StringFormat='${0}'}" 
+                       FontSize="16" 
+                       FontAttributes="None" 
+                       TextColor="Gray" 
+                       FontFamily="{StaticResource SSPRegular}"
+                       HorizontalOptions="End"></Label>
+                <Label Grid.Column="2" 
+                       Grid.Row="2" 
+                       Text="{Binding CurrentBook.Commission, StringFormat='${0}'}" 
+                       FontSize="16" 
+                       FontAttributes="None" 
+                       TextColor="Gray" 
+                       FontFamily="{StaticResource SSPRegular}"
+                       HorizontalOptions="End"></Label>
+                <!--<Label Grid.Column="2" Grid.Row="3" Text="{Binding CurrentBook.PerPerson, StringFormat='{0}'}" FontSize="Caption" FontAttributes="Bold" TextColor="Black" HorizontalOptions="End"></Label>-->
             </Grid>
 
             <Grid Grid.Row="5">
@@ -158,27 +279,37 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Grid.Column="1" Grid.Row="0" Text="Total" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Start"></Label>
-                <Label Grid.Column="2" Grid.Row="0" Text="{Binding CurrentBook.Total, StringFormat='{0}'}" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="End"></Label>
+                <Label Grid.Column="1" 
+                       Grid.Row="0" 
+                       Text="Total" 
+                       HorizontalOptions="Start"
+                       FontAttributes="None"
+                       FontSize="22"
+                       FontFamily="{StaticResource SSPBlack}"
+                       TextColor="#121112"></Label>
+                <Label Grid.Column="2" Grid.Row="0" 
+                       HorizontalOptions="End"
+                       Text="{Binding CurrentBook.Total, StringFormat='${0}'}" 
+                       FontAttributes="None"
+                       FontSize="22"
+                       FontFamily="{StaticResource SSPBlack}"
+                       TextColor="#121112" ></Label>
             </Grid>
 
             <Grid Grid.Row="6">
                 <controls:CustomButton Text="Reservar"
-                            Margin="-5,10,10,20"
+                            Margin="0,20,0,20"
                             Padding="25,15,20,15"
                             CornerRadius="1"
-                            HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="EndAndExpand"
                             StartColor="#130E1F"
                             MiddleColor="#E51320"
                             EndColor="#FB910D"
                             TextColor="White"
-                            WidthRequest="800"
                             GradientOrientation="Horizontal"
                             FontFamily="{StaticResource SSPBold}"
-                            Command="{Binding LoginFacebookCommand}"></controls:CustomButton>
+                            Command="{Binding BookCommand}"></controls:CustomButton>
             </Grid>
 
         </Grid>
-    </ScrollView>
+    </StackLayout>
 </ContentPage>

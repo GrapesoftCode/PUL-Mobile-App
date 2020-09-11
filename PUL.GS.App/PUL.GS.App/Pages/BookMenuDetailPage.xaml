@@ -46,9 +46,9 @@
             <Label Grid.Row="4" Grid.Column="0" Text="Precio"></Label>
             <Label Grid.Row="5" Grid.Column="0" Text="Cantidad"></Label>
 
-            <Label Grid.Row="2" Grid.Column="1" Text="{Binding CurrentMenu.Name}" FontSize="Small"></Label>
-            <Label Grid.Row="3" Grid.Column="1" Text="{Binding CurrentMenu.Description}" FontSize="Small"  FontAttributes="Bold"></Label>
-            <Label Grid.Row="4" Grid.Column="1" Text="{Binding CurrentMenu.Price}" FontSize="Small"  FontAttributes="Bold"></Label>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding CurrentMenu.Name}" FontSize="Small" TextColor="#121112"></Label>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding CurrentMenu.Description}" FontSize="Small"  FontAttributes="Bold" TextColor="#121112"></Label>
+            <Label Grid.Row="4" Grid.Column="1" Text="{Binding CurrentMenu.Price}" FontSize="Small"  FontAttributes="Bold" TextColor="#121112"></Label>
             <controls:MenuStepper Grid.Row="5" Grid.Column="1" Text="{Binding CurrentMenu.Quantity}"></controls:MenuStepper>
             <controls:CustomButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
                         Text="Agregar al carrito"

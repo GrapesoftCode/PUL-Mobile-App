@@ -32,7 +32,7 @@ namespace PUL.GS.App.ViewModels
                 if (!IsBusy)
                 {
                     IsBusy = true;
-                    await CoreMethods.PopPageModel();
+                    await CoreMethods.PopPageModel(false);
                     IsBusy = false;
                 }
             });
@@ -42,7 +42,7 @@ namespace PUL.GS.App.ViewModels
                 if (!IsBusy)
                 {
                     IsBusy = true;
-                    await CoreMethods.PopPageModel(CurrentMenu);
+                    await CoreMethods.PopPageModel(CurrentMenu, false);
                     IsBusy = false;
                 }
             });

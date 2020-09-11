@@ -22,6 +22,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -30,22 +32,24 @@
             
             <Image Grid.Row="0"
                    Grid.Column="0"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="4"
                    Source="{Binding CurrentBook.Establishment.Logo.Uri}"
                    Aspect="Fill"
                    HeightRequest="250"></Image>
 
             <Label FontAttributes="Bold" 
                    FontSize="30"
+                   FontFamily="{StaticResource SSPBold}"
                    TextColor="#FFFFFF"
                    Text="{Binding CurrentBook.Establishment.Name}" 
                    Grid.Row="0" 
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="4"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"></Label>
 
             <Label FontAttributes="None" 
                    FontSize="Default" 
+                   FontFamily="{StaticResource SSPRegular}"
                    TextColor="#FFFFFF" 
                    Text="$$$$" 
                    Grid.Row="0" 
@@ -56,25 +60,54 @@
 
             <Label FontAttributes="None" 
                    FontSize="14"
+                   FontFamily="{StaticResource SSPRegular}"
                    TextColor="#FFFFFF"
                    Text="{Binding CurrentBook.Establishment.MusicalGenre}" 
                    Grid.Row="0" 
+                   Grid.Column="1"
                    Grid.ColumnSpan="2"
                    VerticalOptions="End"
                    HorizontalOptions="CenterAndExpand"
                    Margin="10"></Label>
 
             <Image Grid.Row="0" 
-                        Grid.Column="1"
-                        VerticalOptions="End"
-                        HorizontalOptions="EndAndExpand"
-                        Margin="10"
-                        Source="star.png">
+                   Grid.Column="3"
+                   VerticalOptions="End"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="10"
+                   Source="star.png">
             </Image>
 
-            <Label  Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Número de personas" VerticalOptions="Center" Padding="20,0,0,0"
-                    TextColor="#121112" FontSize="16"></Label>
-            <Frame Grid.Row="1" Grid.Column="1"  HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,5,5" Padding="5,0,5,0" CornerRadius="0" 
+            <Label FontAttributes="Bold" 
+                   FontSize="14"
+                   FontFamily="{StaticResource SSPRegular}"
+                   TextColor="#FFFFFF"
+                   Text="4.5"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="EndAndExpand"
+                   Margin="10">
+            </Label>
+
+            <Label  Grid.Row="1" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="2"
+                    FontAttributes="None"
+                    FontSize="16"
+                    FontFamily="{StaticResource SSPSemibold}"
+                    TextColor="#121112"
+                    Text="Número de personas" 
+                    VerticalOptions="Center" 
+                    Padding="20,0,0,0">
+            </Label>
+            
+            <Frame Grid.Row="1" 
+                   Grid.Column="2" 
+                   Grid.ColumnSpan="2" 
+                   HasShadow="True" 
+                   BorderColor="#EDEFEF" 
+                   Margin="0,0,5,5" Padding="5,0,5,0" CornerRadius="0" 
                    HorizontalOptions="Center">            
                 <controls:CustomStepper  Text="{Binding Persons}"></controls:CustomStepper>
             </Frame>
@@ -91,35 +124,61 @@
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="Fecha" VerticalOptions="Center" Padding="20,0,0,0"
-                   TextColor="#121112" FontSize="16"></Label>
-            <Frame Grid.Row="0" Grid.Column="1" HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,0,5" Padding="10,0,10,0" CornerRadius="0"
+            <Label Grid.Row="0" 
+                   Grid.Column="0" 
+                   FontAttributes="None"
+                   FontSize="16"
+                   FontFamily="{StaticResource SSPSemibold}"
+                   TextColor="#121112"
+                   Text="Fecha" 
+                   VerticalOptions="Center" 
+                   Padding="20,0,0,0">
+            </Label>
+            <Frame Grid.Row="0" 
+                   Grid.Column="1" 
+                   HasShadow="True" 
+                   BorderColor="#EDEFEF"
+                   Margin="0,0,0,5" 
+                   Padding="10,0,10,0" 
+                   CornerRadius="0"
                    HorizontalOptions="CenterAndExpand">
-                <DatePicker Date="{Binding Date}" 
-                            TextColor="#040505" 
+                <DatePicker FontAttributes="None"
+                            FontSize="14"
+                            FontFamily="{StaticResource SSPRegular}"
+                            TextColor="#121112"
+                            Date="{Binding Date}"
                             HorizontalOptions="Center" 
                             VerticalOptions="Center"
                             Format="dd/MM/yyyy" 
                             MinimumDate="{Binding MinimumDate}"
-                            FontSize="16"
                             Margin="0"
                             WidthRequest="120"/>
             </Frame>
 
 
-            <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Hora" VerticalOptions="StartAndExpand" Padding="20,0,0,0"
-                   TextColor="#121112" FontSize="16"></Label>
+            <Label Grid.Row="1" 
+                   Grid.Column="0" 
+                   FontAttributes="None"
+                   FontSize="16"
+                   FontFamily="{StaticResource SSPSemibold}"
+                   TextColor="#121112" 
+                   Text="Hora"
+                   VerticalOptions="StartAndExpand" 
+                   Padding="20,0,0,0">                
+            </Label>
             <Label Grid.Row="1" Grid.Column="0" FontAttributes="Italic" Text="Tienes 15 minutos de tolerancia o si no se cancela tu reserva"
                    VerticalOptions="EndAndExpand" Padding="20,0,0,0"
                    TextColor="Gray" FontSize="9"></Label>
             <Frame Grid.Row="1" Grid.Column="1" HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,0,5" Padding="10,0,10,0" CornerRadius="0"
                    HorizontalOptions="Center">
-                <TimePicker Time="{Binding Hour, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
-                            TextColor="#040505"
+                <TimePicker FontAttributes="None"
+                            FontSize="14"
+                            FontFamily="{StaticResource SSPRegular}"
+                            TextColor="#121112" 
+                            Time="{Binding Hour, Converter={StaticResource DateTimeToTimeSpanConverter}, Mode=TwoWay}"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             Format="hh:mm tt"
-                            FontSize="16"
                             Margin="0"
                             WidthRequest="120"/>
             </Frame>
@@ -146,9 +205,10 @@
                     <CollectionView.Header>
                         <StackLayout BackgroundColor="#fffff">
                             <Label Text="Selecciona tu mesa"
-                                   TextColor="#121112"
+                                   FontAttributes="None"
                                    FontSize="16"
-                                   FontAttributes="Bold"
+                                   FontFamily="{StaticResource SSPSemibold}"
+                                   TextColor="#121112" 
                                    HorizontalTextAlignment="Start"
                                    Padding="20,0,0,0"/>
                         </StackLayout>
@@ -178,20 +238,33 @@
                                             <RowDefinition Height="auto"></RowDefinition>
                                         </Grid.RowDefinitions>
 
-                                        <Label Text="{Binding Location}" FontAttributes="Bold" TextColor="#121112" FontSize="Large" 
+                                        <Label Text="{Binding Location}" 
+                                               FontAttributes="None"
+                                               FontSize="20"
+                                               FontFamily="{StaticResource SSPBold}"
+                                               TextColor="#121112" 
                                                Grid.Column="0" 
                                                Grid.Row="0" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="{Binding Quantity, StringFormat='{0} personas'}" FontAttributes="None" FontSize="Small" 
+                                        <Label Text="{Binding Quantity, StringFormat='{0} personas'}" 
+                                               FontAttributes="None"
+                                               FontSize="14"
+                                               FontFamily="{StaticResource SSPRegular}"
                                                TextColor="#121112" 
                                                Grid.Column="0" 
                                                Grid.Row="1" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="{Binding MinimumConsumption, StringFormat='${0}'}" FontAttributes="None" FontSize="9" 
+                                        <Label Text="{Binding MinimumConsumption, StringFormat='${0}'}" 
+                                               FontAttributes="None"
+                                               FontSize="11"
+                                               FontFamily="{StaticResource SSPLight}"
                                                Grid.Column="0" 
                                                Grid.Row="2" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="Consumo mínimo por persona"  FontAttributes="None" FontSize="9" 
+                                        <Label Text="Consumo mínimo por persona"  
+                                               FontAttributes="None"
+                                               FontSize="11"
+                                               FontFamily="{StaticResource SSPLight}"
                                                Grid.Column="0" 
                                                Grid.Row="3" 
                                                HorizontalOptions="Start"></Label>

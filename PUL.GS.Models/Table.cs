@@ -18,7 +18,6 @@ namespace PUL.GS.Models
         public string Logo { get; set; }
         public string establishmentId { get; set; }
         public string userId { get; set; }
-
         public int Count { get; set; }
     }
 }

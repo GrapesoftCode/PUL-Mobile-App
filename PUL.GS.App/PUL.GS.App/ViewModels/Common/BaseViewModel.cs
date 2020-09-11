@@ -42,6 +42,7 @@ namespace PUL.GS.App.ViewModels
         public readonly ComboData comboAgent;
         public readonly TableData tableAgent;
         public readonly MenuData menuAgent;
+        public readonly BookData bookAgent;
 
         public BaseViewModel()
         {
@@ -50,6 +51,7 @@ namespace PUL.GS.App.ViewModels
             comboAgent = new ComboData(appSettings);
             tableAgent = new TableData(appSettings);
             menuAgent = new MenuData(appSettings);
+            bookAgent = new BookData(appSettings);
         }
     }
 }

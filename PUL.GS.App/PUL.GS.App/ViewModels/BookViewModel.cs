@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using FreshMvvm;
+using PUL.GS.App.Controls;
 using PUL.GS.App.Infrastructure;
 using PUL.GS.Models;
 using PUL.GS.Models.Common;
@@ -91,8 +92,10 @@ namespace PUL.GS.App.ViewModels
                             CurrentBook.Persons = Persons;
                             CurrentBook.Hour = Hour.ToString("hh:mm:ss tt");
                             CurrentBook.Date = Date.ToString("dd/MM/yyyy");
-                            CurrentBook.SubTotal = CurrentTable.MinimumConsumption * Persons;
+                            CurrentBook.TotalMinimumConsumption = CurrentTable.MinimumConsumption * Persons;
+
                             await CoreMethods.PushPageModel<BookMenuViewModel>(CurrentBook);
+
                             CurrentTable = null;
                         }
 
