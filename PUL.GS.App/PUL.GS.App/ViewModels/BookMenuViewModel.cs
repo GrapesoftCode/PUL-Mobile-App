@@ -34,6 +34,7 @@ namespace PUL.GS.App.ViewModels
         public ICommand CategoryScrollCommand { get; set; }
         public ICommand FoodCartCommand { get; set; }
         public double SubTotal { get; set; } = 0;
+        public int Items { get; set; }
         public Book CurrentBook { get; set; }
         public Menu CurrentMenu { get; set; }
         public CustomerGroup CurrentGroup { get; set; }
@@ -105,6 +106,10 @@ namespace PUL.GS.App.ViewModels
                     CurrentBook.Total = SubTotal;
                     await CoreMethods.PushPageModel<BookDetailViewModel>(CurrentBook);
                 }
+                else
+                {
+                    await CoreMethods.DisplayAlert("Consumo mínimo", $"Aún no cubres el total del consumo mínimo. Consumo Mínimo Total: {string.Format("{0:C2}", CurrentBook.TotalMinimumConsumption)}", "Continuar");
+                }
             });
 
             RefreshCommand = new Command(async () =>
@@ -144,11 +149,17 @@ namespace PUL.GS.App.ViewModels
                     var item = (Menu)obj;
                     if (Items.Count == 0)
                         Items.Add(item);
-                    else {
+                    else
+                    {
                         var update = Items.Where(x => x.id == item.id).SingleOrDefault();
                         if (update != null)
+                        {
                             update.Quantity = item.Quantity;
-                        else {
+                            if (update.Quantity == 0)
+                                Items.Remove(update);
+                        }
+                        else
+                        {
                             Items.Add(item);
                         }
                     }
@@ -179,6 +190,7 @@ namespace PUL.GS.App.ViewModels
 
             int index = 0;
             double account = 0;
+            Items = 0;
             foreach (var group in grouped)
             {
                 foreach (var item in group)
@@ -186,12 +198,15 @@ namespace PUL.GS.App.ViewModels
                     double accountItem = 0;
                     item.Index = index;
                     item.Quantity = 0;
+                   
                     if (Menus != null)
                     {
                         item.Quantity = Menus.Where(x => x.id == item.id).Select(x => x.Quantity).LastOrDefault();
                         accountItem = item.Quantity * item.Price;
                         account += accountItem;
                         SubTotal = account;
+                        Items += item.Quantity;
+
                     }
                     index++;
                 }

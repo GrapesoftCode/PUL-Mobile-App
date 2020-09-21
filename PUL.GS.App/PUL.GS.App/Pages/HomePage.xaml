@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.HomePage"
              Visual="Material"
-             NavigationPage.HasNavigationBar="False"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <!--<ContentPage.Resources>

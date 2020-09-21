@@ -22,10 +22,8 @@ namespace PUL.GS.App.Droid.Renderers
 {
     public  class CustomFrameRenderer : FrameRenderer
     {
-        public CustomFrameRenderer(Context context) : base(context)
-        {
-
-        }
+        GradientDrawable _gradient;
+        public CustomFrameRenderer(Context context) : base(context) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
@@ -33,6 +31,7 @@ namespace PUL.GS.App.Droid.Renderers
 
             if (e.NewElement != null && Control != null)
             {
+                Control.SetBackground(DrawGradient(e));
                 UpdateCornerRadius();
             }
         }
@@ -80,6 +79,25 @@ namespace PUL.GS.App.Droid.Renderers
 
                 backgroundGradient.SetCornerRadii(cornerRadii);
             }
+        }
+
+
+        private GradientDrawable DrawGradient(ElementChangedEventArgs<Xamarin.Forms.Frame> e)
+        {
+            var frame = e.NewElement as CustomFrame;
+            var orientation = frame.GradientOrientation == CustomFrame.GradientOrientationStates.Horizontal ?
+                GradientDrawable.Orientation.LeftRight : GradientDrawable.Orientation.TopBottom;
+
+            _gradient = new GradientDrawable(orientation, new[] {
+                frame.StartColor.ToAndroid().ToArgb(),
+                frame.MiddleColor.ToAndroid().ToArgb(),
+                frame.EndColor.ToAndroid().ToArgb(),
+            });
+
+            //_gradient.SetCornerRadius(frame.CornerRadius * 10);
+            _gradient.SetStroke(0, frame.StartColor.ToAndroid());
+
+            return _gradient;
         }
     }
 }

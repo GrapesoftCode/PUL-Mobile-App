@@ -6,7 +6,8 @@
              xmlns:controls="clr-namespace:PUL.GS.App.Controls"
              mc:Ignorable="d"
              xmlns:converters="clr-namespace:PUL.GS.App.Converters"
-             x:Class="PUL.GS.App.Pages.BookPage">
+             x:Class="PUL.GS.App.Pages.BookPage"
+             NavigationPage.HasNavigationBar="True">
     <ContentPage.Resources>
         <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"></converters:DateTimeToTimeSpanConverter>
     </ContentPage.Resources>
@@ -254,7 +255,7 @@
                                                Grid.Column="0" 
                                                Grid.Row="1" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="{Binding MinimumConsumption, StringFormat='${0}'}" 
+                                        <Label Text="{Binding MinimumConsumption, StringFormat='{0:C2}'}" 
                                                FontAttributes="None"
                                                FontSize="11"
                                                FontFamily="{StaticResource SSPLight}"

@@ -12,16 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\HomeTabbedPage.xaml.cs" />
     <Compile Remove="Pages\MenuPage.xaml.cs" />
-    <Compile Remove="ViewModels\HomeTabbedViewModel.cs" />
+    <Compile Remove="ViewModels\MenuDetailViewModel.cs" />
     <Compile Remove="ViewModels\MenuViewModel.cs" />
     <Compile Remove="ViewModels\TabViewModel.cs" />
     <Compile Remove="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Pages\HomeTabbedPage.xaml" />
     <EmbeddedResource Remove="Pages\MenuPage.xaml" />
   </ItemGroup>
 

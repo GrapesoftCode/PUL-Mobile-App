@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.MasterPage"
-             Title="Master Page">
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid BackgroundColor="Transparent">
             <Grid.RowDefinitions>
@@ -26,12 +26,10 @@
 
 
             <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
-                <ListView x:Name="MenuItemsListView"
-                      RowHeight="60" 
-                      SeparatorVisibility="None" 
-                      HasUnevenRows="true"
-                      ItemsSource="{Binding MenuItems}">
-                    <ListView.ItemTemplate>
+                <CollectionView ItemsSource="{Binding MenuItems}"
+                                SelectedItem="{Binding CurrentItem}"
+                                SelectionChangedCommand="{Binding ItemCommand}">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="20">
@@ -47,8 +45,8 @@
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

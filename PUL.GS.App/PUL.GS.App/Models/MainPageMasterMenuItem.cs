@@ -12,12 +12,12 @@ namespace PUL.GS.App.Models
     {
         public MainPageMasterMenuItem()
         {
-            TargetType = new  NavigationPage();
+            TargetType = typeof(MainPageMasterMenuItem);
         }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Icon { get; set; }
 
-        public NavigationPage TargetType { get; set; }
+        public Type TargetType { get; set; }
     }
 }

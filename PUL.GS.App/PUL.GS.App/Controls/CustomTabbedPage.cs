@@ -1,10 +1,11 @@
-﻿using System;
+﻿using FreshMvvm;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace PUL.GS.App.Controls
 {
-    public class CustomTabbedPage : Xamarin.Forms.TabbedPage
+    public class CustomTabbedPage : FreshTabbedNavigationContainer
     {
         public CustomTabbedPage()
         {

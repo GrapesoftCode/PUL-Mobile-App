@@ -10,6 +10,7 @@
              NavigationPage.HasBackButton="False"
              BackgroundColor="Transparent">
     <ContentPage.Content>
+        <ScrollView>
         <Grid
             BackgroundColor="Transparent"
             Margin="10"
@@ -64,5 +65,6 @@
                         FontFamily="{StaticResource SSPBold}"
                         Command="{Binding AddFoodCartCommand}"></controls:CustomButton>
         </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

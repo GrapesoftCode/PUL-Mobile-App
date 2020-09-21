@@ -9,7 +9,7 @@
 
     <c1:CustomTabbedPage.ItemTemplate>
         <DataTemplate>
-            <ContentPage IconImageSource="{Binding Icon}" Title="{Binding Title}"></ContentPage>
+            <ContentPage IconImageSource="{Binding Icon}" BindingContext="{Binding TargetType}"></ContentPage>
         </DataTemplate>
     </c1:CustomTabbedPage.ItemTemplate>
 

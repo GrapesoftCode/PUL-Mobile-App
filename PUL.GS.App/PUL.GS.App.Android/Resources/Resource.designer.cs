@@ -14052,67 +14052,70 @@ namespace PUL.GS.App.Droid
 			public const int pulear = 2131165396;
 			
 			// aapt resource value: 0x7F0700D5
-			public const int regular = 2131165397;
+			public const int qr = 2131165397;
 			
 			// aapt resource value: 0x7F0700D6
-			public const int regular2 = 2131165398;
+			public const int regular = 2131165398;
 			
 			// aapt resource value: 0x7F0700D7
-			public const int rock = 2131165399;
+			public const int regular2 = 2131165399;
 			
 			// aapt resource value: 0x7F0700D8
-			public const int rock2 = 2131165400;
+			public const int rock = 2131165400;
 			
 			// aapt resource value: 0x7F0700D9
-			public const int roundedbg = 2131165401;
+			public const int rock2 = 2131165401;
 			
 			// aapt resource value: 0x7F0700DA
-			public const int roundedbgdark = 2131165402;
+			public const int roundedbg = 2131165402;
 			
 			// aapt resource value: 0x7F0700DB
-			public const int send = 2131165403;
+			public const int roundedbgdark = 2131165403;
 			
 			// aapt resource value: 0x7F0700DC
-			public const int setting = 2131165404;
+			public const int send = 2131165404;
 			
 			// aapt resource value: 0x7F0700DD
-			public const int splash = 2131165405;
+			public const int setting = 2131165405;
 			
 			// aapt resource value: 0x7F0700DE
-			public const int split = 2131165406;
+			public const int splash = 2131165406;
 			
 			// aapt resource value: 0x7F0700DF
-			public const int sTaco1 = 2131165407;
+			public const int split = 2131165407;
 			
 			// aapt resource value: 0x7F0700E0
-			public const int star = 2131165408;
+			public const int sTaco1 = 2131165408;
 			
 			// aapt resource value: 0x7F0700E1
-			public const int tabernacalacas = 2131165409;
+			public const int star = 2131165409;
 			
 			// aapt resource value: 0x7F0700E2
-			public const int tacostony = 2131165410;
+			public const int tabernacalacas = 2131165410;
 			
 			// aapt resource value: 0x7F0700E3
-			public const int techno = 2131165411;
+			public const int tacostony = 2131165411;
 			
 			// aapt resource value: 0x7F0700E4
-			public const int techno2 = 2131165412;
+			public const int techno = 2131165412;
 			
 			// aapt resource value: 0x7F0700E5
-			public const int tooltip_frame_dark = 2131165413;
+			public const int techno2 = 2131165413;
 			
 			// aapt resource value: 0x7F0700E6
-			public const int tooltip_frame_light = 2131165414;
+			public const int tooltip_frame_dark = 2131165414;
 			
 			// aapt resource value: 0x7F0700E7
-			public const int visualstudio = 2131165415;
+			public const int tooltip_frame_light = 2131165415;
 			
 			// aapt resource value: 0x7F0700E8
-			public const int xamarin = 2131165416;
+			public const int visualstudio = 2131165416;
 			
 			// aapt resource value: 0x7F0700E9
-			public const int xamforms = 2131165417;
+			public const int xamarin = 2131165417;
+			
+			// aapt resource value: 0x7F0700EA
+			public const int xamforms = 2131165418;
 			
 			static Drawable()
 			{

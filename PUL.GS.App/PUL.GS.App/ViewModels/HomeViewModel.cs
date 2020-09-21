@@ -31,12 +31,6 @@ namespace PUL.GS.App.ViewModels
         public ICommand PromotionCommand { get; set; }
         public ICommand ComboCommand { get; set; }
 
-        readonly AppSettings appSettings = new AppSettings()
-        {
-            baseUrl = "http://grapesoft-001-site13.ctempurl.com/api/",
-            timeZoneKey = "Central Standard Time (Mexico)"
-        };
-
         readonly IUserDialogs dialogs;
         public HomeViewModel(IUserDialogs _dialogs)
         {

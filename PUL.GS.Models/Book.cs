@@ -26,5 +26,12 @@ namespace PUL.GS.Models
 
         public Establishment Establishment { get; set; }
         public User User { get; set; }
+        public string FullName 
+        { 
+            get {
+
+                return string.Format("{0} {1} {2}", User.FirstName, User.SurName, User.LastName);
+            }
+        }
     }
 }

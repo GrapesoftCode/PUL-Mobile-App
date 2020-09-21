@@ -58,76 +58,101 @@ namespace PUL.GS.App.ViewModels
                         //await CoreMethods.PushPageModel<MainViewModel>(CurrentUser);
 
 
-                        var tabbedNavigation = new CustomTabbedPage();
-                        
-                        var home = new NavigationPage();
-                        await home.PushAsync(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
-                        home.BarTextColor = Color.Purple;
-                        home.IconImageSource = "home.png";
+                        //var tabbedNavigation = new HomeTabbedPage();
 
-                        var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
-                        {
-                            IconImageSource = "browser.png",
-                            BarBackgroundColor = Color.Blue,
-                            BarTextColor = Color.Purple
-                        };
-                        var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
-                        {
-                            IconImageSource = "pulear.png",
-                            BarBackgroundColor = Color.Blue,
-                            BarTextColor = Color.Purple
-                        };
+                        //var home = new NavigationPage();
+                        //await home.PushAsync(FreshPageModelResolver.ResolvePageModel<HomeViewModel>(CurrentUser));
+                        //home.BarTextColor = Color.Purple;
+                        //home.IconImageSource = "home.png";
 
-                        var chat = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
-                        {
-                            IconImageSource = "message.png",
-                            BarBackgroundColor = Color.Blue,
-                            BarTextColor = Color.Purple
-                        };
-                        tabbedNavigation.Children.Add(home);
-                        tabbedNavigation.Children.Add(browser);
-                        tabbedNavigation.Children.Add(room);
-                        tabbedNavigation.Children.Add(chat);
-                        tabbedNavigation.BarTextColor = Color.Red;
+                        //var browser = new NavigationPage(FreshPageModelResolver.ResolvePageModel<BrowserViewModel>(CurrentUser))
+                        //{
+                        //    IconImageSource = "browser.png",
+                        //    BarBackgroundColor = Color.Blue,
+                        //    BarTextColor = Color.Purple
+                        //};
+                        //var room = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+                        //{
+                        //    IconImageSource = "pulear.png",
+                        //    BarBackgroundColor = Color.Blue,
+                        //    BarTextColor = Color.Purple
+                        //};
 
-
-                        var profile = new ToolbarItem
-                        {
-                            IconImageSource = "profile.png",
-                            Priority = 1,
-                            Order = ToolbarItemOrder.Primary
-                        };
-                        var location = new ToolbarItem
-                        {
-                            IconImageSource = "location.png",
-                            Priority = 2,
-                            Order = ToolbarItemOrder.Primary,
-                            Text = "location"
-                        };
+                        //var chat = new NavigationPage(FreshPageModelResolver.ResolvePageModel<RoomsViewModel>(CurrentUser))
+                        //{
+                        //    IconImageSource = "message.png",
+                        //    BarBackgroundColor = Color.Blue,
+                        //    BarTextColor = Color.Purple
+                        //};
+                        //tabbedNavigation.Children.Add(home);
+                        //tabbedNavigation.Children.Add(browser);
+                        //tabbedNavigation.Children.Add(room);
+                        //tabbedNavigation.Children.Add(chat);
+                        //tabbedNavigation.BarTextColor = Color.Red;
 
 
-                        var masterDetail = new MasterDetailPage()
-                        {
-                            Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
-                            Detail = new NavigationPage(tabbedNavigation),
-                        };
+                        //var profile = new ToolbarItem
+                        //{
+                        //    IconImageSource = "profile.png",
+                        //    Priority = 1,
+                        //    Order = ToolbarItemOrder.Primary
+                        //};
+                        //var location = new ToolbarItem
+                        //{
+                        //    IconImageSource = "location.png",
+                        //    Priority = 2,
+                        //    Order = ToolbarItemOrder.Primary,
+                        //    Text = "location"
+                        //};
+
+
+                        //var masterDetail = new MasterDetailPage()
+                        //{
+                        //    Master = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser),
+                        //    Detail = new NavigationPage(tabbedNavigation),
+                        //};
 
                         //masterDetail.MasterBehavior = MasterBehavior.Split;
                         //masterDetail.Master.BackgroundColor = Color.Red;
                         //masterDetail.Detail.BackgroundColor = Color.Blue;
                         //masterDetail.BackgroundColor = Color.Yellow;
-                        masterDetail.ToolbarItems.Add(profile);
-                        masterDetail.ToolbarItems.Add(location);
+                        //masterDetail.ToolbarItems.Add(profile);
+                        //masterDetail.ToolbarItems.Add(location);
 
-                        NavigationPage.SetHasNavigationBar(masterDetail, false);
+                        //NavigationPage.SetHasNavigationBar(masterDetail, false);
 
-                        //ThemeManager.LoadTheme();
+                        ThemeManager.LoadTheme();
 
                         //if (IsInitialized)
                         //{
-                            await App.Current.MainPage.Navigation.PushAsync(masterDetail);
+                        //await App.Current.MainPage.Navigation.PushAsync(masterDetail);
+
+                        //App.IsLoggedIn = true;
+
+                        //var masterDetailMultiple = new MasterDetailPage();
+
+                        //var masterPage  = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser);
+
+                        //var masterPageArea = new FreshNavigationContainer(masterPage, "MasterPageArea");
+                        //masterPageArea.Title = "Menu";
+
+                        //masterDetailMultiple.Master = masterPageArea;
+
+                        //var detailPage = FreshPageModelResolver.ResolvePageModel<HomeTabbedViewModel>(CurrentUser);
+                        ////detailPage.Title = "Detail";
+
+                        //var detailPageArea = new FreshNavigationContainer(detailPage, "HomeTabbedPage");
+
+
+                        //masterDetailMultiple.Detail = detailPageArea;
+
+                        //NavigationPage.SetHasNavigationBar(masterDetailMultiple, false);
+
+                        //await CoreMethods.PushNewNavigationServiceModal(masterDetailMultiple);
                         //    IsInitialized = false;
                         //}
+
+                        await App.Current.MainPage.Navigation.PushAsync(new MasterTabbedNavigationService(CurrentUser));
                     }
 
                 }

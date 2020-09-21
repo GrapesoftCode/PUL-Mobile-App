@@ -37,7 +37,8 @@
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
-    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,11 +56,11 @@
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidKeyStore>false</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\edy_d\AppData\Local\Xamarin\Mono for Android\Keystore\pulandroid\pulandroid.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>Pul1212</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>pulandroid</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>Pul1212</AndroidSigningKeyPass>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Program Files\Java\jre1.8.0_251\bin\Teststore.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Test12345</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>TestKey</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Test12345</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -766,6 +767,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\closeicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\qr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -30,7 +30,7 @@ namespace PUL.GS.Models
 
             get
             {
-                return string.Format("${0}", Quantity * Price);
+                return string.Format("{0:C2}", Quantity * Price);
             }
         }
 

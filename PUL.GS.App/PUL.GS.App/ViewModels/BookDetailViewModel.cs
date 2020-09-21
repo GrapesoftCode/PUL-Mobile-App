@@ -55,7 +55,7 @@ namespace PUL.GS.App.ViewModels
                         var result = bookAgent.AddBook(CurrentBook);
                         if (result.Success)
                         {
-                            await CoreMethods.PushPageModel<HomeViewModel>();
+                            //await CoreMethods.PopModalNavigationService();
                             dialogs.Alert($"Tu reservación esta pendiente.");
                         }
                         
