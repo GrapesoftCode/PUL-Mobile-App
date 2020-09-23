@@ -56,7 +56,7 @@ namespace PUL.GS.App.ViewModels
                         if (result.Success)
                         {
                             //await CoreMethods.PopModalNavigationService();
-                            dialogs.Alert($"Tu reservación esta pendiente.");
+                            dialogs.Alert($"Tu reservación está pendiente.");
                         }
                         
                         

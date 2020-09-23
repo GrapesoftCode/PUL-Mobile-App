@@ -39,6 +39,11 @@
     <BundleAssemblies>false</BundleAssemblies>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Program Files\Java\jre1.8.0_251\bin\Teststore.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Test12345</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>TestKey</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Test12345</AndroidSigningKeyPass>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,6 +80,9 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.1.0.446</Version>
     </PackageReference>
+    <PackageReference Include="Com.OneSignal">
+      <Version>3.10.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>3.1.5</Version>
     </PackageReference>
@@ -94,6 +102,15 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>4.7.0.1179</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>71.1610.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Basement">
+      <Version>71.1620.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
+      <Version>71.1601.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

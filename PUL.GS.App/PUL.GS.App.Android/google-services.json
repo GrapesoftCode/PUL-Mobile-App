@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "132694482279",
+    "firebase_url": "https://pulapp-67ca6.firebaseio.com",
+    "project_id": "pulapp-67ca6",
+    "storage_bucket": "pulapp-67ca6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132694482279:android:0742b5945fa6c5d66fa3c2",
+        "android_client_info": {
+          "package_name": "com.companyname.pul.gs.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132694482279-e6thec1v4u8seeso5nidvcg49jqesh3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbFo_q9KgQASKUrPxQCnd9phfuTk4VQkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132694482279-e6thec1v4u8seeso5nidvcg49jqesh3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

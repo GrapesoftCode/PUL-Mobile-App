@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
+    <PackageReference Include="Com.OneSignal" Version="3.10.1" />
     <PackageReference Include="FreshMvvm" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.5" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.1.3" />
