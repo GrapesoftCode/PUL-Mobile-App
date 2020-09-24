@@ -8,8 +8,13 @@
              x:Class="PUL.GS.App.Pages.LoginPage"
              NavigationPage.HasNavigationBar="False"
              Visual="Material">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="#ffffff">
+    <StackLayout BackgroundColor="#ffffff"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 AutomationId="stackLayoutTop">
+        <FlexLayout AutomationId="FlexLayoutTop"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
@@ -138,7 +143,7 @@
                 </Grid>                    
                     <!--</Frame>-->
             </Grid>
-        </StackLayout>
-    </ContentPage.Content>
+        </FlexLayout>
+    </StackLayout>
     
 </ContentPage>

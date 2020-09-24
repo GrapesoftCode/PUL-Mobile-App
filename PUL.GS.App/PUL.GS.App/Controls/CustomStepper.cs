@@ -27,8 +27,8 @@ namespace PUL.GS.App.Controls
 
         public CustomStepper()
         {
-            MinusBtn = new Button { Text = "-", FontAttributes = FontAttributes.Bold, FontSize = 14, HeightRequest = 50, WidthRequest= 40, TextColor = Color.FromHex("#e62025") };
-            PlusBtn = new Button { Text = "+", FontAttributes = FontAttributes.Bold, FontSize = 14, HeightRequest = 50, WidthRequest = 40, TextColor = Color.FromHex("#e62025") };
+            MinusBtn = new Button { Text = "-", FontAttributes = FontAttributes.Bold, FontSize = 14, HeightRequest = 30, WidthRequest= 30, TextColor = Color.FromHex("#e62025") };
+            PlusBtn = new Button { Text = "+", FontAttributes = FontAttributes.Bold, FontSize = 14, HeightRequest = 30, WidthRequest = 30, TextColor = Color.FromHex("#e62025") };
             
             switch (Device.RuntimePlatform)
             {
@@ -57,7 +57,7 @@ namespace PUL.GS.App.Controls
                 Keyboard = Keyboard.Numeric,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
-                WidthRequest = 40,
+                WidthRequest = 20,
                 Margin = 0,
                 BackgroundColor = Color.Transparent,
                 FontSize = 14,

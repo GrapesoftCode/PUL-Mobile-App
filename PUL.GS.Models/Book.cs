@@ -20,6 +20,7 @@ namespace PUL.GS.Models
         public double SubTotal { get; set; }
         public double Commission { get; set; }
         public double PerPerson { get; set; }
+        public double Tip { get; set; }
         public double Total { get; set; }
         public string userId { get; set; }
         public string establishmentId { get; set; }

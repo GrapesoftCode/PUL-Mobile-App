@@ -19,7 +19,7 @@
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0,0,10" BackgroundColor="#ffffff">
+        <Grid Grid.Row="0" Margin="0,0,0,0" BackgroundColor="#ffffff">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -27,7 +27,6 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             
@@ -90,10 +89,17 @@
                    HorizontalOptions="EndAndExpand"
                    Margin="10">
             </Label>
-
-            <Label  Grid.Row="1" 
-                    Grid.Column="0" 
-                    Grid.ColumnSpan="2"
+        </Grid>
+        <Grid Grid.Row="1" Padding="5" Margin="0,0,0,10" BackgroundColor="#ffffff" VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label  Grid.Row="0" 
+                    Grid.Column="0"
                     FontAttributes="None"
                     FontSize="16"
                     FontFamily="{StaticResource SSPSemibold}"
@@ -102,14 +108,15 @@
                     VerticalOptions="Center" 
                     Padding="20,0,0,0">
             </Label>
-            
-            <Frame Grid.Row="1" 
-                   Grid.Column="2" 
-                   Grid.ColumnSpan="2" 
+
+            <Frame Grid.Row="0" 
+                   Grid.Column="1"
                    HasShadow="True" 
                    BorderColor="#EDEFEF" 
-                   Margin="0,0,5,5" Padding="5,0,5,0" CornerRadius="0" 
-                   HorizontalOptions="Center">            
+                   Margin="0,0,0,5" 
+                   Padding="10,0,10,0" 
+                   CornerRadius="0" 
+                   HorizontalOptions="Center">
                 <controls:CustomStepper  Text="{Binding Persons}"></controls:CustomStepper>
             </Frame>
 
@@ -117,8 +124,8 @@
 
         <Grid Grid.Row="2"  BackgroundColor="#ffffff" Padding="5" Margin="0,0,0,10" VerticalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -152,8 +159,7 @@
                             VerticalOptions="Center"
                             Format="dd/MM/yyyy" 
                             MinimumDate="{Binding MinimumDate}"
-                            Margin="0"
-                            WidthRequest="120"/>
+                            Margin="0"/>
             </Frame>
 
 
@@ -180,8 +186,7 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             Format="hh:mm tt"
-                            Margin="0"
-                            WidthRequest="120"/>
+                            Margin="0"/>
             </Frame>
         </Grid>
 

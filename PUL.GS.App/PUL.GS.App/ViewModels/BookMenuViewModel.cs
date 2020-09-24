@@ -108,7 +108,7 @@ namespace PUL.GS.App.ViewModels
                 }
                 else
                 {
-                    await CoreMethods.DisplayAlert("Consumo mínimo", $"Aún no cubres el total del consumo mínimo. Consumo Mínimo Total: {string.Format("{0:C2}", CurrentBook.TotalMinimumConsumption)}", "Continuar");
+                    await CoreMethods.DisplayAlert("Consumo mínimo", $"Aún no cubres el total del consumo mínimo. Consumo mínimo total: {string.Format("{0:C2}", CurrentBook.TotalMinimumConsumption)}", "Continuar");
                 }
             });
 
