@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddUser" xml:space="preserve">
-    <value>session</value>
-  </data>
-  <data name="GetToken" xml:space="preserve">
-    <value>session/login</value>
-  </data>
-  <data name="GetUserByCredentials" xml:space="preserve">
-    <value>user/getUserByCredentials</value>
+  <data name="GetListContacts" xml:space="preserve">
+    <value>contact</value>
   </data>
 </root>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PUL.GS.App.Controls"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.BookSplashPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <FlexLayout>
+            <controls:CustomFrame HasShadow="True"
+                                  StartColor="#130E1F"
+                                  MiddleColor="#E51320"
+                                  EndColor="#FB910D"
+                                  GradientOrientation="Horizontal">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" 
+                           Text="{Binding BookSplashText}" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       FontSize="30"
+                       FontAttributes="None"
+                       TextColor="#ffffff"
+                       FontFamily="{StaticResource SSPSemibold}"></Label>
+
+                    <Image Grid.Row="1"
+                           Aspect="AspectFit"
+                           HeightRequest="200"
+                           Source="{Binding BookSplashImage}"></Image>
+                </Grid>
+            </controls:CustomFrame>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

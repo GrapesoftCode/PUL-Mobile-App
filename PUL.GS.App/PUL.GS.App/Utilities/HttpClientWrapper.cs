@@ -19,7 +19,7 @@ namespace PUL.GS.App.Utilities
         /// <param name="methodAddress">Uri del método del servicio que se va a consumir</param>
         /// <param name="request">Objeto con los datos de la solicitud que se va a enviar al servicio</param>
         /// <returns>Respuesta (objeto Response) que devuelve el servicio</returns>
-        public async Task<TResponse> Consume(Uri baseAddress, string methodAddress, HttpVerb method, TRequest request = null, string token = null)
+        public async Task<TResponse> Consume(Uri baseAddress, string methodAddress, HttpVerb method, TRequest request = null, string token = null, bool pushNotification = false)
         {
             try
             {
@@ -30,11 +30,18 @@ namespace PUL.GS.App.Utilities
                         BaseAddress = baseAddress
                     };
                     client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    if (!pushNotification)
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 }
 
                 if (!string.IsNullOrEmpty(token))
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                if (pushNotification)
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "OTI4NDhhYmItNGUwMy00ZDBkLWFhOTItNmM5MzhiYjkyOTQ2");
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                }
 
                 StringContent requestContent = null;
                 HttpResponseMessage responseMessage = null;
@@ -43,7 +50,10 @@ namespace PUL.GS.App.Utilities
                 switch (method)
                 {
                     case HttpVerb.Post:
-                        requestContent = new StringContent(serializedRequest, Encoding.Unicode, "application/json");
+                        if (!pushNotification)
+                            requestContent = new StringContent(serializedRequest, Encoding.Unicode, "application/json");
+                        else
+                            requestContent = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
                         responseMessage = await client.PostAsync(methodAddress, requestContent).ConfigureAwait(false);
                         break;
                     case HttpVerb.Put:

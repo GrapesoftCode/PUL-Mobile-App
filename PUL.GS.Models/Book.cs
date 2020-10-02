@@ -22,6 +22,7 @@ namespace PUL.GS.Models
         public double PerPerson { get; set; }
         public double Tip { get; set; }
         public double Total { get; set; }
+        public string PlayerId { get; set; }
         public string userId { get; set; }
         public string establishmentId { get; set; }
 

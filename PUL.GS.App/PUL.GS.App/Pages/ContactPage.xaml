@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.ContactPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Text="Chats"
+                       HorizontalOptions="CenterAndExpand" 
+                       FontAttributes="None"
+                       TextColor="#121112"
+                       FontSize="40"
+                       FontFamily="{StaticResource SSPBold}"/>
+                <CollectionView Grid.Row="1"
+                                Margin="0,0,0,0"
+                                ItemsSource="{Binding Contacts}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding CurrentContact}"
+                                SelectionChangedCommand="{Binding EnterContactCommand}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Frame BackgroundColor="White"
+                                       HeightRequest="150"
+                                       BorderColor="#EDEFEF"
+                                       CornerRadius="0"
+                                       Padding="0"
+                                       HasShadow="True"
+                                       Margin="3,0,2,0">
+                                    <Grid ColumnSpacing="0"
+                                          RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".35*"></ColumnDefinition>
+                                            <ColumnDefinition Width=".35*"></ColumnDefinition>
+                                            <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Column="0"
+                                               Grid.RowSpan="4"
+                                               CornerRadius="500"
+                                               Margin="10">
+                                            <Image Source="image_3.png"
+                                                   Aspect="AspectFit"></Image>
+                                        </Frame>
+                                        
+                                        <Label  Grid.Column="1"
+                                                Grid.Row="1"
+                                                VerticalOptions="End"
+                                                FontAttributes="None"
+                                                FontSize="14"
+                                                FontFamily="{StaticResource SSPRegular}"
+                                                TextColor="#121112"
+                                                Text="{Binding FullName}"></Label>
+
+                                        <Label Grid.Column="1"
+                                               Grid.Row="2"                                                
+                                               Text="El ultimo mensaje enviado/recibido a este usuario"
+                                               VerticalOptions="Center"
+                                               FontAttributes="None"
+                                               TextColor="Gray" 
+                                               FontSize="10"
+                                               FontFamily="{StaticResource SSPSemibold}"></Label>
+
+
+                                        <Label Grid.Column="2"
+                                               Grid.Row="1"
+                                               Text="Ha 1 km de ti"
+                                               FontSize="10"
+                                               FontFamily="{StaticResource SSPRegular}"
+                                               TextColor="OrangeRed"
+                                               VerticalOptions="EndAndExpand"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center"></Label>
+
+                                        <Frame Grid.Column="2"
+                                               Grid.Row="2"
+                                               Margin="40,5,40,0"
+                                               Padding="5"
+                                               BackgroundColor="OrangeRed"
+                                               CornerRadius="100"
+                                               HeightRequest="20">
+                                            <Label Text="4"
+                                                   TextColor="Black"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"></Label>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -59,8 +59,8 @@ namespace PUL.GS.App.Droid
 
             OneSignal.Current.StartInit("58997a76-3b19-4c01-9909-85d729b19784")
             .Settings(new Dictionary<string, bool>() {
-    { IOSSettings.kOSSettingsKeyAutoPrompt, false },
-    { IOSSettings.kOSSettingsKeyInAppLaunchURL, false } })
+            { IOSSettings.kOSSettingsKeyAutoPrompt, false },
+            { IOSSettings.kOSSettingsKeyInAppLaunchURL, false } })
             .InFocusDisplaying(OSInFocusDisplayOption.Notification)
             .EndInit();
 

@@ -34,14 +34,14 @@ namespace PUL.GS.App.Infrastructure
             return response;
         }
 
-        public Response<User> GetUserByCredentials(string user, string password, string token)
+        public Response<User> GetUserByCredentials(User user, string token)
         {
             var response = new Response<User>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, User>();
                 var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Account.GetUserByCredentials}/{user}/{password}", HttpVerb.Get, null, token).Result;
+                    $"{ServiceURIs.Account.GetUserByCredentials}/{user.Username}/{user.Password}", HttpVerb.Get, user, token).Result;
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

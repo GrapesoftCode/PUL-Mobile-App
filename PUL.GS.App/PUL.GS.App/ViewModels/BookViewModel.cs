@@ -92,6 +92,7 @@ namespace PUL.GS.App.ViewModels
                             CurrentBook.Persons = Persons;
                             CurrentBook.Hour = Hour.ToString("hh:mm:ss tt");
                             CurrentBook.Date = Date.ToString("dd/MM/yyyy");
+                            CurrentBook.PlayerId = CurrentBook.User.PlayerId;
                             CurrentBook.TotalMinimumConsumption = CurrentTable.MinimumConsumption * Persons;
 
                             await CoreMethods.PushPageModel<BookMenuViewModel>(CurrentBook);

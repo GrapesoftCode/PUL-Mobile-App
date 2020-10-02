@@ -74,6 +74,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Combo.resx</DependentUpon>
     </Compile>
+    <Compile Update="Infrastructure\ServiceURIs\Contact.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Contact.resx</DependentUpon>
+    </Compile>
     <Compile Update="Infrastructure\ServiceURIs\Establishment.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -83,6 +88,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Infrastructure\ServiceURIs\Notification.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Notification.resx</DependentUpon>
     </Compile>
     <Compile Update="Infrastructure\ServiceURIs\Promotion.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -112,6 +122,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Combo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Infrastructure\ServiceURIs\Contact.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Contact.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Infrastructure\ServiceURIs\Establishment.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Establishment.Designer.cs</LastGenOutput>
@@ -119,6 +133,10 @@
     <EmbeddedResource Update="Infrastructure\ServiceURIs\Menu.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Infrastructure\ServiceURIs\Notification.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Notification.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Infrastructure\ServiceURIs\Promotion.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,10 +155,16 @@
     <EmbeddedResource Update="Pages\BookMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BookSplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\BrowserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\ChatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ContactPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\EstablishmentDetailPage.xaml">

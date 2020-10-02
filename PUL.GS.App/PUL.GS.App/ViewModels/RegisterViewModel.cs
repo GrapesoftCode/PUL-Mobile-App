@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Com.OneSignal;
 using FreshMvvm;
 using PUL.GS.App.Infrastructure;
 using PUL.GS.Models;
@@ -38,6 +39,11 @@ namespace PUL.GS.App.ViewModels
                 dialogs.ShowLoading("Conectando");
 
                 NewUser.Role = new Role { Id = 3, Name = "Puler" };
+                Com.OneSignal.OneSignal.Current.IdsAvailable(new Com.OneSignal.Abstractions.IdsAvailableCallback((playerID, pushToken) =>
+                {
+                    NewUser.PlayerId = playerID;
+                }));
+
                 var result = _accountAgent.AddUser(NewUser);
                 if (result.Success)
                 {

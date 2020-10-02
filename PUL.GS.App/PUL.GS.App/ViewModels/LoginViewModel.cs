@@ -51,7 +51,7 @@ namespace PUL.GS.App.ViewModels
 
                 if (token.Success)
                 {
-                    var result = _accountAgent.GetUserByCredentials(UserName, Password, token.objectResult);
+                    var result = _accountAgent.GetUserByCredentials(user, token.objectResult);
                     if (result.Success)
                     {
                         CurrentUser = result.objectResult;
@@ -154,7 +154,9 @@ namespace PUL.GS.App.ViewModels
 
                         await App.Current.MainPage.Navigation.PushAsync(new MasterTabbedNavigationService(CurrentUser));
                     }
-
+                }
+                else {
+                    dialogs.Alert($"El usuario/contraseña no coinciden.");
                 }
 
 

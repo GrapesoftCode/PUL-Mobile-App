@@ -98,6 +98,13 @@
                                         </Grid>
                                     </DataTemplate>
                                 </CollectionView.GroupHeaderTemplate>
+                                <CollectionView.EmptyView>
+                                    <Label FontAttributes="Bold"
+                                           FontSize="Large"
+                                           TextColor="#121112"
+                                           HorizontalTextAlignment="Center"
+                                           Text="Aún no se carga la carta para el establecimiento"></Label>
+                                </CollectionView.EmptyView>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>

@@ -22,14 +22,14 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Account {
+    internal class Notification {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Account() {
+        internal Notification() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PUL.GS.App.Infrastructure.ServiceURIs.Account", typeof(Account).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PUL.GS.App.Infrastructure.ServiceURIs.Notification", typeof(Notification).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,11 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a session.
+        ///   Busca una cadena traducida similar a notifications.
         /// </summary>
-        internal static string AddUser {
+        internal static string CreateNotification {
             get {
-                return ResourceManager.GetString("AddUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a session/login.
-        /// </summary>
-        internal static string GetToken {
-            get {
-                return ResourceManager.GetString("GetToken", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a user/getUserByCredentials.
-        /// </summary>
-        internal static string GetUserByCredentials {
-            get {
-                return ResourceManager.GetString("GetUserByCredentials", resourceCulture);
+                return ResourceManager.GetString("CreateNotification", resourceCulture);
             }
         }
     }

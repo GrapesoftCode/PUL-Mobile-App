@@ -85,7 +85,7 @@ namespace PUL.GS.App
             _tabbedNavigationPage.AddTab<HomeViewModel>(null, "home.png", CurrentUser);
             _tabbedNavigationPage.AddTab<BrowserViewModel>(null, "browser.png", CurrentUser);
             _tabbedNavigationPage.AddTab<RoomsViewModel>(null, "pulear.png", CurrentUser);
-            _tabbedNavigationPage.AddTab<RoomsViewModel>(null, "message.png", CurrentUser);
+            _tabbedNavigationPage.AddTab<ContactViewModel>(null, "message.png", CurrentUser);
 
             var masterPage = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser);
             masterPage.Title = "Master View Model";

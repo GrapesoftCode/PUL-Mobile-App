@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
+using Com.OneSignal;
 using FreshMvvm;
 using PUL.GS.Models;
+using PUL.GS.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -91,7 +93,33 @@ namespace PUL.GS.App.ViewModels
                         if (result.Success)
                         {
                             //await CoreMethods.PopModalNavigationService();
-                            dialogs.Alert($"Tu reservación está pendiente.");
+                            //dialogs.Alert($"Tu reservación está pendiente.");
+                            string[] playersId = new string[] { "All" };
+                            Notification notification = new Notification()
+                            {
+                                app_id = "5b7438fc-33c7-4ca1-bfe6-2cccfae4788d",
+                                url = "http://grapesoft-001-site1.ctempurl.com/",
+                                included_segments = playersId,
+                                headings = new Language()
+                                {
+                                    en = "PUL Reservación"
+                                },
+                                contents = new Language() {
+                                    en = "Tienes una reservación pendiente."
+                                }
+                            };
+
+                            var notificationResult = notificationAgent.CreateNotification(notification);
+                            if (!notificationResult.Success)
+                            {
+                                result.Error = new Error()
+                                {
+                                    Message = $"Se actualizo la solicitud y el usuario no fue notificado, contacte al area de sistemas."
+                                };
+                            }
+                            else {
+                                await CoreMethods.PushPageModel<BookSplashViewModel>(notificationResult);
+                            }
                         }
 
 

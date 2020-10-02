@@ -63,28 +63,28 @@
                                     FontFamily="{StaticResource SSPSemibold}"></Label>
                                     <Image Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Source="qr.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100" BackgroundColor="AliceBlue"></Image>
                                     <Label Grid.Column="1"
-                                Grid.ColumnSpan="2" 
-                                Grid.Row="2" 
-                                Text="{Binding CurrentBook.Establishment.Name}" 
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="End"
-                                FontSize="30"
-                                FontAttributes="None"
-                                TextColor="#121112"
-                                Margin="0"
-                                FontFamily="{StaticResource SSPBold}"></Label>
+                                            Grid.ColumnSpan="2" 
+                                            Grid.Row="2" 
+                                            Text="{Binding CurrentBook.Establishment.Name}" 
+                                            HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="End"
+                                            FontSize="28"
+                                            FontAttributes="None"
+                                            TextColor="#121112"
+                                            Margin="0"
+                                            FontFamily="{StaticResource SSPBold}"></Label>
 
                                     <Label Grid.Column="1" 
-                                Grid.ColumnSpan="2" 
-                                Grid.Row="3" 
-                                Margin="0"
-                                Text="{Binding CurrentBook.Table.Location, StringFormat='Mesa {0}'}" 
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="Start"
-                                FontSize="16"
-                                FontAttributes="None"
-                                TextColor="#121112"
-                                FontFamily="{StaticResource SSPSemibold}"></Label>
+                                        Grid.ColumnSpan="2" 
+                                        Grid.Row="3" 
+                                        Margin="0"
+                                        Text="{Binding CurrentBook.Table.Location, StringFormat='Mesa {0}'}" 
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="Start"
+                                        FontSize="16"
+                                        FontAttributes="None"
+                                        TextColor="#121112"
+                                        FontFamily="{StaticResource SSPSemibold}"></Label>
 
                                     <Image Grid.Column="0" Grid.Row="4" Source="persons.png" HorizontalOptions="StartAndExpand"
                                 HeightRequest="14"

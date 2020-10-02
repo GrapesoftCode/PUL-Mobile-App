@@ -37,12 +37,20 @@ namespace PUL.GS.App.ViewModels
             timeZoneKey = "Central Standard Time (Mexico)"
         };
 
+        readonly OneSignal oneSignal = new OneSignal()
+        {
+            baseUrl = "https://onesignal.com/api/v1/",
+            timeZoneKey = "Central Standard Time (Mexico)"
+        };
+
         public readonly EstablishmentData establishmentAgent;
         public readonly PromotionData promotionAgent;
         public readonly ComboData comboAgent;
         public readonly TableData tableAgent;
         public readonly MenuData menuAgent;
         public readonly BookData bookAgent;
+        public readonly NotificationData notificationAgent;
+        public readonly ContactData contactAgent;
 
         public BaseViewModel()
         {
@@ -52,6 +60,8 @@ namespace PUL.GS.App.ViewModels
             tableAgent = new TableData(appSettings);
             menuAgent = new MenuData(appSettings);
             bookAgent = new BookData(appSettings);
+            notificationAgent = new NotificationData(oneSignal);
+            contactAgent = new ContactData(appSettings);
         }
     }
 }
