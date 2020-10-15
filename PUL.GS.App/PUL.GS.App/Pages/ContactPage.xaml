@@ -31,7 +31,7 @@
                         <DataTemplate>
                             <Grid>
                                 <Frame BackgroundColor="White"
-                                       HeightRequest="150"
+                                       HeightRequest="100"
                                        BorderColor="#EDEFEF"
                                        CornerRadius="0"
                                        Padding="0"
@@ -46,7 +46,7 @@
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width=".35*"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
                                             <ColumnDefinition Width=".35*"></ColumnDefinition>
                                             <ColumnDefinition Width=".3*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
@@ -61,7 +61,7 @@
                                         
                                         <Label  Grid.Column="1"
                                                 Grid.Row="1"
-                                                VerticalOptions="End"
+                                                VerticalOptions="CenterAndExpand"
                                                 FontAttributes="None"
                                                 FontSize="14"
                                                 FontFamily="{StaticResource SSPRegular}"
@@ -80,7 +80,7 @@
 
                                         <Label Grid.Column="2"
                                                Grid.Row="1"
-                                               Text="Ha 1 km de ti"
+                                               Text="A 1km de ti"
                                                FontSize="10"
                                                FontFamily="{StaticResource SSPRegular}"
                                                TextColor="OrangeRed"
@@ -91,13 +91,13 @@
 
                                         <Frame Grid.Column="2"
                                                Grid.Row="2"
-                                               Margin="40,5,40,0"
+                                               Margin="50,5,50,0"
                                                Padding="5"
                                                BackgroundColor="OrangeRed"
                                                CornerRadius="100"
-                                               HeightRequest="20">
+                                               HeightRequest="25">
                                             <Label Text="4"
-                                                   TextColor="Black"
+                                                   TextColor="#ffffff"
                                                    VerticalOptions="Center"
                                                    HorizontalOptions="Center"
                                                    HorizontalTextAlignment="Center"

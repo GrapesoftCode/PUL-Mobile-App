@@ -2,23 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.pul.gs.app" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="28" />
 	<uses-permission android:name="android.permission.INTERNET" />
-  <permission android:name="com.companyname.pul.gs.app.permission.C2D_MESSAGE"
-            android:protectionLevel="signature" />
-  <uses-permission android:name="com.companyname.pul.gs.app.permission.C2D_MESSAGE" />
+	<permission android:name="com.companyname.pul.gs.app.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="com.companyname.pul.gs.app.permission.C2D_MESSAGE" />
 	<application android:label="PUL.GS.App.Android" android:networkSecurityConfig="@xml/network_security_config">
-
-    <receiver android:name="com.onesignal.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-      <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <category android:name="com.companyname.pul.gs.app" />
-      </intent-filter>
-    </receiver>
-
-    <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+		<receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<category android:name="com.companyname.pul.gs.app" />
+			</intent-filter>
+		</receiver>
+		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
+	<uses-permission android:name="android.permission.ACCOUNT_MANAGER" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

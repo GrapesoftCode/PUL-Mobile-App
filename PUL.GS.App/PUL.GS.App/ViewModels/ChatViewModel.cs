@@ -1,4 +1,5 @@
 ﻿//using Acr.UserDialogs;
+using Acr.UserDialogs;
 using FreshMvvm;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -8,6 +9,7 @@ using PUL.GS.Models;
 using PUL.GS.Models.Messages;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -17,13 +19,14 @@ namespace PUL.GS.App.ViewModels
     public class ChatViewModel : FreshBasePageModel
     {
         readonly IChatService ChatService;
-        //IUserDialogs dialogs;
+        IUserDialogs dialogs;
 
         public ObservableCollection<User> Users { get; set; } =
             new ObservableCollection<User>();
 
         public string UserName { get; set; }
         public string GroupName { get; set; }
+        public string FileName { get; set; }
         public string Text { get; set; }
         public User SelectedUser { get; set; }
 
@@ -70,31 +73,32 @@ namespace PUL.GS.App.ViewModels
 
             Messages.Add(message);
 
-            //dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando");
             await ChatService.SendMessageAsync(message);
-            //dialogs.HideLoading();
+            dialogs.HideLoading();
 
         });
 
-        //public ICommand ItemSelectedCommand => new Command(async () => {
+        //public ICommand ItemSelectedCommand => new Command(async () =>
+        //{
 
         //    if (SelectedUser != null)
         //    {
-        //        //var privateMessage =
-        //        //await dialogs
-        //        //.PromptAsync($"Mensaje privado para: {SelectedUser.userId}");
-        //        //if (string.IsNullOrEmpty(privateMessage.Text))
-        //        //{
-        //        //    return;
-        //        //}
+        //        var privateMessage =
+        //        await _dialogs
+        //        .PromptAsync($"Mensaje privado para: {SelectedUser.userId}");
+        //        if (string.IsNullOrEmpty(privateMessage.Text))
+        //        {
+        //            return;
+        //        }
 
-        //        //var message = new SimpleTextMessage(UserName)
-        //        //{
-        //        //    Text= privateMessage.Text,
-        //        //    Recipient = SelectedUser.userId
-        //        //};
+        //        var message = new SimpleTextMessage(UserName)
+        //        {
+        //            Text = privateMessage.Text,
+        //            Recipient = SelectedUser.userId
+        //        };
 
-        //        //await ChatService.SendMessageAsync(message);
+        //        await ChatService.SendMessageAsync(message);
         //        SelectedUser = null;
         //    }
         //});
@@ -107,20 +111,28 @@ namespace PUL.GS.App.ViewModels
         });
 
         public ChatViewModel(
-            //IUserDialogs _dialogs,
+            IUserDialogs _dialogs,
             IChatService _chatService)
         {
             ChatService = _chatService;
-            //dialogs = _dialogs;
+            dialogs = _dialogs;
         }
 
         public override async void Init(object initData)
         {
             base.Init(initData);
-            var data = initData as Tuple<string, string>;
 
-            UserName = data.Item1;
+            var data = initData as Tuple<Greeting, string>;
+
+            UserName = data.Item1.Username;
+            FileName = data.Item1.FileName;
             GroupName = data.Item2;
+
+            var messageGreeting = new PhotoUrlMessage(UserName);
+            if (!string.IsNullOrEmpty(FileName))
+            {
+                messageGreeting.Url = FileName;
+            }
 
             var message = new UserConnectedMessage(UserName, GroupName);
             await ChatService.JoinChannelAsync(message);
@@ -128,6 +140,8 @@ namespace PUL.GS.App.ViewModels
             var user = await ChatService.GetUsersGroup(GroupName);
 
             Users = new ObservableCollection<User>(user);
+
+            Messages.Add(messageGreeting);
         }
 
         protected override void ViewIsAppearing(object sender, EventArgs e)

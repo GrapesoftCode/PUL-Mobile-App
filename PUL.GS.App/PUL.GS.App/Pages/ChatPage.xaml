@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:controls="clr-namespace:PUL.GS.App.Controls"
              xmlns:selectors="clr-namespace:PUL.GS.App.Selectors"
              xmlns:panckeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:converters="clr-namespace:PUL.GS.App.Converters"
@@ -77,17 +78,19 @@
                                 <ColumnDefinition Width=".7*"></ColumnDefinition>
                                 <ColumnDefinition Width=".15*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Frame Padding="0"
+                            <controls:CustomFrame Padding="0"
                                    CornerRadius="30"
                                    HasShadow="False"
                                    HeightRequest="60"
                                    WidthRequest="60"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"
-                                   IsClippedToBounds="True"
-                                   BackgroundColor="{Binding Color}">
+                                   IsClippedToBounds="True" 
+                                                  StartColor="#130E1F"
+                                                      MiddleColor="#E51320"
+                                                      EndColor="#FB910D">
                                 <Image Source="{Binding Avatar}"></Image>
-                            </Frame>
+                            </controls:CustomFrame>
                             <panckeView:PancakeView
                                 BackgroundColor="#E6E9EF"
                                 Grid.Column="1"
@@ -114,23 +117,25 @@
                                 <ColumnDefinition Width=".7*"></ColumnDefinition>
                                 <ColumnDefinition Width=".1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <panckeView:PancakeView
-                                BackgroundColor="Navy"
+                            <controls:CustomFrame
+                               StartColor="#E77F0F"
+                                MiddleColor="#F74E3F"
+                                EndColor="#F74E3F"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
-                                CornerRadius="20,20,20,0"
+                                CornerRadius="10,10,10,0"
                                 IsClippedToBounds="True"
                                 HorizontalOptions="FillAndExpand"
-                                Margin="0,10,15,0">
+                                Margin="0,5,10,0">
                                 <Grid>
-                                    <StackLayout Margin="15">
+                                    <StackLayout Margin="5">
                                         <Label Text="{Binding Text}"
                                                TextColor="White"
                                                FontSize="Small"></Label>
                                     </StackLayout>
                                 </Grid>
                                 
-                            </panckeView:PancakeView>
+                            </controls:CustomFrame>
                         </Grid>
                     </DataTemplate>
                     <DataTemplate x:Key="UserConnected">
@@ -177,11 +182,14 @@
                                    BackgroundColor="{Binding Color}">
                                 <Image Source="{Binding Avatar}"></Image>
                             </Frame>
-                            <Frame CornerRadius="20"
-                                   IsClippedToBounds="False"
-                                   Padding="0"
-                                   Grid.Column="1"
-                                   BackgroundColor="#E6E9EF">
+                            <controls:CustomFrame CornerRadius="20"
+                                                  IsClippedToBounds="False"
+                                                  Padding="0"
+                                                  Grid.Column="1"
+                                                  BackgroundColor="#E6E9EF"
+                                                  StartColor="#E77F0F"
+                                                  MiddleColor="#F74E3F"
+                                                  EndColor="#F74E3F">
                                 <StackLayout Margin="15">
                                     <Label Text="{Binding Sender}"
                                            TextColor="{Binding Color}"
@@ -192,7 +200,7 @@
                                            HorizontalOptions="Fill"></Image>
                                 </StackLayout>
                                 
-                            </Frame>
+                            </controls:CustomFrame>
                         </Grid>
                     </DataTemplate>
                     <DataTemplate x:Key="LocalPhoto">
@@ -203,12 +211,14 @@
                                 <ColumnDefinition Width=".1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Frame CornerRadius="30"
-                                   IsClippedToBounds="False"
-                                   Padding="0"
-                                   Grid.Column="1"
-                                   Grid.ColumnSpan="2"
-                                   BackgroundColor="Navy">
+                            <controls:CustomFrame CornerRadius="30"
+                                                  IsClippedToBounds="False"
+                                                  Padding="0"
+                                                  Grid.Column="1"
+                                                  Grid.ColumnSpan="2"
+                                                  StartColor="#130E1F"
+                                                  MiddleColor="#E51320"
+                                                  EndColor="#FB910D">
                                 <StackLayout Margin="15">
                                     <Image Source="{Binding Base64Photo, Converter={StaticResource ToImage}}"
                                            Aspect="AspectFill"
@@ -217,7 +227,7 @@
                                         
                                     </Image>
                                 </StackLayout>
-                            </Frame>
+                            </controls:CustomFrame>
                         </Grid>
                     </DataTemplate>
                 </ResourceDictionary>

@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PUL.GS.App.Controls"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.PulerPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <RefreshView Command="{Binding RefreshCommand}"
+                         IsRefreshing="{Binding IsRefreshing}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*"></ColumnDefinition>
+                        <ColumnDefinition Width=".6*"></ColumnDefinition>
+                        <ColumnDefinition Width=".2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!--<Switch Grid.Row="0"
+                        Grid.Column="1"
+                        IsToggled="{Binding IsToggled}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand"/>-->
+
+
+                    <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                        <!-- Background Frame -->
+                        <Frame BackgroundColor="White" BorderColor="Black"  Padding="0" Margin="0" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="140" HorizontalOptions="EndAndExpand">
+                            <Frame.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Single">
+                                    <On Platform="iOS" Value="15"></On>
+                                    <On Platform="Android" Value="20"></On>
+                                </OnPlatform>
+                            </Frame.CornerRadius>
+                        </Frame>
+
+                        <!-- Running Frame -->
+                        <controls:CustomFrame x:Name="runningFrame" StartColor="#130E1F" MiddleColor="#E51320" EndColor="#FB910D" CornerRadius="30"
+                                              GradientOrientation="Horizontal"
+                                              HeightRequest="30" WidthRequest="70" HasShadow="False" Margin="0" Padding="0"  HorizontalOptions="Start" VerticalOptions="Center">
+                            <Frame.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Single">
+                                    <On Platform="iOS" Value="15"></On>
+                                    <On Platform="Android" Value="20"></On>
+                                </OnPlatform>
+                            </Frame.CornerRadius>
+                        </controls:CustomFrame>
+
+                        <!-- Selection text1-->
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="70" HeightRequest="30" BackgroundColor="Transparent">
+                            <StackLayout.GestureRecognizers>
+                                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding TappedActivityCommand}" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label x:Name="text1" Text="Actividad" TextColor="White" WidthRequest="70" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+                        </StackLayout>
+
+                        <!-- Selection text2-->
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="70" HeightRequest="30" BackgroundColor="Transparent">
+                            <StackLayout.GestureRecognizers>
+                                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding TappedPulersCommand}" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label x:Name="text2" Text="Pulers" TextColor="Red" WidthRequest="70" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <ImageButton Grid.Row="0"
+                             Grid.Column="2"
+                             Aspect="AspectFit"
+                             Source="{Binding Phantom}"
+                             BackgroundColor="Transparent"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             Command="{Binding PhantomCommand}"
+                                 CommandParameter="{Binding Phantom}">
+                    </ImageButton>
+
+                    <CollectionView Grid.Row="1"
+                                Grid.ColumnSpan="3"
+                                Margin="0,0,0,0"
+                                ItemsSource="{Binding Contacts}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding CurrentContact}"
+                                SelectionChangedCommand="{Binding EnterContactCommand}"
+                                IsVisible="{Binding Activity}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Frame BackgroundColor="White"
+                                       HeightRequest="100"
+                                       BorderColor="#EDEFEF"
+                                       CornerRadius="0"
+                                       Padding="0"
+                                       HasShadow="True"
+                                       Margin="3,0,2,0">
+                                        <Grid ColumnSpacing="0"
+                                          RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width=".25*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".25*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Column="0"
+                                               CornerRadius="200"
+                                               Margin="10">
+                                                <Image Source="image_3.png"
+                                                   Aspect="AspectFit"></Image>
+                                            </Frame>
+
+                                            <Label  Grid.Column="1"
+                                                VerticalOptions="CenterAndExpand"
+                                                FontAttributes="None"
+                                                FontSize="14"
+                                                FontFamily="{StaticResource SSPRegular}"
+                                                TextColor="#121112"
+                                                Text="{Binding FirstName}"></Label>
+
+                                            <Label Grid.Column="2"                                            
+                                               Text="Reservó en ..."
+                                               VerticalOptions="Center"
+                                               FontAttributes="None"
+                                               TextColor="Gray" 
+                                               FontSize="10"
+                                               FontFamily="{StaticResource SSPSemibold}"></Label>
+
+
+                                            <Image Grid.Column="3"
+                                               Source="dienteleon.jpg"
+                                               Aspect="AspectFit"
+                                               Margin="10"></Image>
+
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <CollectionView Grid.Row="1"
+                                Grid.ColumnSpan="3"
+                                Margin="0,0,0,0"
+                                ItemsSource="{Binding Contacts}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding CurrentContact}"
+                                SelectionChangedCommand="{Binding EnterContactCommand}"
+                                IsVisible="{Binding Pulers}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Frame BackgroundColor="White"
+                                       HeightRequest="100"
+                                       BorderColor="#EDEFEF"
+                                       CornerRadius="0"
+                                       Padding="0"
+                                       HasShadow="True"
+                                       Margin="3,0,2,0">
+                                        <Grid ColumnSpacing="0"
+                                          RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Column="0"
+                                               CornerRadius="200"
+                                               Margin="10">
+                                                <Image Source="image_3.png"
+                                                   Aspect="AspectFit"></Image>
+                                            </Frame>
+
+                                            <Label  Grid.Column="1"
+                                                VerticalOptions="CenterAndExpand"
+                                                FontAttributes="None"
+                                                FontSize="14"
+                                                FontFamily="{StaticResource SSPRegular}"
+                                                TextColor="#121112"
+                                                Text="{Binding FirstName}"></Label>
+
+                                            <Label Grid.Column="2"                                            
+                                               Text="A 1km de ti"
+                                               VerticalOptions="Center"
+                                               FontAttributes="None"
+                                               TextColor="Gray" 
+                                               FontSize="10"
+                                               FontFamily="{StaticResource SSPSemibold}"></Label>
+
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+            </RefreshView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
