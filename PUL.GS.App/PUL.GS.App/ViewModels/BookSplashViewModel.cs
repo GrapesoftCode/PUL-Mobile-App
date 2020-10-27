@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Timers;
 
 namespace PUL.GS.App.ViewModels
@@ -34,26 +35,11 @@ namespace PUL.GS.App.ViewModels
         }
 
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        protected async override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
-
-            Timer timer = new Timer();
-            timer.Interval = 5000;
-            timer.AutoReset = false;
-            timer.Elapsed += Timer_Elapsed;
-            timer.Start();
-        }
-
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            BookSplashText = "Tu reserva ha sido aceptada";
-            BookSplashImage = "check.png";
-        }
-
-        protected override void ViewIsDisappearing(object sender, EventArgs e)
-        {
-            base.ViewIsDisappearing(sender, e);
+            await Task.Delay(5000);
+            await CoreMethods.PopToRoot(false);
         }
     }
 }

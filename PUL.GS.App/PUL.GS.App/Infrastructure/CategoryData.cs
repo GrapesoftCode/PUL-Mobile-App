@@ -7,24 +7,23 @@ using System.Text;
 
 namespace PUL.GS.App.Infrastructure
 {
-    public class BookData
+    public class CategoryData
     {
         private readonly AppSettings settings;
 
-        public BookData(AppSettings configuration)
+        public CategoryData(AppSettings configuration)
         {
             settings = configuration;
         }
 
-
-        public Response<Book> AddBook(Book book)
+        public Response<IEnumerable<Category>> GetCategoriesHome()
         {
-            var response = new Response<Book>() { Success = true };
+            var response = new Response<IEnumerable<Category>>() { Success = true };
             try
             {
-                var client = new HttpClientWrapper<Book, Book>();
+                var client = new HttpClientWrapper<User, IEnumerable<Category>>();
                 var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    ServiceURIs.Book.AddBook, HttpVerb.Post, book).Result;
+                    $"{ServiceURIs.Category.GetCategoryHome}", HttpVerb.Get).Result;
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)
@@ -35,15 +34,14 @@ namespace PUL.GS.App.Infrastructure
             return response;
         }
 
-
-        public Response<Book> GetBookByUserId(string userId)
+        public Response<IEnumerable<Menu>> GetListHomeByCategory(string category)
         {
-            var response = new Response<Book>() { Success = true };
+            var response = new Response<IEnumerable<Menu>>() { Success = true };
             try
             {
-                var client = new HttpClientWrapper<Book, Book>();
+                var client = new HttpClientWrapper<User, IEnumerable<Menu>>();
                 var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Book.GetBookByUserId}/{userId}", HttpVerb.Get).Result;
+                    $"{ServiceURIs.Category.GetListHomeByCategory}/{category}", HttpVerb.Get).Result;
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

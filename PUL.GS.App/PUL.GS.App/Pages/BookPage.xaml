@@ -11,33 +11,40 @@
     <ContentPage.Resources>
         <converters:DateTimeToTimeSpanConverter x:Key="DateTimeToTimeSpanConverter"></converters:DateTimeToTimeSpanConverter>
     </ContentPage.Resources>
-    <Grid BackgroundColor="#e8e8e8" ColumnSpacing="0" RowSpacing="0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
+    <FlexLayout>
+        <ScrollView>
+            <Grid BackgroundColor="#e8e8e8" ColumnSpacing="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0,0,0" BackgroundColor="#ffffff">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            
-            <Image Grid.Row="0"
+                <Grid Grid.Row="0" Margin="0,0,0,0" BackgroundColor="#ffffff">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0"
                    Grid.Column="0"
                    Grid.ColumnSpan="4"
                    Source="{Binding CurrentBook.Establishment.Logo.Uri}"
                    Aspect="Fill"
                    HeightRequest="250"></Image>
 
-            <Label FontAttributes="Bold" 
+                    <StackLayout BackgroundColor="#E2E2E2" Opacity=".1"
+                         Padding="0" HorizontalOptions="CenterAndExpand">
+
+                    </StackLayout>
+
+                    <Label FontAttributes="Bold" 
                    FontSize="30"
                    FontFamily="{StaticResource SSPBold}"
                    TextColor="#FFFFFF"
@@ -47,7 +54,7 @@
                    VerticalOptions="Center"
                    HorizontalOptions="Center"></Label>
 
-            <Label FontAttributes="None" 
+                    <Label FontAttributes="None" 
                    FontSize="Default" 
                    FontFamily="{StaticResource SSPRegular}"
                    TextColor="#FFFFFF" 
@@ -58,7 +65,7 @@
                    HorizontalOptions="StartAndExpand" 
                    Margin="10"></Label>
 
-            <Label FontAttributes="None" 
+                    <Label FontAttributes="None" 
                    FontSize="14"
                    FontFamily="{StaticResource SSPRegular}"
                    TextColor="#FFFFFF"
@@ -70,15 +77,15 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="10"></Label>
 
-            <Image Grid.Row="0" 
+                    <Image Grid.Row="0" 
                    Grid.Column="3"
                    VerticalOptions="End"
                    HorizontalOptions="CenterAndExpand"
                    Margin="10"
                    Source="star.png">
-            </Image>
+                    </Image>
 
-            <Label FontAttributes="Bold" 
+                    <Label FontAttributes="Bold" 
                    FontSize="14"
                    FontFamily="{StaticResource SSPRegular}"
                    TextColor="#FFFFFF"
@@ -88,17 +95,17 @@
                    VerticalOptions="EndAndExpand"
                    HorizontalOptions="EndAndExpand"
                    Margin="10">
-            </Label>
-        </Grid>
-        <Grid Grid.Row="1" Padding="5" Margin="0,0,0,10" BackgroundColor="#ffffff" VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label  Grid.Row="0" 
+                    </Label>
+                </Grid>
+                <Grid Grid.Row="1" Padding="5" Margin="0,0,0,10" BackgroundColor="#ffffff" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".7*"></ColumnDefinition>
+                        <ColumnDefinition Width=".3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label  Grid.Row="0" 
                     Grid.Column="0"
                     FontAttributes="None"
                     FontSize="16"
@@ -107,32 +114,32 @@
                     Text="Número de personas" 
                     VerticalOptions="Center" 
                     Padding="20,0,0,0">
-            </Label>
+                    </Label>
 
-            <Frame Grid.Row="0" 
+                    <Frame Grid.Row="0" 
                    Grid.Column="1"
                    HasShadow="True" 
                    BorderColor="#EDEFEF" 
-                   Margin="0,0,0,5" 
-                   Padding="10,0,10,0" 
+                   Margin="0,0,0,0" 
+                   Padding="0,0,0,0" 
                    CornerRadius="0" 
                    HorizontalOptions="Center">
-                <controls:CustomStepper  Text="{Binding Persons}"></controls:CustomStepper>
-            </Frame>
+                        <controls:CustomStepper  Text="{Binding Persons}"></controls:CustomStepper>
+                    </Frame>
 
-        </Grid>
+                </Grid>
 
-        <Grid Grid.Row="2"  BackgroundColor="#ffffff" Padding="5" Margin="0,0,0,10" VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-            </Grid.RowDefinitions>
+                <Grid Grid.Row="2"  BackgroundColor="#ffffff" Padding="5" Margin="0,0,0,10" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".7*"></ColumnDefinition>
+                        <ColumnDefinition Width=".3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" 
+                    <Label Grid.Row="0" 
                    Grid.Column="0" 
                    FontAttributes="None"
                    FontSize="16"
@@ -141,8 +148,8 @@
                    Text="Fecha" 
                    VerticalOptions="Center" 
                    Padding="20,0,0,0">
-            </Label>
-            <Frame Grid.Row="0" 
+                    </Label>
+                    <Frame Grid.Row="0" 
                    Grid.Column="1" 
                    HasShadow="True" 
                    BorderColor="#EDEFEF"
@@ -150,7 +157,7 @@
                    Padding="10,0,10,0" 
                    CornerRadius="0"
                    HorizontalOptions="CenterAndExpand">
-                <DatePicker FontAttributes="None"
+                        <DatePicker FontAttributes="None"
                             FontSize="14"
                             FontFamily="{StaticResource SSPRegular}"
                             TextColor="#121112"
@@ -160,10 +167,10 @@
                             Format="dd/MM/yyyy" 
                             MinimumDate="{Binding MinimumDate}"
                             Margin="0"/>
-            </Frame>
+                    </Frame>
 
 
-            <Label Grid.Row="1" 
+                    <Label Grid.Row="1" 
                    Grid.Column="0" 
                    FontAttributes="None"
                    FontSize="16"
@@ -171,14 +178,14 @@
                    TextColor="#121112" 
                    Text="Hora"
                    VerticalOptions="StartAndExpand" 
-                   Padding="20,0,0,0">                
-            </Label>
-            <Label Grid.Row="1" Grid.Column="0" FontAttributes="Italic" Text="Tienes 15 minutos de tolerancia o si no se cancela tu reserva"
+                   Padding="20,0,0,0">
+                    </Label>
+                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Italic" Text="Tienes 15 minutos de tolerancia o si no se cancela tu reserva"
                    VerticalOptions="EndAndExpand" Padding="20,0,0,0"
                    TextColor="Gray" FontSize="9"></Label>
-            <Frame Grid.Row="1" Grid.Column="1" HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,0,5" Padding="10,0,10,0" CornerRadius="0"
+                    <Frame Grid.Row="1" Grid.Column="1" HasShadow="True" BorderColor="#EDEFEF" Margin="0,0,0,5" Padding="10,0,10,0" CornerRadius="0"
                    HorizontalOptions="Center">
-                <TimePicker FontAttributes="None"
+                        <TimePicker FontAttributes="None"
                             FontSize="14"
                             FontFamily="{StaticResource SSPRegular}"
                             TextColor="#121112" 
@@ -187,64 +194,64 @@
                             VerticalOptions="Center"
                             Format="hh:mm tt"
                             Margin="0"/>
-            </Frame>
-        </Grid>
+                    </Frame>
+                </Grid>
 
-        <Grid Grid.Row="3" BackgroundColor="#ffffff"  Padding="5,10,5,10" Margin="0,0,0,10">
-            <StackLayout>
-                <CollectionView 
-                        ItemsSource="{Binding Tables}"
-                        VerticalOptions="Center" 
-                        HorizontalOptions="Center" 
-                        Grid.Row="1" 
-                        BackgroundColor="#ffffff"
+                <Grid Grid.Row="3" BackgroundColor="#ffffff"  Padding="5,10,5,10" Margin="0,0,0,10">
+                    <StackLayout>
+                        <CollectionView Grid.Row="1"
+                                        ItemsSource="{Binding Tables}"
+                                        VerticalOptions="FillAndExpand" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        BackgroundColor="#ffffff"
                         SelectionMode="Single"
                         SelectedItem="{Binding CurrentTable}"
-                        SelectionChangedCommand="{Binding TableCommand}">
-                    <CollectionView.EmptyView>
-                        <Label FontAttributes="Bold"
+                        SelectionChangedCommand="{Binding TableCommand}"
+                            VerticalScrollBarVisibility="Never">
+                            <CollectionView.EmptyView>
+                                <Label FontAttributes="Bold"
                                FontSize="Large"
                                TextColor="#121112"
                                HorizontalTextAlignment="Center"
                                Text="No hay mesas en este establecimiento"></Label>
-                    </CollectionView.EmptyView>
-                    <CollectionView.Header>
-                        <StackLayout BackgroundColor="#fffff">
-                            <Label Text="Selecciona tu mesa"
+                            </CollectionView.EmptyView>
+                            <CollectionView.Header>
+                                <StackLayout BackgroundColor="#fffff">
+                                    <Label Text="Selecciona tu mesa"
                                    FontAttributes="None"
                                    FontSize="16"
                                    FontFamily="{StaticResource SSPSemibold}"
                                    TextColor="#121112" 
                                    HorizontalTextAlignment="Start"
                                    Padding="20,0,0,0"/>
-                        </StackLayout>
-                    </CollectionView.Header>
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="1"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Frame BorderColor="#EDEFEF"
+                                </StackLayout>
+                            </CollectionView.Header>
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="1"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Frame BorderColor="#EDEFEF"
                                        CornerRadius="10"
                                        Padding="30"
                                        HasShadow="True"
                                        Margin="5"
                                        Grid.ColumnSpan="2">
-                                    <Grid ColumnSpacing="0" RowSpacing="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
+                                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"></RowDefinition>
-                                            <RowDefinition Height="auto"></RowDefinition>
-                                            <RowDefinition Height="auto"></RowDefinition>
-                                            <RowDefinition Height="auto"></RowDefinition>
-                                        </Grid.RowDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
 
-                                        <Label Text="{Binding Location}" 
+                                                <Label Text="{Binding Location}" 
                                                FontAttributes="None"
                                                FontSize="20"
                                                FontFamily="{StaticResource SSPBold}"
@@ -252,7 +259,7 @@
                                                Grid.Column="0" 
                                                Grid.Row="0" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="{Binding Quantity, StringFormat='{0} personas'}" 
+                                                <Label Text="{Binding Quantity, StringFormat='{0} personas'}" 
                                                FontAttributes="None"
                                                FontSize="14"
                                                FontFamily="{StaticResource SSPRegular}"
@@ -260,33 +267,36 @@
                                                Grid.Column="0" 
                                                Grid.Row="1" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="{Binding MinimumConsumption, StringFormat='{0:C2}'}" 
+                                                <Label Text="{Binding MinimumConsumption, StringFormat='{0:C2}'}" 
                                                FontAttributes="None"
                                                FontSize="11"
                                                FontFamily="{StaticResource SSPLight}"
                                                Grid.Column="0" 
                                                Grid.Row="2" 
                                                HorizontalOptions="Start"></Label>
-                                        <Label Text="Consumo mínimo por persona"  
+                                                <Label Text="Consumo mínimo por persona"  
                                                FontAttributes="None"
                                                FontSize="11"
                                                FontFamily="{StaticResource SSPLight}"
                                                Grid.Column="0" 
                                                Grid.Row="3" 
                                                HorizontalOptions="Start"></Label>
-                                        <Image Source="available.png" Aspect="AspectFit" Grid.Column="1" Grid.RowSpan="4" 
+                                                <Image Source="available.png" Aspect="AspectFit" Grid.Column="1" Grid.RowSpan="4" 
                                                HeightRequest="80" 
                                                WidthRequest="80"></Image>
-                                        <!--<controls:CustomStepper Grid.Row="4" Grid.Column="1" Text="{Binding TableQuantity}"></controls:CustomStepper>-->
+                                                <!--<controls:CustomStepper Grid.Row="4" Grid.Column="1" Text="{Binding TableQuantity}"></controls:CustomStepper>-->
 
 
+                                            </Grid>
+                                        </Frame>
                                     </Grid>
-                                </Frame>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-        </Grid>
-    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </FlexLayout>
+   
 </ContentPage>

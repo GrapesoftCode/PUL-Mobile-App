@@ -16,30 +16,10 @@ namespace PUL.GS.App.ViewModels
 {
     public class BookDetailViewModel : BaseViewModel
     {
-        int Tip
-        {
-            get => tip; set
-            {
-                tip = value;
-                OnPropertyChanged();
-            }
-        }
-        double SubtotalTip
-        {
-            get => subtotalTip; set
-            {
-                subtotalTip = value;
-                OnPropertyChanged();
-            }
-        }
-        double Total
-        {
-            get => total; set
-            {
-                total = value;
-                OnPropertyChanged();
-            }
-        }
+        public int Tip { get; set; }
+        public double SubtotalTip { get; set; }
+        public double Total { get; set; }
+
         public Book CurrentBook
         {
             get => currentBook; set
@@ -50,25 +30,12 @@ namespace PUL.GS.App.ViewModels
         }
         private Book currentBook;
         private List<Menu> menus;
-        private bool isRefreshing;
-        private double subtotalTip = 0;
-        private double total = 0;
-        private int tip = 0;
 
         public List<Menu> Menus
         {
             get => menus; set
             {
                 menus = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsRefreshing
-        {
-            get => isRefreshing; set
-            {
-                isRefreshing = value;
                 OnPropertyChanged();
             }
         }
@@ -104,7 +71,8 @@ namespace PUL.GS.App.ViewModels
                                 {
                                     en = "PUL Reservación"
                                 },
-                                contents = new Language() {
+                                contents = new Language()
+                                {
                                     en = "Tienes una reservación pendiente."
                                 }
                             };
@@ -117,7 +85,8 @@ namespace PUL.GS.App.ViewModels
                                     Message = $"Se actualizo la solicitud y el usuario no fue notificado, contacte al area de sistemas."
                                 };
                             }
-                            else {
+                            else
+                            {
                                 await CoreMethods.PushPageModel<BookSplashViewModel>(notificationResult);
                             }
                         }
@@ -130,7 +99,7 @@ namespace PUL.GS.App.ViewModels
                 }
             });
 
-            TipCommand = new Command(async (p) =>
+            TipCommand = new Command((p) =>
             {
                 if (!IsBusy)
                 {
@@ -138,26 +107,36 @@ namespace PUL.GS.App.ViewModels
                     dialogs.ShowLoading("Conectando");
                     Tip = Convert.ToInt32(p.ToString());
                     CurrentBook.TipPercent = Tip;
-                    RefreshItems();
+                    //RefreshItems();
+                    Total = 0;
+                    double percentTip = (double)Tip / (double)100;
+                    SubtotalTip = percentTip * CurrentBook.SubTotal;
+                    Total = CurrentBook.SubTotal + SubtotalTip;
+                    CurrentBook.SubTotal = CurrentBook.SubTotal;
+                    CurrentBook.Total = Total;                    
+
                     dialogs.HideLoading();
                     IsBusy = false;
                 }
             });
 
-            RefreshCommand = new Command(async () =>
-            {
-                IsRefreshing = true;
-                await Task.Delay(3000);
-                RefreshItems();
-                IsRefreshing = false;
-            });
+            //RefreshCommand = new Command(async () =>
+            //{
+            //    IsRefreshing = true;
+            //    await Task.Delay(3000);
+            //    RefreshItems();
+            //    IsRefreshing = false;
+            //});
+
+            Tip = 0;
+            SubtotalTip = 0;
+            Total = 0;
         }
 
         public override void Init(object initData)
         {
             base.Init(initData);
             CurrentBook = initData as Book;
-            RefreshItems();
         }
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
@@ -166,11 +145,10 @@ namespace PUL.GS.App.ViewModels
             Menus = currentBook.Menus;
         }
 
-
-        private void RefreshItems()
-        {
-            SubtotalTip = (CurrentBook.SubTotal * Math.Round((double)Tip / 100, 2));
-            Total = SubtotalTip + CurrentBook.SubTotal;
-        }
+        //private void RefreshItems()
+        //{
+        //    SubtotalTip = Tip * CurrentBook.SubTotal;
+        //    Total = CurrentBook.SubTotal + SubtotalTip;
+        //}
     }
 }

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PUL.GS.App.ViewModels
+namespace PUL.GS.Models
 {
-    public class ItemsGroupViewModel : List<ItemWithGroupViewModel>
+    public class ItemsGroupViewModel : List<Menu>
     {
         public string GroupName { get; private set; }
 
-        public ItemsGroupViewModel(string name, List<ItemWithGroupViewModel> group) : base(group)
+        public ItemsGroupViewModel(string name, List<Menu> group) : base(group)
         {
             this.GroupName = name;
             foreach (var item in group)

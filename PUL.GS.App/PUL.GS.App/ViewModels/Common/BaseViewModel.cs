@@ -51,6 +51,7 @@ namespace PUL.GS.App.ViewModels
         public readonly BookData bookAgent;
         public readonly NotificationData notificationAgent;
         public readonly ContactData contactAgent;
+        public readonly CategoryData categoryAgent;
 
         public BaseViewModel()
         {
@@ -62,6 +63,7 @@ namespace PUL.GS.App.ViewModels
             bookAgent = new BookData(appSettings);
             notificationAgent = new NotificationData(oneSignal);
             contactAgent = new ContactData(appSettings);
+            categoryAgent = new CategoryData(appSettings);
         }
     }
 }

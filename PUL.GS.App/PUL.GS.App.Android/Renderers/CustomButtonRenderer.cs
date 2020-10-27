@@ -64,6 +64,40 @@ namespace PUL.GS.App.Droid.Renderers
             }
         }
 
+        private void UpdateCornerRadius()
+        {
+            if (Control.Background is GradientDrawable backgroundGradient)
+            {
+                var cornerRadius = (Element as CustomButton)?.CornerRadius;
+                if (!cornerRadius.HasValue)
+                {
+                    return;
+                }
+
+                var topLeftCorner = Context.ToPixels(cornerRadius.Value.TopLeft);
+                var topRightCorner = Context.ToPixels(cornerRadius.Value.TopRight);
+                var bottomLeftCorner = Context.ToPixels(cornerRadius.Value.BottomLeft);
+                var bottomRightCorner = Context.ToPixels(cornerRadius.Value.BottomRight);
+
+                var cornerRadii = new[]
+                {
+            topLeftCorner,
+            topLeftCorner,
+
+            topRightCorner,
+            topRightCorner,
+
+            bottomRightCorner,
+            bottomRightCorner,
+
+            bottomLeftCorner,
+            bottomLeftCorner,
+        };
+
+                backgroundGradient.SetCornerRadii(cornerRadii);
+            }
+        }
+
 
         private GradientDrawable DrawGradient(ElementChangedEventArgs<Xamarin.Forms.Button> e)
         {
@@ -77,7 +111,7 @@ namespace PUL.GS.App.Droid.Renderers
                 button.EndColor.ToAndroid().ToArgb(),
             });
 
-            _gradient.SetCornerRadius(button.CornerRadius * 10);
+            //_gradient.SetCornerRadius(button.CornerRadius * 10);
             _gradient.SetStroke(0, button.StartColor.ToAndroid());
 
             return _gradient;

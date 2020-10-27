@@ -1,5 +1,7 @@
 ﻿using PUL.GS.App.Dependencies;
 using PUL.GS.App.Models;
+using PUL.GS.Models.Helpers;
+using PUL.GS.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

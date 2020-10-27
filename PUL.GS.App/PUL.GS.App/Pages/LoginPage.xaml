@@ -8,65 +8,71 @@
              x:Class="PUL.GS.App.Pages.LoginPage"
              NavigationPage.HasNavigationBar="False"
              Visual="Material">
-    <StackLayout BackgroundColor="#ffffff"
-                 HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand"
-                 AutomationId="stackLayoutTop">
-        <FlexLayout AutomationId="FlexLayoutTop"
+    <RelativeLayout  BackgroundColor="#ffffff"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+        <!--<FlexLayout AutomationId="FlexLayoutTop"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Start">
+                    VerticalOptions="Start">-->
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height=".8*"></RowDefinition>
+                    <RowDefinition Height=".2*"></RowDefinition>
                 </Grid.RowDefinitions>
                     <!--<Frame BorderColor="White" CornerRadius="0">-->
                 <Grid Grid.Row="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
+                        <RowDefinition Height=".3*"></RowDefinition>
+                        <RowDefinition Height=".12*"></RowDefinition>
+                        <RowDefinition Height=".12*"></RowDefinition>
+                        <RowDefinition Height=".22*"></RowDefinition>
+                        <RowDefinition Height=".12*"></RowDefinition>
+                        <RowDefinition Height=".12*"></RowDefinition>
+                </Grid.RowDefinitions>
 
                     
                     <Label Grid.Row="0" 
+                           Margin="20,0,0,0"
                            Text="Inicia Sesión"
-                           FontSize="Large"
+                           FontSize="26"
                            HorizontalTextAlignment="Start"
                            FontAttributes="None"
                            TextColor="#414241"
-                           Padding="0,100,0,100"
-                           Margin="30,0,0,0"
                            VerticalTextAlignment="Center"
                            CharacterSpacing="0"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
                            FontFamily="{StaticResource SSPBold}"></Label>
 
 
                     <Frame Grid.Row="1"
-                        HasShadow="True"
-                       Padding="0"
-                       CornerRadius="5"
-                       BorderColor="Transparent"
-                       Margin="30,20,0,10"
-                       BackgroundColor="#EDEFEF">
+                           HasShadow="True"
+                           Margin="20,0,0,0"
+                           Padding="0"
+                           CornerRadius="5"
+                           BorderColor="Transparent"
+                           BackgroundColor="#EDEFEF"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Fill">
                         <controls:CustomEntry Placeholder="Usuario"
-                           Text="{Binding UserName}"
-                           FontFamily="{Binding SSPlt}"
-                           VerticalTextAlignment="Center"
-                           TextColor="Black"
-                           PlaceholderColor="#A9A8A8">
+                                              Text="{Binding UserName}"
+                                              FontFamily="{Binding SSPlt}"
+                                              VerticalTextAlignment="Center"
+                                              TextColor="Black"
+                                              PlaceholderColor="#A9A8A8"
+                                              Margin="0"
+                                              HorizontalOptions="FillAndExpand"
+                                              VerticalOptions="FillAndExpand">
                         </controls:CustomEntry>
                     </Frame>
 
 
                     <Frame Grid.Row="2"
-                        HasShadow="True"
+                           HasShadow="True"
+                           Margin="20,0,0,0"
                        Padding="0"
                        CornerRadius="5"
                        BorderColor="Transparent"
-                       Margin="30,0,0,0"
                        BackgroundColor="#EDEFEF">
                         <controls:CustomEntry Placeholder="Contraseña"
                            Text="{Binding Password}"
@@ -78,12 +84,12 @@
                     </Frame>
 
 
-                    <controls:CustomButton Grid.Row="3"
+                    <controls:CustomButton Grid.Row="4"
                                            Text="Inicia Sesión"
-                        Margin="-5,100,10,20"
-                        Padding="25,15,20,15"
-                        CornerRadius="1"
-                        HorizontalOptions="StartAndExpand"
+                                           CornerRadius="1"
+                                           HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           Padding="20,0,20,0"
                         StartColor="#130E1F"
                         MiddleColor="#E51320"
                         EndColor="#FB910D"
@@ -94,30 +100,30 @@
 
 
 
-                    <controls:CustomButton Grid.Row="4"
+                    <controls:CustomButton Grid.Row="5"
                                            Text="Facebook"
-                        Margin="-5,10,10,20"
-                        Padding="25,15,20,15"
-                        CornerRadius="1"
-                        HorizontalOptions="StartAndExpand"
-                        StartColor="#130E1F"
-                        MiddleColor="#E51320"
-                        EndColor="#FB910D"
-                        TextColor="White"
-                        GradientOrientation="Horizontal"
-                        FontFamily="{StaticResource SSPBold}"
-                        Command="{Binding LoginFacebookCommand}"></controls:CustomButton>
+                                           CornerRadius="1"
+                                           HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           Padding="20,0,20,0"
+                                           StartColor="#130E1F"
+                                           MiddleColor="#E51320"
+                                           EndColor="#FB910D"
+                                           TextColor="White"
+                                           GradientOrientation="Horizontal"
+                                           FontFamily="{StaticResource SSPBold}"
+                                           Command="{Binding LoginFacebookCommand}"></controls:CustomButton>
                 </Grid>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width=".3*"></ColumnDefinition>
+                        <ColumnDefinition Width=".4*"></ColumnDefinition>
+                        <ColumnDefinition Width=".3*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Text="¿Olvidaste tu contraseña?"
                            Grid.Column="0"
-                           Margin="20"
+                           Margin="20,0,0,0"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand"
                            TextColor="#A9A8A8">
@@ -131,7 +137,7 @@
                              Color="Black"></BoxView>
                     <Label Text="¿Eres nuevo?"
                         Grid.Column="2"
-                        Margin="20"
+                        Margin="0,0,20,0"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"
                         TextColor="#A9A8A8">
@@ -143,7 +149,7 @@
                 </Grid>                    
                     <!--</Frame>-->
             </Grid>
-        </FlexLayout>
-    </StackLayout>
+        <!--</FlexLayout>-->
+    </RelativeLayout>
     
 </ContentPage>

@@ -30,7 +30,7 @@
 
                     <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
                         <!-- Background Frame -->
-                        <Frame BackgroundColor="White" BorderColor="Black"  Padding="0" Margin="0" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="140" HorizontalOptions="EndAndExpand">
+                        <Frame BackgroundColor="White" BorderColor="Black"  Padding="0" Margin="0" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="200" HorizontalOptions="EndAndExpand">
                             <Frame.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Single">
                                     <On Platform="iOS" Value="15"></On>
@@ -42,7 +42,7 @@
                         <!-- Running Frame -->
                         <controls:CustomFrame x:Name="runningFrame" StartColor="#130E1F" MiddleColor="#E51320" EndColor="#FB910D" CornerRadius="30"
                                               GradientOrientation="Horizontal"
-                                              HeightRequest="30" WidthRequest="70" HasShadow="False" Margin="0" Padding="0"  HorizontalOptions="Start" VerticalOptions="Center">
+                                              HeightRequest="30" WidthRequest="100" HasShadow="False" Margin="0" Padding="0"  HorizontalOptions="Start" VerticalOptions="Center">
                             <Frame.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Single">
                                     <On Platform="iOS" Value="15"></On>
@@ -57,7 +57,7 @@
                                 <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
                                 <TapGestureRecognizer Command="{Binding TappedActivityCommand}" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
-                            <Label x:Name="text1" Text="Actividad" TextColor="White" WidthRequest="70" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+                            <Label x:Name="text1" Text="Actividad" TextColor="White" WidthRequest="100" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
                         </StackLayout>
 
                         <!-- Selection text2-->
@@ -66,7 +66,7 @@
                                 <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
                                 <TapGestureRecognizer Command="{Binding TappedPulersCommand}" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
-                            <Label x:Name="text2" Text="Pulers" TextColor="Red" WidthRequest="70" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+                            <Label x:Name="text2" Text="Pulers" TextColor="Red" WidthRequest="100" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
                         </StackLayout>
                     </Grid>
 

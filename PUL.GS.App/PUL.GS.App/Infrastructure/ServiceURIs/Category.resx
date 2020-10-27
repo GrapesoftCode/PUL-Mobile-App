@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddBook" xml:space="preserve">
-    <value>book</value>
+  <data name="GetCategoryHome" xml:space="preserve">
+    <value>category/GetListCategories</value>
   </data>
-  <data name="GetBookByUserId" xml:space="preserve">
-    <value>book/getBookByUserId</value>
+  <data name="GetListHomeByCategory" xml:space="preserve">
+    <value>category</value>
   </data>
 </root>

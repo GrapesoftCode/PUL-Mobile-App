@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
   </ItemGroup>
 
   <ItemGroup>

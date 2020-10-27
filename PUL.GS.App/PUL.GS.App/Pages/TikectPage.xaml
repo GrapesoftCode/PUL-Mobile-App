@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.TikectPage">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+        <Frame WidthRequest="270"
+               HeightRequest="330"
+               Padding="15"
+               Margin="0"
+               CornerRadius="25"
+               BorderColor="Gray">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".25*"></RowDefinition>
+                        <RowDefinition Height=".10*"></RowDefinition>
+                        <RowDefinition Height=".25*"></RowDefinition>
+                        <RowDefinition Height=".10*"></RowDefinition>
+                        <RowDefinition Height=".30*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".15*"></ColumnDefinition>
+                        <ColumnDefinition Width=".7*"></ColumnDefinition>
+                        <ColumnDefinition Width=".15*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" 
+                           Grid.ColumnSpan="3"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Text="¡Bienvenido a Bar El Veintisiete!"
+                           FontAttributes="None"
+                           FontSize="26"
+                           FontFamily="{StaticResource SSPBold}"
+                           TextColor="#121112"/>
+
+                    <BoxView Grid.Row="1"
+                             Grid.Column="1"
+                             VerticalOptions="CenterAndExpand"
+                             HeightRequest="2"
+                             Color="OrangeRed"></BoxView>
+
+                    <Label Grid.Row="2" 
+                           Grid.ColumnSpan="3"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Padding="20,0,0,0"
+                           Text="{Binding FullName}"
+                           FontAttributes="None"
+                           FontSize="26"
+                           FontFamily="{StaticResource SSPBold}"
+                           TextColor="#121112"/>
+
+                    <BoxView Grid.Row="3"
+                             Grid.Column="1"
+                             VerticalOptions="Center"
+                             HeightRequest="2"
+                             Color="OrangeRed"></BoxView>
+
+                    <Label Grid.Row="4"
+                           Grid.ColumnSpan="3"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Text="Muestra una identificación oficial junto con este anuncio en la entrada del establecimiento" 
+                           FontAttributes="None"
+                           FontSize="16"
+                           FontFamily="{StaticResource SSPBold}"
+                           TextColor="#121112"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

@@ -1,11 +1,18 @@
-﻿using System;
+﻿using PUL.GS.Models.Helpers;
+using PUL.GS.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PUL.GS.Models
 {
-    public class Menu
+    public class Menu: IGroupScrollItem
     {
+        public Menu()
+        {
+            this.Config = new ScrollToConfiguration();
+        }
+        public object GroupValue { get; set; }
         public string id { get; set; }
         public string Category { get; set; }
         public string Name { get; set; }
@@ -33,6 +40,8 @@ namespace PUL.GS.Models
                 return string.Format("{0:C2}", Quantity * Price);
             }
         }
+
+        public ScrollToConfiguration Config { get; set; }
 
         //public Menu(string name)
         //{

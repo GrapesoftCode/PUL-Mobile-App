@@ -88,6 +88,7 @@ namespace PUL.GS.App.ViewModels
                     {
                         if (Persons > 0)
                         {
+                            //CurrentBook.Establishment = CurrentEstablishment;
                             CurrentBook.Table = CurrentTable;
                             CurrentBook.Persons = Persons;
                             CurrentBook.Hour = Hour.ToString("hh:mm:ss tt");

@@ -81,6 +81,25 @@ namespace PUL.GS.App
 
             //_masterDetailPage = new MasterDetailPage();
 
+
+            var profile = new ToolbarItem
+            {
+                IconImageSource = "profile.png",
+                Priority = 1,
+                Order = ToolbarItemOrder.Primary
+            };
+            var location = new ToolbarItem
+            {
+                IconImageSource = "location.png",
+                Priority = 2,
+                Order = ToolbarItemOrder.Primary,
+                Text = "location"
+            };
+
+
+            //masterDetail.ToolbarItems.Add(profile);
+            //masterDetail.ToolbarItems.Add(location);
+
             _tabbedNavigationPage = new CustomTabbedPage();
             _tabbedNavigationPage.AddTab<HomeViewModel>(null, "home.png", CurrentUser);
             _tabbedNavigationPage.AddTab<BrowserViewModel>(null, "browser.png", CurrentUser);
@@ -89,10 +108,12 @@ namespace PUL.GS.App
 
             var masterPage = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser);
             masterPage.Title = "Master View Model";
+            masterPage.ToolbarItems.Add(profile);
+            masterPage.ToolbarItems.Add(location);
             //var masterPageArea = new FreshNavigationContainer(masterPage, "MasterPageArea");
             //masterPageArea.Title = "Menu";
             //this.Title = "Prueba";
-            this.Master = new NavigationPage(_menuPage) { Title = "Menu", IconImageSource = "hamburgesa", BarTextColor = Color.FromHex("#0000") };
+            this.Master = new NavigationPage(_menuPage) { Title = "Menu" };
             this.Detail = _tabbedNavigationPage;
         }
 

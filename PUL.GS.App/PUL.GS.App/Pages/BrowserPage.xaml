@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.BrowserPage"
              Visual="Material"
-             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasNavigationBar="True"
              NavigationPage.IconColor="Azure">
     <Grid BackgroundColor="#e8e8e8">
         <Grid.RowDefinitions>
@@ -15,7 +15,7 @@
             <RowDefinition Height=".8*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" BackgroundColor="#ffffff" Margin="0,20,0,20">
+        <Grid Grid.Row="0" BackgroundColor="#ffffff" Margin="0,5,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -60,7 +60,7 @@
             </CollectionView>
         </Grid>
 
-        <Grid Grid.Row="1" BackgroundColor="#ffffff" Margin="0,20,0,20">
+        <Grid Grid.Row="1" BackgroundColor="#ffffff" Margin="0,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -105,7 +105,7 @@
             </CollectionView>
         </Grid>
 
-        <Grid Grid.Row="2" BackgroundColor="#ffffff" Margin="0,20,0,20">
+        <Grid Grid.Row="2" BackgroundColor="#ffffff" Margin="0,0,0,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>

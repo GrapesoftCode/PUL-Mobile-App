@@ -71,6 +71,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Book.resx</DependentUpon>
     </Compile>
+    <Compile Update="Infrastructure\ServiceURIs\Category.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Category.resx</DependentUpon>
+    </Compile>
     <Compile Update="Infrastructure\ServiceURIs\Combo.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -120,6 +125,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Book.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Infrastructure\ServiceURIs\Category.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Category.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Infrastructure\ServiceURIs\Combo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Combo.Designer.cs</LastGenOutput>
@@ -155,6 +164,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\BookMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BookProgressPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\BookSplashPage.xaml">
@@ -200,6 +212,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\RoomsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TikectPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ThemeResources\WhiteTheme.xaml">

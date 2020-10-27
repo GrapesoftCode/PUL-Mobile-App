@@ -22,14 +22,14 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Book {
+    internal class Category {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Book() {
+        internal Category() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PUL.GS.App.Infrastructure.ServiceURIs.Book", typeof(Book).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PUL.GS.App.Infrastructure.ServiceURIs.Category", typeof(Category).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,20 @@ namespace PUL.GS.App.Infrastructure.ServiceURIs {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a book.
+        ///   Busca una cadena traducida similar a category/GetListCategories.
         /// </summary>
-        internal static string AddBook {
+        internal static string GetCategoryHome {
             get {
-                return ResourceManager.GetString("AddBook", resourceCulture);
+                return ResourceManager.GetString("GetCategoryHome", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a book/getBookByUserId.
+        ///   Busca una cadena traducida similar a category.
         /// </summary>
-        internal static string GetBookByUserId {
+        internal static string GetListHomeByCategory {
             get {
-                return ResourceManager.GetString("GetBookByUserId", resourceCulture);
+                return ResourceManager.GetString("GetListHomeByCategory", resourceCulture);
             }
         }
     }
