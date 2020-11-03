@@ -28,6 +28,13 @@ namespace PUL.GS.App.ViewModels
         public Combo CurrentCombo { get; set; }
         public Book CurrentBook { get; set; } = new Book();
         public Book LastBook { get; set; }
+        public bool IsRefreshing
+        {
+            get => isRefreshing; set
+            {
+                isRefreshing = value;
+            }
+        }
 
         public ICommand EstablishmentCommand => new Command(async () =>
         {
@@ -112,6 +119,8 @@ namespace PUL.GS.App.ViewModels
             }
         });
 
+        public ICommand RefreshCommand;
+
         public bool BookVisible
         {
             get => bookVisible; set
@@ -123,10 +132,19 @@ namespace PUL.GS.App.ViewModels
 
         readonly IUserDialogs dialogs;
         private bool bookVisible;
+        private bool isRefreshing;
 
         public HomeViewModel(IUserDialogs _dialogs)
         {
             dialogs = _dialogs;
+
+            RefreshCommand = new Command(async () =>
+            {
+                IsRefreshing = true;
+                await Task.Delay(3000);
+                await RefreshItems();
+                IsRefreshing = false;
+            });
         }
 
         public override void Init(object initData)
@@ -137,24 +155,32 @@ namespace PUL.GS.App.ViewModels
         }
 
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
 
             dialogs.ShowLoading("Cargando");
 
-            Establishments = new ObservableCollection<Establishment>(establishmentAgent.GetRecordsEstablishment().objectResult.Records);
-            Promotions = new ObservableCollection<Promotion>(promotionAgent.GetAll().objectResult.Records);
-            Combos = new ObservableCollection<Combo>(comboAgent.GetAll().objectResult.Records);
+            await RefreshItems();
 
-            var book = bookAgent.GetBookByUserId(CurrentUser.id).objectResult;
-            if (book != null)
+            dialogs.HideLoading();
+        }
+
+        private async Task RefreshItems()
+        {
+            var establishmentList = await establishmentAgent.GetRecordsEstablishment();
+            var promotionList = await promotionAgent.GetAll();
+            var comboList = await comboAgent.GetAll();
+            Establishments = new ObservableCollection<Establishment>(establishmentList.objectResult.Records);
+            Promotions = new ObservableCollection<Promotion>(promotionList.objectResult.Records);
+            Combos = new ObservableCollection<Combo>(comboList.objectResult.Records);
+
+            var book = await bookAgent.GetBookByUserId(CurrentUser.id);
+            if (book.objectResult != null)
                 BookVisible = true;
             else
                 BookVisible = false;
-            LastBook = book;
-
-            dialogs.HideLoading();
+            LastBook = book.objectResult;
         }
     }
 }

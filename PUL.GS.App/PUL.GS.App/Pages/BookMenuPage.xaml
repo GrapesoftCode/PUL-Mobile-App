@@ -15,35 +15,31 @@
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="0">
-                <Button Text="Prueba"
-                            Command="{Binding ScrollToCommand}"
-                            CommandParameter="Tacos"></Button>
                 <Grid>
                     <RefreshView Command="{Binding RefreshCommand}"
                          IsRefreshing="{Binding IsRefreshing}">
-                        <CollectionView ItemsSource="{Binding ScrollableItemsGroups}"
+                        <CollectionView ItemsSource="{Binding Foods}"
                                         BackgroundColor="#EDEFEF"
                                         SelectionMode="Single"
-                                        HeightRequest="50">
+                                        HeightRequest="50"
+                                        SelectedItem="{Binding CurrentGroup, Mode=TwoWay}"
+                                        SelectionChangedCommand="{Binding ScrollToCommand, Mode=TwoWay}">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Horizontal">
                                 </GridItemsLayout>
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
-                                        <Button HeightRequest="30"
-                                               WidthRequest="100"
-                                               Padding="0"
+                                    <Grid ColumnSpacing="20" RowSpacing="20">
+                                        <Label WidthRequest="100"
+                                               Padding="10"
                                                Margin="5"
-                                               HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="FillAndExpand"
                                                TextColor="Black"
                                                BackgroundColor="#FFFFFF"
                                                Text="{Binding GroupName}"
                                                FontFamily="{StaticResource SSPBold}"
-                                                Command="{Binding ScrollToCommand}"
-                                                CommandParameter="{Binding GroupName}"></Button>
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Center"></Label>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -58,15 +54,15 @@
                         <RefreshView Command="{Binding RefreshCommand}"
                          IsRefreshing="{Binding IsRefreshing}">
                             <controls:CollectionViewEx x:Name="CvFood"
-                                                       ItemsSource="{Binding ScrollableItemsGroups}"
+                                                       ItemsSource="{Binding Foods}"
                                                        IsGrouped="True"
                                                        BackgroundColor="#ffffff"
                                                        SelectionMode="Single"
-                                                       SelectedItem="{Binding SelectedItemVm, Mode=TwoWay}"
-                                                       ScrollToItemWithConfig="{Binding ScrollToGroupVm}">
+                                                       SelectionChangedCommand="{Binding MenuChangedCommand, Mode=TwoWay}"
+                                                       SelectedItem="{Binding CurrentFood, Mode=TwoWay}"
+                                                       ScrollToItemWithConfig="{Binding SelectedItemVm}">
                                 <CollectionView.ItemsLayout>
-                                    <GridItemsLayout Orientation="Vertical"
-                                    Span="2"></GridItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.GroupHeaderTemplate>
                                     <DataTemplate>
@@ -119,40 +115,57 @@
                                                 <Grid ColumnSpacing="0"
                                                     RowSpacing="0">
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*"></RowDefinition>
                                                         <RowDefinition Height="auto"></RowDefinition>
-                                                        <!--<RowDefinition Height="auto"></RowDefinition>-->
+                                                        <RowDefinition Height="auto"></RowDefinition>
                                                         <RowDefinition Height="auto"></RowDefinition>
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                                        <ColumnDefinition Width=".5*"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Source="{Binding Logo.Uri}" Aspect="AspectFit"></Image>
-                                                    <Frame Grid.Row="0" CornerRadius="50" BorderColor="#EDEFEF" BackgroundColor="OrangeRed" HasShadow="True" Margin="0" Padding="5" HorizontalOptions="End" VerticalOptions="StartAndExpand" HeightRequest="25" WidthRequest="25">
+                                                    
+                                                    <Image Grid.RowSpan="3"
+                                                           Grid.Column="0"
+                                                           Source="{Binding Logo.Uri}" Aspect="AspectFit"></Image>
+                                                    <Frame Grid.Row="0"
+                                                           Grid.Column="1" 
+                                                           CornerRadius="50" 
+                                                           BorderColor="#EDEFEF" 
+                                                           BackgroundColor="OrangeRed" 
+                                                           HasShadow="True" 
+                                                           Margin="0" 
+                                                           Padding="5" 
+                                                           HorizontalOptions="End" 
+                                                           VerticalOptions="StartAndExpand"
+                                                           HeightRequest="25"
+                                                           WidthRequest="25">
                                                         <Label Text="{Binding Quantity}" 
-                                                   HorizontalTextAlignment="Center" 
-                                                   VerticalOptions="StartAndExpand"
-                                                   HorizontalOptions="Center" 
-                                                   TextColor="#FFFFFF"></Label>
+                                                           HorizontalTextAlignment="Center" 
+                                                           VerticalOptions="StartAndExpand"
+                                                           HorizontalOptions="Center" 
+                                                           TextColor="#FFFFFF"></Label>
                                                     </Frame>
-                                                    <!--<controls:MenuStepper Grid.Row="1" Text="{Binding Quantity}"></controls:MenuStepper>-->
-                                                    <Label Grid.Row="1" Text="{Binding Price, StringFormat='{0:C2}'}"   
-                                               FontAttributes="None"
-                                               FontSize="16"
-                                               FontFamily="{StaticResource SSPSemibold}"
-                                               TextColor="#121112"
-                                               VerticalOptions="CenterAndExpand" 
-                                               HorizontalTextAlignment="Start"
-                                               HorizontalOptions="Start">
+                                                    <Label Grid.Row="1"
+                                                           Grid.Column="1" 
+                                                           Text="{Binding Price, StringFormat='{0:C2}'}"   
+                                                           FontAttributes="None"
+                                                           FontSize="16"
+                                                           FontFamily="{StaticResource SSPSemibold}"
+                                                           TextColor="#121112"
+                                                           VerticalOptions="CenterAndExpand" 
+                                                           HorizontalTextAlignment="Start"
+                                                           HorizontalOptions="Start">
                                                     </Label>
-                                                    <Label Grid.Row="2" Text="{Binding Name}" 
-                                               FontAttributes="None"
-                                               FontSize="14"
-                                               FontFamily="{StaticResource SSPRegular}"
-                                               TextColor="#121112"
-                                               HorizontalTextAlignment="Start"
-                                               VerticalOptions="EndAndExpand" 
-                                               HorizontalOptions="Start">
+                                                    <Label Grid.Row="2" 
+                                                           Grid.Column="1"
+                                                           Text="{Binding Name}" 
+                                                           FontAttributes="None"
+                                                           FontSize="14"
+                                                           FontFamily="{StaticResource SSPRegular}"
+                                                           TextColor="#121112"
+                                                           HorizontalTextAlignment="Start"
+                                                           VerticalOptions="StartAndExpand" 
+                                                           HorizontalOptions="Start">
                                                     </Label>
                                                 </Grid>
                                             </Frame>

@@ -10,7 +10,7 @@
              xmlns:converters="clr-namespace:PUL.GS.App.Converters"
              x:Class="PUL.GS.App.Pages.ChatPage"
              Visual="Material"
-             Title="{Binding GroupName, StringFormat='Grupo {0}'}"
+             Title="{Binding GroupName, StringFormat='{0}'}"
              NavigationPage.HasBackButton="False">
     <ContentPage.Resources>
         <selectors:ChatMessageSelector x:Key="SelectMessageTemplate"></selectors:ChatMessageSelector>
@@ -111,26 +111,27 @@
                     </DataTemplate>
                     <DataTemplate x:Key="LocalSimpleText">
                         <Grid>
-                            <Grid.ColumnDefinitions>
+                            <!--<Grid.ColumnDefinitions>
                                 <ColumnDefinition Width=".2*"></ColumnDefinition>
                                 <ColumnDefinition Width=".7*"></ColumnDefinition>
                                 <ColumnDefinition Width=".1*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <controls:CustomFrame
-                               StartColor="#E77F0F"
-                                MiddleColor="#F74E3F"
-                                EndColor="#F74E3F"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                CornerRadius="10,10,10,0"
-                                IsClippedToBounds="True"
-                                HorizontalOptions="FillAndExpand"
-                                Margin="0,5,10,0">
+                            </Grid.ColumnDefinitions>-->
+                            <controls:CustomFrame StartColor="#E77F0F"
+                                                  MiddleColor="#F74E3F"
+                                                  EndColor="#F74E3F"
+                                                  CornerRadius="10,10,10,0"
+                                                  IsClippedToBounds="True"
+                                                  HorizontalOptions="EndAndExpand"
+                                                  VerticalOptions="FillAndExpand"
+                                                  Margin="0,1,0,1"
+                                                  Padding="10,5,10,5">
                                 <Grid>
-                                    <StackLayout Margin="5">
+                                    <StackLayout Margin="0" Padding="0">
                                         <Label Text="{Binding Text}"
                                                TextColor="White"
-                                               FontSize="Small"></Label>
+                                               FontSize="Small"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"></Label>
                                     </StackLayout>
                                 </Grid>
                                 

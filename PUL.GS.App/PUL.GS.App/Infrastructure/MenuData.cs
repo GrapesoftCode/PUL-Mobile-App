@@ -5,6 +5,7 @@ using PUL.GS.Models.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PUL.GS.App.Infrastructure
 {
@@ -53,14 +54,14 @@ namespace PUL.GS.App.Infrastructure
             return response;
         }
 
-        public Response<IEnumerable<Menu>> GetListFoods(string establishmentId)
+        public async Task<Response<IEnumerable<Menu>>> GetListFoods(string establishmentId)
         {
             var response = new Response<IEnumerable<Menu>>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, IEnumerable<Menu>>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Menu.GetListFoods}/{establishmentId}", HttpVerb.Get).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Menu.GetListFoods}/{establishmentId}", HttpVerb.Get);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

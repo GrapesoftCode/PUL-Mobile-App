@@ -16,6 +16,7 @@
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0">
@@ -36,10 +37,6 @@
                                Padding="30,5,30,5"
                                CornerRadius="10"
                                HasShadow="False">
-
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding TicketDetailCommand}"></TapGestureRecognizer>
-                                </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width=".33*"></ColumnDefinition>
@@ -124,13 +121,12 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="150"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <CollectionView 
-                            ItemsSource="{Binding Menus}"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center"
-                            BackgroundColor="#ffffff"
-                            SelectionMode="None"
-                            VerticalScrollBarVisibility="Always">
+                        <CollectionView ItemsSource="{Binding Menus}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        BackgroundColor="#ffffff"
+                                        SelectionMode="None"
+                                        VerticalScrollBarVisibility="Always">
                             <CollectionView.Header>
                                 <StackLayout BackgroundColor="#fffff">
                                     <Label Padding="5"
@@ -179,25 +175,25 @@
                         </CollectionView>
                     </Grid>
                 </StackLayout>
-                
 
-                <Grid Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <BoxView Grid.Row="0" 
+                <StackLayout Grid.Row="2">
+                    <Grid RowSpacing="5" ColumnSpacing="5" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <BoxView Grid.Row="0" 
                                         Grid.Column="0"
                                         VerticalOptions="CenterAndExpand"
                                         HeightRequest="1"
                                         Color="#EDEFEF"></BoxView>
 
-                    <Label Grid.Row="1"
+                        <Label Grid.Row="1"
                            Grid.Column="0"
                            Margin="0,10,0,10"
                            Text="Agregar extras"
@@ -205,8 +201,8 @@
                            FontAttributes="None"
                            TextColor="#121112" 
                            FontFamily="{StaticResource SSPSemibold}"></Label>
-                    
-                    <Label Grid.Row="2"
+
+                        <Label Grid.Row="2"
                            Grid.Column="0"
                            Margin="0,10,0,10"
                            Text="Agregar invitados" 
@@ -215,68 +211,148 @@
                            TextColor="#121112" 
                            FontFamily="{StaticResource SSPSemibold}"></Label>
 
-                    <BoxView Grid.Row="3" 
+                        <BoxView Grid.Row="3" 
                              Grid.Column="0"
                              VerticalOptions="CenterAndExpand"
                              HeightRequest="1"
                              Color="#EDEFEF"></BoxView>
-                </Grid>
+                    </Grid>
+                </StackLayout>
 
-               <Grid Grid.Row="3"
-                      Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".1*"></RowDefinition>
-                        <RowDefinition Height=".9*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0"
-                           Grid.ColumnSpan="5"
-                           Text="Dividir cuenta" 
-                           FontSize="16"
-                           FontAttributes="None"
-                           TextColor="#121112" 
-                           FontFamily="{StaticResource SSPSemibold}"></Label>
+                <StackLayout Grid.Row="3">
+                    <Grid RowSpacing="5" ColumnSpacing="5" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="150"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                               Text="Dividir cuenta"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Start"
+                               FontSize="16"
+                               FontAttributes="None"
+                               TextColor="#121112"
+                               FontFamily="{StaticResource SSPSemibold}"></Label>
 
-                    <ImageButton Grid.Row="1" 
-                                 Grid.Column="1"
-                                 BackgroundColor="Transparent"
-                                 Aspect="AspectFit"
-                                 Source="notsplit.png"></ImageButton>
+                        <CollectionView Grid.Row="1"
+                                        SelectionMode="Multiple"
+                                        ItemsSource="{Binding Contacts}"
+                                        SelectedItems="{Binding CurrentContacts, Mode=TwoWay}"
+                                        SelectionChangedCommand="{Binding SplitAccountCommand}"
+                                        VerticalOptions="Fill"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="#ffffff">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Horizontal"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                        <Grid Margin="0,5,0,5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height=".7*"></RowDefinition>
+                                                <RowDefinition Height=".3*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
 
-                    <ImageButton Grid.Row="1" 
-                                 Grid.Column="2"
-                                 BackgroundColor="Transparent"
-                                 Aspect="AspectFit"
-                                 Source="notsplit.png"></ImageButton>
+                                            <Image Grid.Row="0"
+                                                   Source="{Binding Split}"
+                                                   Aspect="AspectFit"></Image>
+                                            
+                                            <Label Grid.Row="1"
+                                                   HorizontalOptions="Fill"
+                                                   VerticalOptions="Fill"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"
+                                                   FontSize="12"
+                                                   FontAttributes="None"
+                                                   TextColor="#121112"
+                                                   FontFamily="{StaticResource SSPRegular}"
+                                                   Text="{Binding FullName}" ></Label>
+                                        </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </StackLayout>
 
-                    <ImageButton Grid.Row="1" 
-                                 Grid.Column="3"
-                                 BackgroundColor="Transparent"
-                                 Aspect="AspectFit"
-                                 Source="notsplit.png"></ImageButton>
-                </Grid>
+                <StackLayout Grid.Row="4">
+                    <Grid RowSpacing="5" ColumnSpacing="5" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="auto"></ColumnDefinition>
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-               
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition  Width="auto"></ColumnDefinition>
-                        <ColumnDefinition  Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
+                        <BoxView Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                VerticalOptions="EndAndExpand"
+                                HeightRequest="1"
+                                Color="#EDEFEF"></BoxView>
 
-                    <Label Grid.Row="0"
+                        <Label Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Cover cortesía"
+                            FontAttributes="None"
+                            FontSize="16"
+                            FontFamily="{StaticResource SSPSemibold}"
+                            TextColor="#121112"></Label>
+
+                        <Label Grid.Row="1"
+                            Grid.Column="1"
+                            Text="#3" 
+                            FontSize="16" 
+                            FontAttributes="None" 
+                            TextColor="Gray"
+                            FontFamily="{StaticResource SSPRegular}"
+                            HorizontalOptions="End"></Label>
+
+
+                        <Label Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Agregar cover"
+                            FontAttributes="None"
+                            FontSize="16"
+                            FontFamily="{StaticResource SSPSemibold}"
+                            TextColor="#121112"></Label>
+
+                        <Frame Grid.Row="2" 
+                               Grid.Column="1"
+                               HasShadow="True" 
+                               BorderColor="#EDEFEF" 
+                               Margin="0,0,0,0" 
+                               Padding="0,0,0,0"
+                               CornerRadius="0" 
+                               HorizontalOptions="End">  
+                            <controls:CustomStepper  Text="{Binding Persons}"></controls:CustomStepper>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout Grid.Row="5">
+                    <Grid RowSpacing="5" ColumnSpacing="5" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="auto"></ColumnDefinition>
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
                             Grid.ColumnSpan="2"
                             Text="Resumen"
                             FontAttributes="None"
@@ -284,7 +360,7 @@
                             FontFamily="{StaticResource SSPBlack}"
                             TextColor="#121112"></Label>
 
-                    <Label Grid.Row="1"
+                        <Label Grid.Row="1"
                             Grid.Column="0"
                             Text="Subtotal"
                             FontAttributes="None"
@@ -292,7 +368,7 @@
                             FontFamily="{StaticResource SSPSemibold}"
                             TextColor="#121112"></Label>
 
-                    <Label Grid.Row="1"
+                        <Label Grid.Row="1"
                             Grid.Column="1"
                             Text="{Binding CurrentBook.SubTotal, StringFormat='{0:C2}'}" 
                             FontSize="16" 
@@ -302,28 +378,48 @@
                             HorizontalOptions="End"></Label>
 
 
-                    <Label Grid.Row="2"
+                        <Label Grid.Row="2"
                             Grid.Column="0"
                             Text="Propina"
                             FontAttributes="None"
                             FontSize="16"
                             FontFamily="{StaticResource SSPSemibold}"
                             TextColor="#121112"></Label>
-                    <Label Grid.Row="2"
-                        Grid.Column="1"
-                        Text="{Binding SubtotalTip, StringFormat='{0:C2}',Mode = TwoWay}"
-                        FontSize="16"
-                        FontAttributes="None"
-                        TextColor="Gray"
-                        FontFamily="{StaticResource SSPRegular}"
-                        HorizontalOptions="End"></Label>
-                    <BoxView Grid.Row="3"
+                        
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding CurrentBook.TipPercent, StringFormat='{0}%',Mode = TwoWay}"
+                               FontSize="16"
+                               FontAttributes="None"
+                               TextColor="Gray"
+                               FontFamily="{StaticResource SSPRegular}"
+                               HorizontalOptions="End"></Label>
+
+                        <Label Grid.Row="3"
+                            Grid.Column="0"
+                            Text="Personal"
+                            FontAttributes="None"
+                            FontSize="18"
+                            FontFamily="{StaticResource SSPBold}"
+                            TextColor="#121112"></Label>
+
+                        <Label Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Personal, StringFormat='{0:C2}'}" 
+                            FontSize="18" 
+                            FontAttributes="Bold" 
+                            TextColor="Gray"
+                            FontFamily="{StaticResource SSPRegular}"
+                            HorizontalOptions="End"></Label>
+
+
+                        <BoxView Grid.Row="4"
                                 Grid.ColumnSpan="2"
                                 VerticalOptions="EndAndExpand"
                                 HeightRequest="1"
                                 Color="#EDEFEF"></BoxView>
 
-                    <Label Grid.Row="4" 
+                        <Label Grid.Row="5" 
                             Grid.Column="0"
                             Text="Total"
                             HorizontalOptions="Start"
@@ -334,20 +430,21 @@
 
 
 
-                    <Label Grid.Row="4"
+                        <Label Grid.Row="5"
                             Grid.Column="1"
                             HorizontalOptions="End"
-                            Text="{Binding Total, Mode = TwoWay, StringFormat='{0:C2}'}"
+                            Text="{Binding CurrentBook.Total, Mode = TwoWay, StringFormat='{0:C2}'}"
                             FontAttributes="None"
                             FontSize="22"
                             FontFamily="{StaticResource SSPBlack}"
                             TextColor="#121112" ></Label>
 
-                </Grid>
+                    </Grid>
+                </StackLayout>
 
-                <!--
-                <Grid Grid.Row="5">
-                    <controls:CustomButton Text="Reservar"
+                <StackLayout Grid.Row="6">
+                    <Grid RowSpacing="5" ColumnSpacing="5" Margin="5">
+                        <controls:CustomButton Text="Reservar"
                                 Margin="0,20,0,20"
                                 Padding="25,15,20,15"
                                 CornerRadius="1"
@@ -358,7 +455,8 @@
                                 GradientOrientation="Horizontal"
                                 FontFamily="{StaticResource SSPBold}"
                                 Command="{Binding BookCommand}"></controls:CustomButton>
-                </Grid>-->
+                    </Grid>
+                </StackLayout>
 
             </Grid>
         </ScrollView>

@@ -47,7 +47,7 @@ namespace PUL.GS.App
         {
             var _menuPage = new MasterPage
             {
-                Title = menuPageTitle
+                Title = menuPageTitle,
             };
             //var listView = new ListView();
 
@@ -92,8 +92,7 @@ namespace PUL.GS.App
             {
                 IconImageSource = "location.png",
                 Priority = 2,
-                Order = ToolbarItemOrder.Primary,
-                Text = "location"
+                Order = ToolbarItemOrder.Primary
             };
 
 
@@ -106,10 +105,10 @@ namespace PUL.GS.App
             _tabbedNavigationPage.AddTab<PulerViewModel>(null, "pulear.png", CurrentUser);
             _tabbedNavigationPage.AddTab<ContactViewModel>(null, "message.png", CurrentUser);
 
-            var masterPage = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser);
-            masterPage.Title = "Master View Model";
-            masterPage.ToolbarItems.Add(profile);
-            masterPage.ToolbarItems.Add(location);
+            //var masterPage = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser);
+            //masterPage.Title = "Master View Model";
+            _menuPage.ToolbarItems.Add(profile);
+            _menuPage.ToolbarItems.Add(location);
             //var masterPageArea = new FreshNavigationContainer(masterPage, "MasterPageArea");
             //masterPageArea.Title = "Menu";
             //this.Title = "Prueba";

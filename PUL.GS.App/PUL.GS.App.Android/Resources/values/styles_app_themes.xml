@@ -6,7 +6,7 @@
   <style name="whiteAppTheme" parent="MainBaseTheme">
     <item name="toolbarStyle">@style/whiteThemeToolbarStyle</item>
     <item name="toolbarPopupStyle">@style/lightToolbarPopupTheme</item>
-    <item name="colorPrimaryDark">#d2d2d2</item>
+    <item name="colorPrimaryDark">#ffffff</item>
     <item name="android:windowLightStatusBar">true</item>
   </style>
 </resources>

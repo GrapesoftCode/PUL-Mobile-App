@@ -3,6 +3,7 @@ using PUL.GS.Core.Services;
 using PUL.GS.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -15,7 +16,7 @@ namespace PUL.GS.App.ViewModels
         readonly IUserDialogs dialogs;
 
         public User CurrentUser { get; set; }
-        public IEnumerable<Contact> Contacts { get; set; }
+        public ObservableCollection<Contact> Contacts { get; set; }
         public Contact CurrentContact { get; set; }
         public ICommand EnterContactCommand { get; set; }
 
@@ -25,6 +26,8 @@ namespace PUL.GS.App.ViewModels
         {
             ChatService = _chatService;
             dialogs = _dialogs;
+            Contacts = new ObservableCollection<Contact>();
+            CurrentContact = new Contact();
         }
 
         public override void Init(object initData)
@@ -56,11 +59,13 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
+            var liscontacts = await contactAgent.GetAll(CurrentUser.Username);
+
             dialogs.ShowLoading("Cargando");
 
             await ChatService.InitAsync(CurrentUser.Username);
 
-            Contacts = contactAgent.GetAll(CurrentUser.Username).objectResult;
+            Contacts = new ObservableCollection<Contact>(liscontacts.objectResult);
 
             //Rooms = await ChatService.GetRooms();
 

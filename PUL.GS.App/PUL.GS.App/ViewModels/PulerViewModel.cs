@@ -86,7 +86,7 @@ namespace PUL.GS.App.ViewModels
         public Contact CurrentContact { get; set; }
         public ICommand EnterContactCommand { get; set; }
 
-        public ICommand PhantomCommand => new Command(async (color) =>
+        public ICommand PhantomCommand => new Command((color) =>
         {
             if ((string)color == "greenphantom.png")
 
@@ -134,7 +134,7 @@ namespace PUL.GS.App.ViewModels
             {
                 IsRefreshing = true;
                 await Task.Delay(3000);
-                RefreshItems(0);
+                await RefreshItems(0);
                 IsRefreshing = false;
             });
 
@@ -149,12 +149,13 @@ namespace PUL.GS.App.ViewModels
             CurrentUser = initData as User;
         }
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
 
             dialogs.ShowLoading("Cargando");
 
+            await RefreshItems(0);
             //await ChatService.InitAsync(CurrentUser.Username);
             //Rooms = await ChatService.GetRooms();
 
@@ -162,13 +163,13 @@ namespace PUL.GS.App.ViewModels
         }
 
 
-        private void RefreshItems(int collection)
+        private async Task RefreshItems(int collection)
         {
-            var list = contactAgent.GetAll(CurrentUser.Username).objectResult;
+            var list = await contactAgent.GetAll(CurrentUser.Username);
             if (collection == 0)
-                Contacts = new ObservableCollection<Contact>(list);
+                Contacts = new ObservableCollection<Contact>(list.objectResult);
             else
-                Contacts = new ObservableCollection<Contact>(list);
+                Contacts = new ObservableCollection<Contact>(list.objectResult);
         }
 
         private void ChangeCollection(bool toggle)

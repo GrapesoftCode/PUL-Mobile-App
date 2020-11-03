@@ -53,10 +53,10 @@ namespace PUL.GS.App.ViewModels
                 if (!IsBusy)
                 {
                     IsBusy = true;
-                    dialogs.ShowLoading("Conectando");
+                    dialogs.ShowLoading("Reservando");
                     if (CurrentBook != null)
                     {
-                        var result = bookAgent.AddBook(CurrentBook);
+                        var result = await bookAgent.AddBook(CurrentBook);
                         if (result.Success)
                         {
                             //await CoreMethods.PopModalNavigationService();

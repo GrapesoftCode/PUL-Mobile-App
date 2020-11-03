@@ -47,11 +47,11 @@ namespace PUL.GS.App.ViewModels
                     Password = Password
                 };
 
-                var token = _accountAgent.GetToken(user);
+                var token = await _accountAgent.GetToken(user);
 
                 if (token.Success)
                 {
-                    var result = _accountAgent.GetUserByCredentials(user, token.objectResult);
+                    var result = await _accountAgent.GetUserByCredentials(user, token.objectResult);
                     if (result.Success)
                     {
                         CurrentUser = result.objectResult;

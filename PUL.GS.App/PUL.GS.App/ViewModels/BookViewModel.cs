@@ -120,17 +120,19 @@ namespace PUL.GS.App.ViewModels
         //    IngredientCollectionView.SelectedItem = null;
         //}
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
 
             dialogs.ShowLoading("Cargando");
 
-            var listTables = tableAgent.GetTables(CurrentBook.Establishment.UserId, CurrentBook.Establishment.id).objectResult;
+            var tables = await tableAgent.GetTables(CurrentBook.Establishment.UserId, CurrentBook.Establishment.id);
 
-            if (listTables != null)
+            var tableList = tables.objectResult;
+
+            if (tableList != null)
             {
-                var groups = listTables
+                var groups = tableList
                                 .GroupBy(x => new { x.Location, x.Quantity, x.MinimumConsumption })
                                 .Select(x => new Table
                                 {

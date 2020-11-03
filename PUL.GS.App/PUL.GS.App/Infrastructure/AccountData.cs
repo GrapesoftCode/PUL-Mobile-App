@@ -4,6 +4,7 @@ using PUL.GS.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PUL.GS.App.Infrastructure
 {
@@ -16,14 +17,14 @@ namespace PUL.GS.App.Infrastructure
             settings = configuration;
         }
 
-        public Response<string> GetToken(User user)
+        public async Task<Response<string>> GetToken(User user)
         {
             var response = new Response<string>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, string>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Account.GetToken}/", HttpVerb.Post, user).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Account.GetToken}/", HttpVerb.Post, user);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)
@@ -34,14 +35,14 @@ namespace PUL.GS.App.Infrastructure
             return response;
         }
 
-        public Response<User> GetUserByCredentials(User user, string token)
+        public async Task<Response<User>> GetUserByCredentials(User user, string token)
         {
             var response = new Response<User>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, User>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Account.GetUserByCredentials}/{user.Username}/{user.Password}", HttpVerb.Get, user, token).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Account.GetUserByCredentials}/{user.Username}/{user.Password}", HttpVerb.Get, user, token);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

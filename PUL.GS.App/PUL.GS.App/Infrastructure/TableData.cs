@@ -4,6 +4,7 @@ using PUL.GS.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PUL.GS.App.Infrastructure
 {
@@ -15,14 +16,14 @@ namespace PUL.GS.App.Infrastructure
             settings = configuration;
         }
 
-        public Response<IEnumerable<Table>> GetTables(string userId, string establishmentId)
+        public async Task<Response<IEnumerable<Table>>> GetTables(string userId, string establishmentId)
         {
             var response = new Response<IEnumerable<Table>>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<IEnumerable<Table>, IEnumerable<Table>>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Table.GetAllTables}/{userId}/{establishmentId}", HttpVerb.Get).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Table.GetAllTables}/{userId}/{establishmentId}", HttpVerb.Get);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

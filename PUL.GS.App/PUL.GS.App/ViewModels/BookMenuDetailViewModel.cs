@@ -15,7 +15,7 @@ namespace PUL.GS.App.ViewModels
         public ICommand AddFoodCartCommand { get; set; }
         public Book CurrentBook { get; set; }
         public List<Menu> Menus { get; set; }
-        public Menu CurrentMenu { get; set; }
+        public Menu CurrentFood { get; set; }
         public BookMenuDetailViewModel()
         {
 
@@ -25,7 +25,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.Init(initData);
 
-            CurrentMenu = initData as Menu;
+            CurrentFood = initData as Menu;
 
             CloseMenuDetailCommand = new Command(async () =>
             {
@@ -42,7 +42,11 @@ namespace PUL.GS.App.ViewModels
                 if (!IsBusy)
                 {
                     IsBusy = true;
-                    await CoreMethods.PopPageModel(CurrentMenu, false);
+                    if (!IsInitialized)
+                    {
+                        await CoreMethods.PopPageModel(CurrentFood, false);
+                        IsInitialized = false;
+                    }
                     IsBusy = false;
                 }
             });

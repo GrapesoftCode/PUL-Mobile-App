@@ -21,7 +21,98 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0">
+                <StackLayout Grid.Row="0">
+                    <Grid RowSpacing="5" ColumnSpacing="5" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="160"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <controls:CustomFrame Padding="0"
+                                          Margin="0"
+                                          CornerRadius="10,10,10,10"
+                                          HasShadow="False"
+                                          StartColor="#130E1F"
+                                          MiddleColor="#E51320"
+                                          EndColor="#FB910D"
+                                          GradientOrientation="Horizontal" IsVisible="true">
+                            <Frame Margin="6"
+                               Padding="30,5,30,5"
+                               CornerRadius="10"
+                               HasShadow="False">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".33*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".33*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".33*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".2*"></RowDefinition>
+                                        <RowDefinition Height=".2*"></RowDefinition>
+                                        <RowDefinition Height=".2*"></RowDefinition>
+                                        <RowDefinition Height=".2*"></RowDefinition>
+                                        <RowDefinition Height=".2*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.ColumnSpan="3"
+                                       Grid.Row="0" 
+                                       Text="RESERVA EN CURSO"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="10"
+                                       FontAttributes="None"
+                                       TextColor="#121112"
+                                       FontFamily="{StaticResource SSPSemibold}"></Label>
+
+                                    <ImageButton Grid.Column="0"
+                                             Grid.Row="1"
+                                             Grid.RowSpan="3"
+                                             Source="qr.png"
+                                             Aspect="AspectFit"
+                                             Command="{Binding TikectCommand}"></ImageButton>
+
+                                    <Label Grid.Column="1"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="2"
+                                       Text="{Binding CurrentBook.Establishment.Name}" 
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="StartAndExpand"
+                                       FontSize="20"
+                                       FontAttributes="None"
+                                       TextColor="#121112"
+                                       Margin="0"
+                                       FontFamily="{StaticResource SSPBold}"></Label>
+
+                                    <Label Grid.Column="1" 
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="3"
+                                       Margin="0"
+                                       Text="{Binding CurrentBook.Table.Location, StringFormat='Mesa {0}'}" 
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="16"
+                                       FontAttributes="None"
+                                       TextColor="#121112"
+                                       FontFamily="{StaticResource SSPSemibold}"></Label>
+
+                                    <Image Grid.Column="0"
+                                       Grid.Row="4" 
+                                       Source="persons.png"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Fill"
+                                       HeightRequest="14"
+                                       WidthRequest="14"></Image>
+
+                                    <Label Grid.Column="0" Grid.Row="4" Text="{Binding CurrentBook.Persons, StringFormat='{0} personas'}" FontSize="12" FontAttributes="Bold" TextColor="Gray" FontFamily="{StaticResource SSPRegular}" HorizontalOptions="CenterAndExpand"></Label>
+                                    <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentBook.Hour, StringFormat='{0}'}" FontSize="12" FontAttributes="Bold" TextColor="Gray" FontFamily="{StaticResource SSPRegular}" HorizontalOptions="CenterAndExpand"></Label>
+                                    <Label Grid.Column="2" Grid.Row="4" Text="{Binding CurrentBook.Date, StringFormat='{0}'}" FontSize="12" FontAttributes="Bold" TextColor="Gray" FontFamily="{StaticResource SSPRegular}" HorizontalOptions="EndAndExpand"></Label>
+                                </Grid>
+                            </Frame>
+                        </controls:CustomFrame>
+                    </Grid>
+                </StackLayout>
+
+                <!--<Grid Grid.Row="0">
                     <controls:CustomFrame Padding="0"
                                           Margin="0"
                                           CornerRadius="10,10,10,10"
@@ -104,7 +195,7 @@
                             </Grid>
                         </Frame>
                     </controls:CustomFrame>
-                </Grid>
+                </Grid>-->
 
                 <Grid Grid.Row="1"
                             Margin="0,0,0,10"

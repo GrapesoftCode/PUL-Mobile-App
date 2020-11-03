@@ -16,8 +16,8 @@
                                   GradientOrientation="Horizontal">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" 

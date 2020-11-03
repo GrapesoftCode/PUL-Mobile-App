@@ -5,6 +5,7 @@ using PUL.GS.Models.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PUL.GS.App.Infrastructure
 {
@@ -17,14 +18,14 @@ namespace PUL.GS.App.Infrastructure
             settings = configuration;
         }
 
-        public Response<Pager<Combo>> GetAll(int actualPage = 1, int recordsPerPage = 3)
+        public async Task<Response<Pager<Combo>>> GetAll(int actualPage = 1, int recordsPerPage = 3)
         {
             var response = new Response<Pager<Combo>>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, Pager<Combo>>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Combo.GetRecordsCombo}?actualPage={actualPage}&recorsPerPage={recordsPerPage}", HttpVerb.Get).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Combo.GetRecordsCombo}?actualPage={actualPage}&recorsPerPage={recordsPerPage}", HttpVerb.Get);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

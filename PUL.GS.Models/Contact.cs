@@ -15,6 +15,7 @@ namespace PUL.GS.Models
         public string Room { get; set; }
         public string Color { get; set; }
         public string Avatar { get; set; }
+        public string Split { get; set; }
 
 
         public string FullName {

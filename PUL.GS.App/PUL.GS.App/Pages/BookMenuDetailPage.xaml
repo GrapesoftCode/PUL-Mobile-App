@@ -11,60 +11,62 @@
              BackgroundColor="Transparent">
     <ContentPage.Content>
         <ScrollView>
-            <Grid
-                BackgroundColor="Transparent"
-                Margin="10"
-                Padding="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <Grid
+                    BackgroundColor="Transparent"
+                    Margin="10"
+                    Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-                <ImageButton Grid.Row="0"
-                             Grid.Column="0"
-                             Grid.ColumnSpan="2" 
-                             Source="closeicon.jpg" 
-                             Aspect="AspectFit"
-                             Command="{Binding CloseMenuDetailCommand}"
-                             HorizontalOptions="End"
-                             VerticalOptions="CenterAndExpand"
-                             HeightRequest="50"
-                             WidthRequest="50"></ImageButton>
+                    <ImageButton Grid.Row="0"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2" 
+                                 Source="closeicon.jpg" 
+                                 Aspect="AspectFit"
+                                 Command="{Binding CloseMenuDetailCommand}"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="CenterAndExpand"
+                                 HeightRequest="50"
+                                 WidthRequest="50"></ImageButton>
 
 
-                <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding CurrentMenu.Logo.Uri}" Aspect="AspectFit" HeightRequest="300"  VerticalOptions="StartAndExpand" HorizontalOptions="Center"></Image>
-                <Label Grid.Row="2" Grid.Column="0" Text="Nombre"></Label>
-                <Label Grid.Row="3" Grid.Column="0" Text="Descripción"></Label>
-                <Label Grid.Row="4" Grid.Column="0" Text="Precio"></Label>
-                <Label Grid.Row="5" Grid.Column="0" Text="Cantidad"></Label>
+                    <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding CurrentFood.Logo.Uri}" Aspect="AspectFill" HeightRequest="300"  VerticalOptions="StartAndExpand" HorizontalOptions="Center"></Image>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Nombre"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Descripción"></Label>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Precio"></Label>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Cantidad"></Label>
 
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding CurrentMenu.Name}" FontSize="Small" TextColor="#121112"></Label>
-                <Label Grid.Row="3" Grid.Column="1" Text="{Binding CurrentMenu.Description}" FontSize="Small"  FontAttributes="Bold" TextColor="#121112"></Label>
-                <Label Grid.Row="4" Grid.Column="1" Text="{Binding CurrentMenu.Price}" FontSize="Small"  FontAttributes="Bold" TextColor="#121112"></Label>
-                <controls:MenuStepper Grid.Row="5" Grid.Column="1" Text="{Binding CurrentMenu.Quantity}"></controls:MenuStepper>
-                <controls:CustomButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
-                            Text="Agregar al carrito"
-                            Margin="-5,100,10,20"
-                            Padding="25,15,20,15"
-                            CornerRadius="1"
-                            HorizontalOptions="CenterAndExpand"
-                            StartColor="#130E1F"
-                            MiddleColor="#E51320"
-                            EndColor="#FB910D"
-                            TextColor="White"
-                            GradientOrientation="Horizontal"
-                            FontFamily="{StaticResource SSPBold}"
-                            Command="{Binding AddFoodCartCommand}"></controls:CustomButton>
-            </Grid>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding CurrentFood.Name}" FontSize="Small" TextColor="#121112"></Label>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding CurrentFood.Description}" FontSize="Small"  FontAttributes="Bold" TextColor="#121112"></Label>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding CurrentFood.Price}" FontSize="Small"  FontAttributes="Bold" TextColor="#121112"></Label>
+                    <controls:MenuStepper Grid.Row="5" Grid.Column="1" Text="{Binding CurrentFood.Quantity}"></controls:MenuStepper>
+                    <controls:CustomButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                                Text="Agregar al carrito"
+                                Margin="-5,100,10,20"
+                                Padding="25,15,20,15"
+                                CornerRadius="1"
+                                HorizontalOptions="CenterAndExpand"
+                                StartColor="#130E1F"
+                                MiddleColor="#E51320"
+                                EndColor="#FB910D"
+                                TextColor="White"
+                                GradientOrientation="Horizontal"
+                                FontFamily="{StaticResource SSPBold}"
+                                Command="{Binding AddFoodCartCommand}"></controls:CustomButton>
+                </Grid>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

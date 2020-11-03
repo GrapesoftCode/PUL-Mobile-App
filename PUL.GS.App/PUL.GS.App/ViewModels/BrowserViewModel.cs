@@ -60,19 +60,23 @@ namespace PUL.GS.App.ViewModels
         }
 
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
 
             dialogs.ShowLoading("Cargando");
 
-            var musicalGenre = establishmentAgent.GetRecordsEstablishment().objectResult.Records;
-            var typeEstablishment = establishmentAgent.GetRecordsEstablishment().objectResult.Records;
-            var costLevel = establishmentAgent.GetRecordsEstablishment().objectResult.Records;
+            var musicalGenre = await establishmentAgent.GetRecordsEstablishment();
+            var typeEstablishment = await establishmentAgent.GetRecordsEstablishment();
+            var costLevel = await establishmentAgent.GetRecordsEstablishment();
 
-            if (musicalGenre != null)
+            var musicalGenreList = musicalGenre.objectResult.Records;
+            var typeEstablishmentList = typeEstablishment.objectResult.Records;
+            var costLevelList = costLevel.objectResult.Records;
+
+            if (musicalGenreList != null)
             { 
-               var groups = musicalGenre
+               var groups = musicalGenreList
                                .GroupBy(x => new { x.MusicalGenre })
                                .Select(x => new MusicalGenre
                                {
@@ -85,7 +89,7 @@ namespace PUL.GS.App.ViewModels
 
             if (typeEstablishment != null)
             {
-                var groups = typeEstablishment
+                var groups = typeEstablishmentList
                                 .GroupBy(x => new { x.Type })
                                 .Select(x => new TypeEstablishment
                                 {
@@ -98,7 +102,7 @@ namespace PUL.GS.App.ViewModels
 
             if (costLevel != null)
             {
-                var groups = costLevel
+                var groups = costLevelList
                                 .GroupBy(x => new { x.CostLevel })
                                 .Select(x => new CostLevel
                                 {

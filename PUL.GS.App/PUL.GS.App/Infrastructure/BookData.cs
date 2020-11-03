@@ -4,6 +4,7 @@ using PUL.GS.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PUL.GS.App.Infrastructure
 {
@@ -17,14 +18,14 @@ namespace PUL.GS.App.Infrastructure
         }
 
 
-        public Response<Book> AddBook(Book book)
+        public async Task<Response<Book>> AddBook(Book book)
         {
             var response = new Response<Book>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<Book, Book>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    ServiceURIs.Book.AddBook, HttpVerb.Post, book).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    ServiceURIs.Book.AddBook, HttpVerb.Post, book);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)
@@ -36,14 +37,14 @@ namespace PUL.GS.App.Infrastructure
         }
 
 
-        public Response<Book> GetBookByUserId(string userId)
+        public async Task<Response<Book>> GetBookByUserId(string userId)
         {
             var response = new Response<Book>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<Book, Book>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    $"{ServiceURIs.Book.GetBookByUserId}/{userId}", HttpVerb.Get).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Book.GetBookByUserId}/{userId}", HttpVerb.Get);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)
