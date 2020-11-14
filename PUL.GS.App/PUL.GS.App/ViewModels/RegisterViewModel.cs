@@ -44,7 +44,7 @@ namespace PUL.GS.App.ViewModels
                     NewUser.PlayerId = playerID;
                 }));
 
-                var result = _accountAgent.AddUser(NewUser);
+                var result = await _accountAgent.AddUser(NewUser);
                 if (result.Success)
                 {
                     await CoreMethods.PushPageModel<LoginViewModel>();

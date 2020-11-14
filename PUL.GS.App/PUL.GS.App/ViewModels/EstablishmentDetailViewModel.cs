@@ -46,7 +46,7 @@ namespace PUL.GS.App.ViewModels
             {
                 IsBusy = true;
 
-                dialogs.ShowLoading("Cargando");
+                dialogs.ShowLoading("Cargando...");
 
                 await CoreMethods.PushPageModel<BookViewModel>();
 

@@ -17,14 +17,11 @@ namespace PUL.GS.App.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterPage : ContentPage
     {
-        public ListView ListView;
 
         public MasterPage()
         {
             InitializeComponent();
-
-            //BindingContext = new MasterPageViewModel();
-            //ListView = MenuItemsListView;
+            //BindingContext = new MasterViewModel();
         }
     }
 }

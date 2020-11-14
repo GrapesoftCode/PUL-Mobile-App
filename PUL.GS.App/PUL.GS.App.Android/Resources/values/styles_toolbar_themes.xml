@@ -4,9 +4,9 @@
   <!--When you introduce a new theme in Core project's ThemeResources folder. Also create similar copy for Toolbar as below for that theme-->
 
   <style name="whiteThemeToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-    <item name="android:textColorPrimary">#1d1d1d</item>
-    <item name="actionMenuTextColor">#1d1d1d</item>
-    <item name="android:textColorSecondary">#1d1d1d</item>
+    <item name="android:textColorPrimary">@android:color/holo_red_dark</item>
+    <item name="actionMenuTextColor">@android:color/holo_red_dark</item>
+    <item name="android:textColorSecondary">@android:color/holo_red_dark</item>
   </style>
 
   <style name="ToolbarTitleStyle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">

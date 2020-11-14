@@ -13,8 +13,6 @@ namespace PUL.GS.App.ViewModels
     {
         public ICommand CloseMenuDetailCommand { get; set; }
         public ICommand AddFoodCartCommand { get; set; }
-        public Book CurrentBook { get; set; }
-        public List<Menu> Menus { get; set; }
         public Menu CurrentFood { get; set; }
         public BookMenuDetailViewModel()
         {
@@ -32,7 +30,8 @@ namespace PUL.GS.App.ViewModels
                 if (!IsBusy)
                 {
                     IsBusy = true;
-                    await CoreMethods.PopPageModel(false);
+                    CurrentFood.Quantity = CurrentFood.Quantity;
+                    await CoreMethods.PopPageModel(CurrentFood);
                     IsBusy = false;
                 }
             });

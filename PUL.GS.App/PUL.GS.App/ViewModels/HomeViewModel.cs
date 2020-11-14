@@ -119,6 +119,57 @@ namespace PUL.GS.App.ViewModels
             }
         });
 
+        public ICommand ActivityCommand => new Command(async (text) => 
+        {
+            if (!IsBusy)
+            {
+                IsBusy = true;
+
+                string activities = (string)text;
+
+                if (activities == "Está en...")
+                {
+                    dialogs.ShowLoading("Conectando");
+                    if (LastBook != null)
+                    {
+                        Activity activity = new Activity()
+                        {
+                            Activities = activities,
+                            Establishment = LastBook.Establishment,
+                            User = LastBook.User
+                        };
+
+                        var result = await activityAgent.AddActivity(activity);
+                        if (result.Success)
+                        {
+                            await CoreMethods.SwitchSelectedTab<PulerViewModel>();
+                        }
+                    }
+                    else
+                    {
+                        dialogs.Alert($"No encontramos ultima reserva aceptada.");
+                    }
+                }
+                else {
+                    Activity activity = new Activity()
+                    {
+                        Activities = activities,
+                        User = CurrentUser
+                    };
+
+                    var result = await activityAgent.AddActivity(activity);
+                    if (result.Success)
+                    {
+                        await CoreMethods.SwitchSelectedTab<PulerViewModel>();
+                    }
+                }
+
+                dialogs.HideLoading();
+
+                IsBusy = false;
+            }
+        });
+
         public ICommand RefreshCommand;
 
         public bool BookVisible
@@ -159,7 +210,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
-            dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando...");
 
             await RefreshItems();
 
@@ -176,7 +227,7 @@ namespace PUL.GS.App.ViewModels
             Combos = new ObservableCollection<Combo>(comboList.objectResult.Records);
 
             var book = await bookAgent.GetBookByUserId(CurrentUser.id);
-            if (book.objectResult != null)
+            if (book.Success)
                 BookVisible = true;
             else
                 BookVisible = false;

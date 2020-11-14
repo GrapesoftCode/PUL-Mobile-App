@@ -81,7 +81,7 @@ namespace PUL.GS.App.Pages
                                 selection2Active = true;
                                 text2.TextColor = Color.White;
                                 text1.TextColor = Color.Black;
-                                runningFrame.TranslateTo(runningFrame.X + 70, 0, 120);
+                                runningFrame.TranslateTo(runningFrame.X + 100, 0, 120);
                                 var duration = TimeSpan.FromSeconds(1);
                                 Vibration.Vibrate(duration);
 
@@ -132,7 +132,7 @@ namespace PUL.GS.App.Pages
                 selection2Active = true;
                 text2.TextColor = Color.White;
                 text1.TextColor = Color.Red;
-                runningFrame.TranslateTo(runningFrame.X + 70, 0, 120);
+                runningFrame.TranslateTo(runningFrame.X + 100, 0, 120);
                 var duration = TimeSpan.FromSeconds(1);
                 Vibration.Vibrate(duration);
             }

@@ -16,14 +16,14 @@
                                   GradientOrientation="Horizontal">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height=".5*"></RowDefinition>
+                        <RowDefinition Height=".5*"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" 
                            Text="{Binding BookSplashText}" 
                        HorizontalOptions="Center"
-                       VerticalOptions="Center"
+                       VerticalOptions="EndAndExpand"
                        VerticalTextAlignment="Center"
                        HorizontalTextAlignment="Center"
                        FontSize="30"
@@ -33,7 +33,10 @@
 
                     <Image Grid.Row="1"
                            Aspect="AspectFit"
-                           HeightRequest="200"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           VerticalOptions="StartAndExpand"
+                           HorizontalOptions="CenterAndExpand"
                            Source="{Binding BookSplashImage}"></Image>
                 </Grid>
             </controls:CustomFrame>

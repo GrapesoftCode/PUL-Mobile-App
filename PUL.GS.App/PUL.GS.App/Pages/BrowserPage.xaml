@@ -5,9 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.BrowserPage"
-             Visual="Material"
-             NavigationPage.HasNavigationBar="True"
-             NavigationPage.IconColor="Azure">
+             Visual="Material">
     <Grid BackgroundColor="#e8e8e8">
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*"></RowDefinition>

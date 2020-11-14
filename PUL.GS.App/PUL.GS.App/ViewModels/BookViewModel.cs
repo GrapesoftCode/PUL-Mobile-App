@@ -124,7 +124,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
-            dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando...");
 
             var tables = await tableAgent.GetTables(CurrentBook.Establishment.UserId, CurrentBook.Establishment.id);
 

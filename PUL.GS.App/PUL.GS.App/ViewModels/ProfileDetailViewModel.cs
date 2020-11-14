@@ -78,12 +78,12 @@ namespace PUL.GS.App.ViewModels
             });
         }
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
 
 
-            //await ChatService.InitAsync(CurrentContact.Username);
+            await ChatService.InitAsync(CurrentContact.Username);
         }
     }
 }

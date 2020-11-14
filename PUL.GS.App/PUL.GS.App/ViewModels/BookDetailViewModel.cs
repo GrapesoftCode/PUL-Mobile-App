@@ -16,6 +16,108 @@ namespace PUL.GS.App.ViewModels
 {
     public class BookDetailViewModel : BaseViewModel
     {
+
+        public string ColorBc5
+        {
+            get => colorBc5; set
+            {
+                colorBc5 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorText5
+        {
+            get => colorText5; set
+            {
+                colorText5 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorBg5
+        {
+            get => colorBg5; set
+            {
+                colorBg5 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ColorBc10
+        {
+            get => colorBc10; set
+            {
+                colorBc10 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorText10
+        {
+            get => colorText10; set
+            {
+                colorText10 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorBg10
+        {
+            get => colorBg10; set
+            {
+                colorBg10 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ColorBc15
+        {
+            get => colorBc15; set
+            {
+                colorBc15 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorText15
+        {
+            get => colorText15; set
+            {
+                colorText15 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorBg15
+        {
+            get => colorBg15; set
+            {
+                colorBg15 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ColorBc20
+        {
+            get => colorBc20; set
+            {
+                colorBc20 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorText20
+        {
+            get => colorText20; set
+            {
+                colorText20 = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ColorBg20
+        {
+            get => colorBg20; set
+            {
+                colorBg20 = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public int Tip { get; set; }
         public double SubtotalTip { get; set; }
         public double Total { get; set; }
@@ -30,6 +132,18 @@ namespace PUL.GS.App.ViewModels
         }
         private Book currentBook;
         private List<Menu> menus;
+        private string colorBc15;
+        private string colorText15;
+        private string colorBg15;
+        private string colorBc5;
+        private string colorText5;
+        private string colorBg5;
+        private string colorBc10;
+        private string colorText10;
+        private string colorBg10;
+        private string colorBc20;
+        private string colorText20;
+        private string colorBg20;
 
         public List<Menu> Menus
         {
@@ -84,6 +198,8 @@ namespace PUL.GS.App.ViewModels
                                 {
                                     Message = $"Se actualizo la solicitud y el usuario no fue notificado, contacte al area de sistemas."
                                 };
+
+                                await CoreMethods.PushPageModel<BookSplashViewModel>(notificationResult);
                             }
                             else
                             {
@@ -99,7 +215,7 @@ namespace PUL.GS.App.ViewModels
                 }
             });
 
-            TipCommand = new Command((p) =>
+            TipCommand = new Command(async (p) =>
             {
                 if (!IsBusy)
                 {
@@ -113,8 +229,9 @@ namespace PUL.GS.App.ViewModels
                     SubtotalTip = percentTip * CurrentBook.SubTotal;
                     Total = CurrentBook.SubTotal + SubtotalTip;
                     CurrentBook.SubTotal = CurrentBook.SubTotal;
-                    CurrentBook.Total = Total;                    
+                    CurrentBook.Total = Total;
 
+                    await RefreshLabel(Tip);
                     dialogs.HideLoading();
                     IsBusy = false;
                 }
@@ -131,6 +248,22 @@ namespace PUL.GS.App.ViewModels
             Tip = 0;
             SubtotalTip = 0;
             Total = 0;
+
+            ColorBc5 = "Black";
+            ColorText5 = "Black";
+            ColorBg5 = "#FFFFFF";
+
+            ColorBc10 = "Black";
+            ColorText10 = "Black";
+            ColorBg10 = "#FFFFFF";
+
+            ColorBc15 = "Black";
+            ColorText15 = "Black";
+            ColorBg15 = "#FFFFFF";
+
+            ColorBc20 = "Black";
+            ColorText20 = "Black";
+            ColorBg20 = "#FFFFFF";
         }
 
         public override void Init(object initData)
@@ -144,6 +277,86 @@ namespace PUL.GS.App.ViewModels
 
             Menus = currentBook.Menus;
         }
+
+
+
+        public async Task RefreshLabel(int tip)
+        {
+            if (tip == 5)
+            {
+                ColorBc5 = "#F05E13";
+                ColorText5 = "#FFFFFF";
+                ColorBg5 = "#F05E13";
+
+                ColorBc10 = "Black";
+                ColorText10 = "Black";
+                ColorBg10 = "#FFFFFF";
+
+                ColorBc15 = "Black";
+                ColorText15 = "Black";
+                ColorBg15 = "#FFFFFF";
+
+                ColorBc20 = "Black";
+                ColorText20 = "Black";
+                ColorBg20 = "#FFFFFF";
+            }
+            else if (tip == 10)
+            {
+                ColorBc10 = "#F05E13";
+                ColorText10 = "#FFFFFF";
+                ColorBg10 = "#F05E13";
+
+                ColorBc5 = "Black";
+                ColorText5 = "Black";
+                ColorBg5 = "#FFFFFF";
+
+                ColorBc15 = "Black";
+                ColorText15 = "Black";
+                ColorBg15 = "#FFFFFF";
+
+                ColorBc20 = "Black";
+                ColorText20 = "Black";
+                ColorBg20 = "#FFFFFF";
+            }
+            else if (tip == 15)
+            {
+                ColorBc15 = "#F05E13";
+                ColorText15 = "#FFFFFF";
+                ColorBg15 = "#F05E13";
+
+                ColorBc5 = "Black";
+                ColorText5 = "Black";
+                ColorBg5 = "#FFFFFF";
+
+                ColorBc10 = "Black";
+                ColorText10 = "Black";
+                ColorBg10 = "#FFFFFF";
+
+                ColorBc20 = "Black";
+                ColorText20 = "Black";
+                ColorBg20 = "#FFFFFF";
+
+            }
+            else if (tip == 20)
+            {
+                ColorBc20 = "#F05E13";
+                ColorText20 = "#FFFFFF";
+                ColorBg20 = "#F05E13";
+
+                ColorBc5 = "Black";
+                ColorText5 = "Black";
+                ColorBg5 = "#FFFFFF";
+
+                ColorBc10 = "Black";
+                ColorText10 = "Black";
+                ColorBg10 = "#FFFFFF";
+
+                ColorBc15 = "Black";
+                ColorText15 = "Black";
+                ColorBg15 = "#FFFFFF";
+            }
+        }
+
 
         //private void RefreshItems()
         //{

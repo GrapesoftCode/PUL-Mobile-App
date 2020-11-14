@@ -37,7 +37,7 @@ namespace PUL.GS.App.ViewModels
             {
                 IsBusy = true;
 
-                dialogs.ShowLoading("Cargando", MaskType.Gradient);
+                dialogs.ShowLoading("Cargando...", MaskType.Gradient);
 
                 //await ChatService.InitAsync(UserName);
 

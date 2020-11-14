@@ -18,10 +18,7 @@ namespace PUL.GS.App.ViewModels
 {
     public class PulerViewModel : BaseViewModel
     {
-
-        readonly IChatService ChatService;
         readonly IUserDialogs dialogs;
-        private ObservableCollection<Contact> contacts;
         private bool isRefreshing;
         private bool pulers;
         private bool activity;
@@ -37,6 +34,10 @@ namespace PUL.GS.App.ViewModels
             }
         }
 
+        public ObservableCollection<Activity> Activities { get; set; }
+        public ObservableCollection<Contact> Contacts { get; set; }
+        public ObservableCollection<StatusIndicator> PhantomList { get; set; }
+
         public bool IsToggled
         {
             get => isToggled; set
@@ -46,7 +47,6 @@ namespace PUL.GS.App.ViewModels
                 OnPropertyChanged();
             }
         }
-
         public bool Pulers
         {
             get => pulers; set
@@ -55,7 +55,6 @@ namespace PUL.GS.App.ViewModels
                 OnPropertyChanged();
             }
         }
-
         public bool Activity
         {
             get => activity; set
@@ -64,7 +63,6 @@ namespace PUL.GS.App.ViewModels
                 OnPropertyChanged();
             }
         }
-
         public bool IsRefreshing
         {
             get => isRefreshing; set
@@ -73,19 +71,12 @@ namespace PUL.GS.App.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ICommand RefreshCommand { get; set; }
         public User CurrentUser { get; set; }
-        public ObservableCollection<Contact> Contacts
-        {
-            get => contacts; set
-            {
-                contacts = value;
-                OnPropertyChanged();
-            }
-        }
         public Contact CurrentContact { get; set; }
+        public Activity CurrentActivity { get; set; }
+        public ICommand RefreshCommand { get; set; }
         public ICommand EnterContactCommand { get; set; }
-
+        public ICommand ActivityCommand { get; set; }
         public ICommand PhantomCommand => new Command((color) =>
         {
             if ((string)color == "greenphantom.png")
@@ -108,11 +99,33 @@ namespace PUL.GS.App.ViewModels
         });
 
         public PulerViewModel(
-            IUserDialogs _dialogs,
-            IChatService _chatService)
+            IUserDialogs _dialogs)
         {
-            ChatService = _chatService;
             dialogs = _dialogs;
+
+            ActivityCommand = new Command(async () =>
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
+
+                    if (CurrentActivity != null)
+                    {
+                        Contact contact = new Contact()
+                        {
+                            FirstName = CurrentActivity.User.FirstName,
+                            LastName = CurrentActivity.User.LastName,
+                            SurName = CurrentActivity.User.SurName,
+                            Username = CurrentActivity.User.Username,
+                        };
+
+                        await CoreMethods.PushPopupPageModel<ProfileDetailViewModel>(contact);
+                        CurrentActivity = null;
+                    }
+
+                    IsBusy = false;
+                }
+            });
 
             EnterContactCommand = new Command(async () =>
             {
@@ -153,7 +166,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
-            dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando...");
 
             await RefreshItems(0);
             //await ChatService.InitAsync(CurrentUser.Username);
@@ -165,11 +178,37 @@ namespace PUL.GS.App.ViewModels
 
         private async Task RefreshItems(int collection)
         {
-            var list = await contactAgent.GetAll(CurrentUser.Username);
-            if (collection == 0)
-                Contacts = new ObservableCollection<Contact>(list.objectResult);
-            else
-                Contacts = new ObservableCollection<Contact>(list.objectResult);
+            var activities = await activityAgent.GetAll(CurrentUser.Username);
+            if (activities.Success) {
+                Activities = new ObservableCollection<Activity>(activities.objectResult);
+            }
+            var contacts = await contactAgent.GetAll(CurrentUser.Username);
+            if (contacts.Success)
+            {
+                Contacts = new ObservableCollection<Contact>(contacts.objectResult);
+            }
+            //if (collection == 0)
+            //    Contacts = new ObservableCollection<Contact>(list.objectResult);
+            //else
+            //    Contacts = new ObservableCollection<Contact>(list.objectResult);
+
+            List<StatusIndicator> phantom = new List<StatusIndicator>()
+            {
+                new StatusIndicator(){
+                    Value = "Inactivo",
+                    Image = "redphantom.png"
+                },
+                 new StatusIndicator(){
+                    Value = "Activo",
+                    Image = "greenphantom.png"
+                },
+                  new StatusIndicator(){
+                    Value = "Facebook",
+                    Image = "bluephantom.png"
+                },
+            };
+
+            PhantomList = new ObservableCollection<StatusIndicator>(phantom);
         }
 
         private void ChangeCollection(bool toggle)

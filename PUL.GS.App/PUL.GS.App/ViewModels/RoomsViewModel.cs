@@ -57,7 +57,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
             
-            dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando...");
 
             await ChatService.InitAsync(CurrentUser.Username);
 

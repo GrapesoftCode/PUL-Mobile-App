@@ -45,10 +45,10 @@ namespace PUL.GS.App
 
         protected void CreateMenuPage(string menuPageTitle)
         {
-            var _menuPage = new MasterPage
-            {
-                Title = menuPageTitle,
-            };
+            //var _menuPage = new MenuViewModel
+            //{
+            //    Title = menuPageTitle,
+            //};
             //var listView = new ListView();
 
             //listView.ItemsSource = new string[] { "Contacts", "Quotes", "Modal Demo" };
@@ -82,20 +82,6 @@ namespace PUL.GS.App
             //_masterDetailPage = new MasterDetailPage();
 
 
-            var profile = new ToolbarItem
-            {
-                IconImageSource = "profile.png",
-                Priority = 1,
-                Order = ToolbarItemOrder.Primary
-            };
-            var location = new ToolbarItem
-            {
-                IconImageSource = "location.png",
-                Priority = 2,
-                Order = ToolbarItemOrder.Primary
-            };
-
-
             //masterDetail.ToolbarItems.Add(profile);
             //masterDetail.ToolbarItems.Add(location);
 
@@ -107,12 +93,12 @@ namespace PUL.GS.App
 
             //var masterPage = FreshPageModelResolver.ResolvePageModel<MasterViewModel>(CurrentUser);
             //masterPage.Title = "Master View Model";
-            _menuPage.ToolbarItems.Add(profile);
-            _menuPage.ToolbarItems.Add(location);
+            //_menuPage.ToolbarItems.Add(profile);
+            //_menuPage.ToolbarItems.Add(location);
             //var masterPageArea = new FreshNavigationContainer(masterPage, "MasterPageArea");
             //masterPageArea.Title = "Menu";
             //this.Title = "Prueba";
-            this.Master = new NavigationPage(_menuPage) { Title = "Menu" };
+            this.Master = new NavigationPage(FreshPageModelResolver.ResolvePageModel<MenuViewModel>(CurrentUser)) { Title = "Menu" };
             this.Detail = _tabbedNavigationPage;
         }
 

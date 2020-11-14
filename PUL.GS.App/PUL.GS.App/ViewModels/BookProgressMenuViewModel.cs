@@ -1,17 +1,19 @@
 ﻿using Acr.UserDialogs;
 using PUL.GS.Models;
+using PUL.GS.Models.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
 using Menu = PUL.GS.Models.Menu;
-using PUL.GS.Models.Interfaces;
-using System.Threading.Tasks;
 
 namespace PUL.GS.App.ViewModels
 {
-    public class BookMenuViewModel : BaseViewModel
+    public class BookProgressMenuViewModel : BaseViewModel
     {
         public bool IsRefreshing
         {
@@ -19,7 +21,7 @@ namespace PUL.GS.App.ViewModels
             set
             {
                 isRefreshing = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
         public bool IsVisible
@@ -27,13 +29,13 @@ namespace PUL.GS.App.ViewModels
             get => isVisible; set
             {
                 isVisible = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
         public ICommand RefreshCommand { get; set; }
 
         public ICommand MenuChangedCommand => new Command(async () =>
-            {
+        {
             if (!IsBusy)
             {
                 IsBusy = true;
@@ -41,12 +43,12 @@ namespace PUL.GS.App.ViewModels
                 {
                     if (CurrentFood != null)
                     {
-                            //Menus = new List<Menu>();
-                            var exists = Menus.Where(x => x.id == CurrentFood.id).SingleOrDefault();
-                            if (exists == null)
-                                Menus.Add(CurrentFood);
-                            await CoreMethods.PushPageModel<BookMenuDetailViewModel>(CurrentFood);
-                            CurrentFood = null;
+                        //Menus = new List<Menu>();
+                        var exists = Menus.Where(x => x.id == CurrentFood.id).SingleOrDefault();
+                        if (exists == null)
+                            Menus.Add(CurrentFood);
+                        await CoreMethods.PushPageModel<BookMenuDetailViewModel>(CurrentFood);
+                        CurrentFood = null;
                     }
 
                     IsInitialized = false;
@@ -62,7 +64,7 @@ namespace PUL.GS.App.ViewModels
                 CurrentBook.Menus = Menus;
                 CurrentBook.SubTotal = SubTotal;
                 CurrentBook.Total = SubTotal;
-                await CoreMethods.PushPageModel<BookDetailViewModel>(CurrentBook);
+                await CoreMethods.PopPageModel(CurrentBook);
             }
             else
             {
@@ -102,10 +104,10 @@ namespace PUL.GS.App.ViewModels
             }
         }
 
-        public BookMenuViewModel(IUserDialogs _dialogs)
+        public BookProgressMenuViewModel(IUserDialogs _dialogs)
         {
             dialogs = _dialogs;
-                       
+
 
             RefreshCommand = new Command(async () =>
             {
@@ -136,8 +138,8 @@ namespace PUL.GS.App.ViewModels
         {
             base.Init(initData);
             CurrentBook = initData as Book;
+            Menus = new List<Menu>(CurrentBook.Menus);
             await RefreshItems();
-            Menus = new List<Menu>();
         }
 
         public override async void ReverseInit(object returnedData)
@@ -164,29 +166,7 @@ namespace PUL.GS.App.ViewModels
                 else
                 {
                     Menus.Remove(last);
-                }                       
-
-                //var Items = new List<Menu>();
-                //foreach (var item in Menus)
-                //{
-                //    if (Items.Count == 0)
-                //        Items.Add(item);
-                //    else
-                //    {
-                //        var update = Items.Where(x => x.id == item.id).SingleOrDefault();
-                //        if (update != null)
-                //        {
-                //            update.Quantity = item.Quantity;
-                //            if (update.Quantity == 0)
-                //                Items.Remove(update);
-                //        }
-                //        else
-                //        {
-                //            Items.Add(item);
-                //        }
-                //    }
-                //}
-                //Menus = Items;
+                }
 
             }
             await RefreshItems();
@@ -223,37 +203,6 @@ namespace PUL.GS.App.ViewModels
                 IsVisible = true;
             else
                 IsVisible = false;
-
-
-            //int index = 0;
-            //double account = 0;
-            //Items = 0;
-            //foreach (var group in grouped)
-            //{
-            //    foreach (var item in group)
-            //    {
-            //        double accountItem = 0;
-            //        item.Index = index;
-            //        item.Quantity = 0;
-
-            //        if (Menus != null)
-            //        {
-            //            item.Quantity = Menus.Where(x => x.id == item.id).Select(x => x.Quantity).SingleOrDefault();
-            //            accountItem = item.Quantity * item.Price;
-            //            account += accountItem;
-            //            SubTotal = account;
-            //            Items += item.Quantity;
-
-            //        }
-            //        index++;
-            //    }
-
-            //    if (Items > 0)
-            //        IsVisible = true;
-            //    else
-            //        IsVisible = false;
-            //}
-
 
             var grouped =
                from c in listFoods

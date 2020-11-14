@@ -73,7 +73,7 @@ namespace PUL.GS.App.ViewModels
 
             Messages.Add(message);
 
-            dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando...");
             await ChatService.SendMessageAsync(message);
             dialogs.HideLoading();
 
@@ -132,16 +132,12 @@ namespace PUL.GS.App.ViewModels
             if (!string.IsNullOrEmpty(FileName))
             {
                 messageGreeting.Url = FileName;
+                var message = new UserConnectedMessage(UserName, GroupName);
+                await ChatService.JoinChannelAsync(message);
+                Messages.Add(messageGreeting);
             }
-
-            var message = new UserConnectedMessage(UserName, GroupName);
-            await ChatService.JoinChannelAsync(message);
-
             var user = await ChatService.GetUsersGroup(GroupName);
-
             Users = new ObservableCollection<User>(user);
-
-            Messages.Add(messageGreeting);
         }
 
         protected override void ViewIsAppearing(object sender, EventArgs e)

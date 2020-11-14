@@ -44,9 +44,20 @@ namespace PUL.GS.App.ViewModels
 
                     if (CurrentContact != null)
                     {
-                        Tuple<string, string> data =
-                        new Tuple<string, string>(CurrentUser.Username, CurrentContact.Username);
+                        //Tuple<string, string> data =
+                        //new Tuple<string, string>(CurrentUser.Username, CurrentContact.Username);
+                        //await CoreMethods.PushPageModel<ChatViewModel>(data);
+
+                        Greeting greeting = new Greeting()
+                        {
+                            Username = CurrentUser.Username,
+                            FileName = null
+                        };
+
+                        Tuple<Greeting, string> data =
+                        new Tuple<Greeting, string>(greeting, CurrentContact.Username);
                         await CoreMethods.PushPageModel<ChatViewModel>(data);
+
                         CurrentContact = null;
                     }
 
@@ -59,9 +70,9 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
-            var liscontacts = await contactAgent.GetAll(CurrentUser.Username);
+            dialogs.ShowLoading("Cargando...");
 
-            dialogs.ShowLoading("Cargando");
+            var liscontacts = await contactAgent.GetAll(CurrentUser.Username);
 
             await ChatService.InitAsync(CurrentUser.Username);
 

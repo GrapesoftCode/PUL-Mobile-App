@@ -308,52 +308,57 @@
                                 TextColor="#121112" 
                                 FontFamily="{StaticResource SSPSemibold}"></Label>
 
-                    <Frame Grid.Column="1" CornerRadius="25" BorderColor="OrangeRed"
+                    <Frame Grid.Column="1" CornerRadius="25" BorderColor="{Binding ColorBc5}"
                                 Margin="0" Padding="0">
                         <Label Text="5%" 
                                     HorizontalTextAlignment="Center"
                                     FontSize="16" 
                                     FontAttributes="None" 
-                                    TextColor="#121112" 
+                                    TextColor="{Binding ColorText5}" 
+                                    BackgroundColor="{Binding ColorBg5}"
                                     FontFamily="{StaticResource SSPSemibold}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding TipCommand}" CommandParameter="5" />
                             </Label.GestureRecognizers>
                         </Label>
                     </Frame>
-                    <Frame Grid.Column="2" CornerRadius="25" BorderColor="OrangeRed"
+                    <Frame Grid.Column="2" CornerRadius="25" BorderColor="{Binding ColorBc10}"
                                 Margin="0" Padding="0">
                         <Label Text="10%" 
                                     HorizontalTextAlignment="Center"
                                     FontSize="16" 
                                     FontAttributes="None" 
-                                    TextColor="#121112" 
+                                    TextColor="{Binding ColorText10}" 
+                                BackgroundColor="{Binding ColorBg10}"
                                     FontFamily="{StaticResource SSPSemibold}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding TipCommand}" CommandParameter="10" />
                             </Label.GestureRecognizers>
                         </Label>
                     </Frame>
-                    <Frame Grid.Column="3" CornerRadius="25" BorderColor="OrangeRed"
-                                Margin="0" Padding="0">
+                    <Frame Grid.Column="3" CornerRadius="25" BorderColor="{Binding ColorBc15}"
+                           Margin="0" Padding="0"
+                           HasShadow="False">
                         <Label Text="15%" 
-                                    HorizontalTextAlignment="Center"
-                                    FontSize="16" 
-                                    FontAttributes="None" 
-                                    TextColor="#121112" 
+                               HorizontalTextAlignment="Center"
+                               FontSize="16"
+                               FontAttributes="None"
+                               TextColor="{Binding ColorText15}" 
+                                    BackgroundColor="{Binding ColorBg15}"
                                     FontFamily="{StaticResource SSPSemibold}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding TipCommand}" CommandParameter="15" />
                             </Label.GestureRecognizers>
                         </Label>
                     </Frame>
-                    <Frame Grid.Column="4" CornerRadius="25" BorderColor="OrangeRed"
+                    <Frame Grid.Column="4" CornerRadius="25" BorderColor="{Binding ColorBc20}"
                                 Margin="0" Padding="0">
                         <Label Text="20%" 
                                     HorizontalTextAlignment="Center"
                                     FontSize="16" 
                                     FontAttributes="None" 
-                                    TextColor="#121112" 
+                                    TextColor="{Binding ColorText20}" 
+                                    BackgroundColor="{Binding ColorBg20}"
                                     FontFamily="{StaticResource SSPSemibold}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding TipCommand}" CommandParameter="20" />

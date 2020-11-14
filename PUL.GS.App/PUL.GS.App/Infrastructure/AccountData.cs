@@ -53,14 +53,14 @@ namespace PUL.GS.App.Infrastructure
             return response;
         }
 
-        public Response<User> AddUser(User user)
+        public async Task<Response<User>> AddUser(User user)
         {
             var response = new Response<User>() { Success = true };
             try
             {
                 var client = new HttpClientWrapper<User, User>();
-                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
-                    ServiceURIs.Account.AddUser, HttpVerb.Post, user).Result;
+                var serviceResponse = await client.Consume(new Uri(settings.baseUrl),
+                    ServiceURIs.Account.AddUser, HttpVerb.Post, user);
                 response.objectResult = serviceResponse;
             }
             catch (Exception ex)

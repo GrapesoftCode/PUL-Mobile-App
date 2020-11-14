@@ -25,7 +25,7 @@ namespace PUL.GS.App.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            var activity = this.Context as Activity;
+            var activity = this.Context as Android.App.Activity;
 
             if (showLogin && FacebookAuth.CurrentUser == null)
             {

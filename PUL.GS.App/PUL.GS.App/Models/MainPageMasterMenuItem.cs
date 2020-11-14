@@ -10,14 +10,14 @@ namespace PUL.GS.App.Models
 
     public class MainPageMasterMenuItem
     {
-        public MainPageMasterMenuItem()
-        {
-            TargetType = typeof(MainPageMasterMenuItem);
-        }
+        //public MainPageMasterMenuItem()
+        //{
+        //    TargetType = typeof(MainPageMasterMenuItem);
+        //}
         public int Id { get; set; }
         public string Title { get; set; }
         public string Icon { get; set; }
 
-        public Type TargetType { get; set; }
+        //public Type TargetType { get; set; }
     }
 }

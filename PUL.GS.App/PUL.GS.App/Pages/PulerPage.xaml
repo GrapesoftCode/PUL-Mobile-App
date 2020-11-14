@@ -30,7 +30,15 @@
 
                     <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
                         <!-- Background Frame -->
-                        <Frame BackgroundColor="White" BorderColor="Black"  Padding="0" Margin="0" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="200" HorizontalOptions="EndAndExpand">
+                        <Frame BackgroundColor="White" 
+                               BorderColor="Black"  
+                               Padding="0" 
+                               Margin="0" 
+                               HasShadow="False" 
+                               VerticalOptions="Center" 
+                               HeightRequest="40" 
+                               WidthRequest="200" 
+                               HorizontalOptions="EndAndExpand">
                             <Frame.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Single">
                                     <On Platform="iOS" Value="15"></On>
@@ -40,9 +48,19 @@
                         </Frame>
 
                         <!-- Running Frame -->
-                        <controls:CustomFrame x:Name="runningFrame" StartColor="#130E1F" MiddleColor="#E51320" EndColor="#FB910D" CornerRadius="30"
+                        <controls:CustomFrame x:Name="runningFrame" 
+                                              StartColor="#130E1F" 
+                                              MiddleColor="#E51320"
+                                              EndColor="#FB910D" 
+                                              CornerRadius="30"
                                               GradientOrientation="Horizontal"
-                                              HeightRequest="30" WidthRequest="100" HasShadow="False" Margin="0" Padding="0"  HorizontalOptions="Start" VerticalOptions="Center">
+                                              HeightRequest="40" 
+                                              WidthRequest="100" 
+                                              HasShadow="False" 
+                                              Margin="0" 
+                                              Padding="0"  
+                                              HorizontalOptions="Start" 
+                                              VerticalOptions="Center">
                             <Frame.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Single">
                                     <On Platform="iOS" Value="15"></On>
@@ -52,42 +70,77 @@
                         </controls:CustomFrame>
 
                         <!-- Selection text1-->
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="70" HeightRequest="30" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal" 
+                                     VerticalOptions="Center" 
+                                     HorizontalOptions="Start" 
+                                     WidthRequest="100" 
+                                     HeightRequest="40" 
+                                     BackgroundColor="Transparent">
                             <StackLayout.GestureRecognizers>
                                 <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
                                 <TapGestureRecognizer Command="{Binding TappedActivityCommand}" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
-                            <Label x:Name="text1" Text="Actividad" TextColor="White" WidthRequest="100" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+                            <Label x:Name="text1" 
+                                   Text="Actividad" 
+                                   TextColor="White" 
+                                   WidthRequest="100" 
+                                   HorizontalOptions="Center" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="Center"></Label>
                         </StackLayout>
 
                         <!-- Selection text2-->
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="70" HeightRequest="30" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal" 
+                                     VerticalOptions="Center" 
+                                     HorizontalOptions="End" 
+                                     WidthRequest="100" 
+                                     HeightRequest="40" 
+                                     BackgroundColor="Transparent">
                             <StackLayout.GestureRecognizers>
                                 <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
                                 <TapGestureRecognizer Command="{Binding TappedPulersCommand}" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
-                            <Label x:Name="text2" Text="Pulers" TextColor="Red" WidthRequest="100" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+                            <Label x:Name="text2" 
+                                   Text="Pulers" 
+                                   TextColor="Red" 
+                                   WidthRequest="100" 
+                                   HorizontalOptions="Center" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="Center"></Label>
                         </StackLayout>
                     </Grid>
 
                     <ImageButton Grid.Row="0"
-                             Grid.Column="2"
-                             Aspect="AspectFit"
-                             Source="{Binding Phantom}"
-                             BackgroundColor="Transparent"
-                             HeightRequest="40"
-                             WidthRequest="40"
-                             Command="{Binding PhantomCommand}"
-                                 CommandParameter="{Binding Phantom}">
+                                 Grid.Column="2"
+                                 Aspect="AspectFit"
+                                 Source="{Binding Phantom}"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="40"
+                                 WidthRequest="40"
+                                 Command="{Binding PhantomCommand}"
+                                 CommandParameter="{Binding Phantom}"
+                                 VerticalOptions="StartAndExpand">
                     </ImageButton>
+
+                    <Picker Grid.Row="0"
+                            Grid.Column="2" 
+                            Title="Estado" 
+                            FontSize="12"
+                            ItemsSource="{Binding PhantomList}" 
+                            ItemDisplayBinding="{Binding Value}"
+                            SelectedItem="{Binding CurrentPhantom}"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="True" 
+                            Visual="Default"/>
 
                     <CollectionView Grid.Row="1"
                                 Grid.ColumnSpan="3"
                                 Margin="0,0,0,0"
-                                ItemsSource="{Binding Contacts}"
+                                ItemsSource="{Binding Activities}"
                                 SelectionMode="Single"
-                                SelectedItem="{Binding CurrentContact}"
-                                SelectionChangedCommand="{Binding EnterContactCommand}"
+                                SelectedItem="{Binding CurrentActivity}"
+                                SelectionChangedCommand="{Binding ActivityCommand}"
                                 IsVisible="{Binding Activity}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
@@ -127,10 +180,10 @@
                                                 FontSize="14"
                                                 FontFamily="{StaticResource SSPRegular}"
                                                 TextColor="#121112"
-                                                Text="{Binding FirstName}"></Label>
+                                                Text="{Binding User.FirstName}"></Label>
 
                                             <Label Grid.Column="2"                                            
-                                               Text="Reservó en ..."
+                                               Text="{Binding Activities}"
                                                VerticalOptions="Center"
                                                FontAttributes="None"
                                                TextColor="Gray" 
@@ -139,7 +192,7 @@
 
 
                                             <Image Grid.Column="3"
-                                               Source="dienteleon.jpg"
+                                               Source="{Binding Establishment.Logo.Uri}"
                                                Aspect="AspectFit"
                                                Margin="10"></Image>
 

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:PUL.GS.App.Controls"
              mc:Ignorable="d"
-             x:Class="PUL.GS.App.Pages.BookMenuPage">
+             x:Class="PUL.GS.App.Pages.BookProgressMenuPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -126,7 +126,7 @@
                                                         <ColumnDefinition Width=".5*"></ColumnDefinition>
                                                         <ColumnDefinition Width=".5*"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-                                                    
+
                                                     <Image Grid.RowSpan="3"
                                                            Grid.Column="0"
                                                            Source="{Binding Logo.Uri}"
@@ -229,7 +229,7 @@
                                VerticalOptions="CenterAndExpand"></Label>
                     </Grid>
                 </Frame>
-                
+
                 <!--<controls:CustomButton Text="{Binding SubTotal, StringFormat='Carrito ${0} pesos'}"
                         FontFamily="{StaticResource SSPBold}"
                         TextColor="White"

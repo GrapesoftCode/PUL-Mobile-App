@@ -24,6 +24,7 @@ namespace PUL.GS.App.ViewModels
         public Establishment CurrentEstablishment { get; set; }
         public Promotion CurrentPromotion { get; set; }
         public Combo CurrentCombo { get; set; }
+        public Book CurrentBook { get; set; } = new Book();
 
         public ICommand EstablishmentCommand { get; set; }
 
@@ -41,22 +42,26 @@ namespace PUL.GS.App.ViewModels
 
             CurrentUser = initData as User;
 
-            //EstablishmentCommand = new Command(async () =>
-            //{
-            //    if (!IsBusy)
-            //    {
-            //        IsBusy = true;
+            EstablishmentCommand = new Command(async () =>
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
 
-            //        if (CurrentEstablishment != null)
-            //        {
-            //            Establishment establishment = CurrentEstablishment;
-            //            await CoreMethods.PushPageModel<BookViewModel>(establishment);
-            //            CurrentEstablishment = null;
-            //        }
+                    if (CurrentEstablishment != null)
+                    {
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.Establishment = CurrentEstablishment;
+                        CurrentBook.establishmentId = CurrentEstablishment.id;
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.userId = CurrentUser.id;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
+                        CurrentEstablishment = null;
+                    }
 
-            //        IsBusy = false;
-            //    }
-            //});
+                    IsBusy = false;
+                }
+            });
         }
 
 
@@ -64,7 +69,7 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
-            dialogs.ShowLoading("Cargando");
+            dialogs.ShowLoading("Cargando...");
 
             var musicalGenre = await establishmentAgent.GetRecordsEstablishment();
             var typeEstablishment = await establishmentAgent.GetRecordsEstablishment();

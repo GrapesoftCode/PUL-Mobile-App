@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace PUL.GS.App.Droid
 {
-    [Activity(Label = "PUL.GS.App", Icon = "@mipmap/icon", Theme = "@style/whiteAppTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PUL", Icon = "@drawable/PUL", Theme = "@style/whiteAppTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static MainActivity Instance = null;

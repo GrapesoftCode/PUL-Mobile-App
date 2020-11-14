@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PUL.GS.App.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPage : ContentPage
+    public partial class BookProgressMenuPage : ContentPage
     {
-        public MenuPage()
+        public BookProgressMenuPage()
         {
             InitializeComponent();
         }
