@@ -91,7 +91,7 @@ namespace PUL.GS.App.ViewModels
                             //CurrentBook.Establishment = CurrentEstablishment;
                             CurrentBook.Table = CurrentTable;
                             CurrentBook.Persons = Persons;
-                            CurrentBook.Hour = Hour.ToString("hh:mm:ss tt");
+                            CurrentBook.Hour = Hour.ToString("hh:mm tt");
                             CurrentBook.Date = Date.ToString("dd/MM/yyyy");
                             CurrentBook.PlayerId = CurrentBook.User.PlayerId;
                             CurrentBook.TotalMinimumConsumption = CurrentTable.MinimumConsumption * Persons;

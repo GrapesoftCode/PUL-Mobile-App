@@ -41,7 +41,7 @@
                                                 Text="{Binding Title}"
                                                 TextColor="Black"
                                                 FontAttributes="None"
-                                                FontSize="12"
+                                                FontSize="14"
                                                 FontFamily="{StaticResource SSPBold}"
                                                 HorizontalOptions="StartAndExpand"
                                                 VerticalOptions="FillAndExpand"

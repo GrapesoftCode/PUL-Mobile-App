@@ -55,7 +55,7 @@
                                                Grid.RowSpan="4"
                                                CornerRadius="500"
                                                Margin="10">
-                                            <Image Source="image_3.png"
+                                            <Image Source="profile.png"
                                                    Aspect="AspectFit"></Image>
                                         </Frame>
                                         

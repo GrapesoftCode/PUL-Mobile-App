@@ -170,7 +170,7 @@
                                             <Frame Grid.Column="0"
                                                CornerRadius="200"
                                                Margin="10">
-                                                <Image Source="image_3.png"
+                                                <Image Source="profile.png"
                                                    Aspect="AspectFit"></Image>
                                             </Frame>
 
@@ -238,7 +238,7 @@
                                             <Frame Grid.Column="0"
                                                CornerRadius="200"
                                                Margin="10">
-                                                <Image Source="image_3.png"
+                                                <Image Source="profile.png"
                                                    Aspect="AspectFit"></Image>
                                             </Frame>
 

@@ -242,7 +242,8 @@
                                                         <ImageButton Grid.Column="0"
                                                 Grid.Row="1"
                                                 Grid.RowSpan="3"
-                                                Source="qr.png"
+                                                BackgroundColor="White"
+                                                Source="barcode_qr_code.png"
                                                 Aspect="AspectFit"
                                                 Command="{Binding TikectCommand}"></ImageButton>
 
