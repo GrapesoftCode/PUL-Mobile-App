@@ -9,11 +9,55 @@
              Visual="Material"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="location.png"></ToolbarItem>
-        <ToolbarItem IconImageSource="profile.png"></ToolbarItem>
+       <!-- <ToolbarItem IconImageSource="location.png" Priority="0" Order="Primary" ></ToolbarItem>
+        <ToolbarItem IconImageSource="profile.png" Priority="1" Order="Primary" ></ToolbarItem>
+        
+        <ToolbarItem Text="About" Priority="2" Order="Secondary"/>-->
+        
+        <ToolbarItem Order="Primary"
+                     Text="Text Item"
+                     Priority="0"
+                     IconImageSource="profile.png"
+                     Clicked="NavigateButton_OnClicked" />
+        <ToolbarItem 
+                     Priority="1"
+                     Text="CDMX - Poniente"
+                     Order="Secondary"/>
+         <ToolbarItem 
+                     Priority="2"
+                     Text="CDMX - Centro"
+                     Order="Secondary"/>
+         <ToolbarItem 
+                     Priority="3"
+                     Text="CDMX - Sur"
+                     Order="Secondary"/>
+         <ToolbarItem 
+                     Priority="4"
+                     Text="CDMX - Norte"
+                     Order="Secondary"/>
+         <ToolbarItem 
+                     Priority="5"
+                     Text="CDMX - Oriente"
+                     Order="Secondary"/>
+         <ToolbarItem 
+                     Priority="6"
+                     Text="Puebla"
+                     Order="Secondary"/>
+         <ToolbarItem 
+                     Priority="7"
+                     Text="Guadalajara"
+                     Order="Secondary"/>
+
     </ContentPage.ToolbarItems>
+    
+    
+
 
     <FlexLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+       <!-- <Label x:Name="messageLabel"
+               Text="Click a toolbar item."
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />-->
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
               RowSpacing="0"
               ColumnSpacing="0">

@@ -25,7 +25,7 @@
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
 
-    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    <item name="android:datePickerDialogTheme" >@style/AppCompatDialogStyle</item>
     
      <!--ListView color styling-->
     <!--<item name="@android:colorPressedHighlight">@color/ListViewSelectedItemColor</item>
@@ -38,4 +38,6 @@
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+
+
 </resources>

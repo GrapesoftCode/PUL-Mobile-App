@@ -23,5 +23,14 @@ namespace PUL.GS.App.Pages
         {
             return true;
         }
+        void OnItemClicked(object sender, EventArgs e)
+        {
+            ToolbarItem item = (ToolbarItem)sender;
+           // messageLabel.Text = $"You clicked the \"{item.Text}\" toolbar item.";
+        }
+        private async void NavigateButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PerfilFondoPage());
+        }
     }
 }

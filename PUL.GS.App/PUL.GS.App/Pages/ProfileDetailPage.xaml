@@ -28,7 +28,7 @@
                            Grid.Column="0"
                            CornerRadius="200"
                            HasShadow="True">
-                        <Image Source="image_6.png" Aspect="AspectFit"/>
+                        <Image Source="profile.png" Aspect="AspectFit"/>
                     </Frame>
 
                     <Label Grid.Row="0"
