@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace PUL.GS.App.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PhantomPage : PopupPage
+    public partial class ProfileDetailPage : PopupPage
     {
-        public PhantomPage()
+        public ProfileDetailPage()
         {
             InitializeComponent();
         }

@@ -54,8 +54,6 @@ namespace PUL.GS.App.ViewModels
                             FileName = null
                         };
 
-                        await ChatService.InitAsync(CurrentContact.Username);
-
                         Tuple<Greeting, string> data =
                         new Tuple<Greeting, string>(greeting, CurrentContact.Username);
                         await CoreMethods.PushPageModel<ChatViewModel>(data);
@@ -75,9 +73,10 @@ namespace PUL.GS.App.ViewModels
             dialogs.ShowLoading("Cargando...");
 
             var liscontacts = await contactAgent.GetAll(CurrentUser.Username);
-            Contacts = new ObservableCollection<Contact>(liscontacts.objectResult);
 
-            await ChatService.InitAsync(CurrentContact.Username);
+            await ChatService.InitAsync(CurrentUser.Username);
+
+            Contacts = new ObservableCollection<Contact>(liscontacts.objectResult);
 
             //Rooms = await ChatService.GetRooms();
 

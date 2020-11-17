@@ -36,6 +36,7 @@ namespace PUL.GS.App.ViewModels
 
         public ObservableCollection<Activity> Activities { get; set; }
         public ObservableCollection<Contact> Contacts { get; set; }
+        public ObservableCollection<StatusIndicator> PhantomList { get; set; }
 
         public bool IsToggled
         {
@@ -76,25 +77,13 @@ namespace PUL.GS.App.ViewModels
         public ICommand RefreshCommand { get; set; }
         public ICommand EnterContactCommand { get; set; }
         public ICommand ActivityCommand { get; set; }
-        public ICommand PhantomCommand => new Command(async (color) =>
+        public ICommand PhantomCommand => new Command((color) =>
         {
-            if (!IsBusy)
-            {
-                IsBusy = true;
+            if ((string)color == "greenphantom.png")
 
-                dialogs.ShowLoading("Conectando");
-
-                await CoreMethods.PushPopupPageModel<PhantomViewModel>();
-
-                dialogs.HideLoading();
-
-                IsBusy = false;
-            }
-            //if ((string)color == "greenphantom.png")
-
-            //    Phantom = "redphantom.png";
-            //else
-            //    Phantom = "greenphantom.png";
+                Phantom = "redphantom.png";
+            else
+                Phantom = "greenphantom.png";
         });
 
         public ICommand TappedActivityCommand => new Command(() => {
@@ -173,19 +162,6 @@ namespace PUL.GS.App.ViewModels
             CurrentUser = initData as User;
         }
 
-        public override void ReverseInit(object returnedData)
-        {
-            base.ReverseInit(returnedData);
-
-            if (returnedData != null)
-            {
-                var returnData = returnedData as StatusIndicator;
-
-
-                Phantom = returnData.Image;
-            }
-        }
-
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
@@ -215,6 +191,24 @@ namespace PUL.GS.App.ViewModels
             //    Contacts = new ObservableCollection<Contact>(list.objectResult);
             //else
             //    Contacts = new ObservableCollection<Contact>(list.objectResult);
+
+            List<StatusIndicator> phantom = new List<StatusIndicator>()
+            {
+                new StatusIndicator(){
+                    Value = "Inactivo",
+                    Image = "redphantom.png"
+                },
+                 new StatusIndicator(){
+                    Value = "Activo",
+                    Image = "greenphantom.png"
+                },
+                  new StatusIndicator(){
+                    Value = "Facebook",
+                    Image = "bluephantom.png"
+                },
+            };
+
+            PhantomList = new ObservableCollection<StatusIndicator>(phantom);
         }
 
         private void ChangeCollection(bool toggle)
