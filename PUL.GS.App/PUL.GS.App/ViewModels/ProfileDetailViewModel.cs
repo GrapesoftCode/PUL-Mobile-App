@@ -79,8 +79,11 @@ namespace PUL.GS.App.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
+            dialogs.ShowLoading("Cargando...");
 
             await ChatService.InitAsync(CurrentContact.Username);
+
+            dialogs.HideLoading();
         }
     }
 }

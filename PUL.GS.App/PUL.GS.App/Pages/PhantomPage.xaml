@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PUL.GS.App.Pages.PhantomPage">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+        <Frame WidthRequest="270"
+               HeightRequest="200"
+               Padding="15"
+               Margin="0"
+               CornerRadius="25"
+               BorderColor="Gray">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding PhantomList}"
+                                    SelectedItem="{Binding CurrentPhantom}"
+                                    SelectionChangedCommand="{Binding PhantomCommand}"
+                                    SelectionMode="Single"
+                                    BackgroundColor="#ffffff"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"
+                                           Source="{Binding Image}"
+                                           Aspect="AspectFit"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           Margin="5"
+                                           WidthRequest="50"
+                                           HeightRequest="50"></Image>
+                                    <Label Grid.Column="1"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="StartAndExpand"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           Text="{Binding Value}" 
+                                           FontAttributes="None"
+                                           FontSize="16"
+                                           FontFamily="{StaticResource SSPBold}"
+                                           TextColor="#121112"/>    
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

@@ -4,8 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:PUL.GS.App.Controls"
+             xmlns:converters="clr-namespace:PUL.GS.App.Converters"
              mc:Ignorable="d"
              x:Class="PUL.GS.App.Pages.PulerPage">
+    <ContentPage.Resources>
+        <converters:Base64ToImageConverter x:Key="ToImage"></converters:Base64ToImageConverter>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
             <RefreshView Command="{Binding RefreshCommand}"
@@ -122,17 +126,17 @@
                                  VerticalOptions="StartAndExpand">
                     </ImageButton>
 
-                    <Picker Grid.Row="0"
+                    <!--<Picker Grid.Row="0"
                             Grid.Column="2" 
                             Title="Estado" 
                             FontSize="12"
                             ItemsSource="{Binding PhantomList}" 
-                            ItemDisplayBinding="{Binding Value}"
+                            ItemDisplayBinding="{Binding Image}"
                             SelectedItem="{Binding CurrentPhantom}"
                             VerticalOptions="EndAndExpand"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="True" 
-                            Visual="Default"/>
+                            Visual="Default"/>-->
 
                     <CollectionView Grid.Row="1"
                                 Grid.ColumnSpan="3"

@@ -123,7 +123,6 @@
                                                   IsClippedToBounds="True"
                                                   HorizontalOptions="EndAndExpand"
                                                   VerticalOptions="FillAndExpand"
-                                                  MinimumHeightRequest="100"
                                                   Margin="0,1,0,1"
                                                   Padding="10,5,10,5">
                                 <Grid>

@@ -136,6 +136,11 @@ namespace PUL.GS.App.ViewModels
                 await ChatService.JoinChannelAsync(message);
                 Messages.Add(messageGreeting);
             }
+            else
+            {
+                var message = new UserConnectedMessage(UserName, GroupName);
+                await ChatService.JoinChannelAsync(message);
+            }
             var user = await ChatService.GetUsersGroup(GroupName);
             Users = new ObservableCollection<User>(user);
         }
