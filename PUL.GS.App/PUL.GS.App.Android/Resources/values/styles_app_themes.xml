@@ -8,5 +8,11 @@
     <item name="toolbarPopupStyle">@style/lightToolbarPopupTheme</item>
     <item name="colorPrimaryDark">#ffffff</item>
     <item name="android:windowLightStatusBar">true</item>
+         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+     
+  </style>
+    <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
+    <item name="android:src">@drawable/location</item>
+       
   </style>
 </resources>
