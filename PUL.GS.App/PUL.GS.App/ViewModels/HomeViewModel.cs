@@ -103,6 +103,25 @@ namespace PUL.GS.App.ViewModels
                 IsBusy = false;
             }
         });
+
+
+        public ICommand LocationCommand => new Command(async () =>
+        {
+            if (!IsBusy)
+            {
+                IsBusy = true;
+
+                dialogs.ShowLoading("Conectando");
+
+                await CoreMethods.PushPopupPageModel<LocationFondoViewModel>();
+
+                dialogs.HideLoading();
+
+                IsBusy = false;
+            }
+        });
+
+
         public ICommand TicketDetailCommand => new Command(async () =>
         {
             if (!IsBusy)
@@ -219,9 +238,9 @@ namespace PUL.GS.App.ViewModels
 
         private async Task RefreshItems()
         {
-            var establishmentList = await establishmentAgent.GetRecordsEstablishment();
-            var promotionList = await promotionAgent.GetAll();
-            var comboList = await comboAgent.GetAll();
+            var establishmentList = await establishmentAgent.GetRecordsEstablishment(1,10);
+            var promotionList = await promotionAgent.GetAll(1, 10);
+            var comboList = await comboAgent.GetAll(1, 10);
             Establishments = new ObservableCollection<Establishment>(establishmentList.objectResult.Records);
             Promotions = new ObservableCollection<Promotion>(promotionList.objectResult.Records);
             Combos = new ObservableCollection<Combo>(comboList.objectResult.Records);

@@ -20,15 +20,101 @@ namespace PUL.GS.App.ViewModels
         public ObservableCollection<CostLevel> CostLevels { get; set; }
         //public ObservableCollection<Book> Books { get; set; }
 
-        public User CurrentUser { get; set; }
+        public TypeEstablishment CurrentType { get; set; }
+        public MusicalGenre CurrentMusicalGenres { get; set; }
+        public CostLevel CurrentCostLevel { get; set; }
+
         public Establishment CurrentEstablishment { get; set; }
-        public Promotion CurrentPromotion { get; set; }
-        public Combo CurrentCombo { get; set; }
+        public User CurrentUser { get; set; }
         public Book CurrentBook { get; set; } = new Book();
 
-        public ICommand EstablishmentCommand { get; set; }
+        public ICommand TypeCommand => new Command(async () =>
+        {
+            if (!IsBusy)
+            {
+                IsBusy = true;
 
-        
+                if (CurrentType != null)
+                {
+                    var typeEstablishment = await establishmentAgent.GetRecordsEstablishment();
+
+                    if (typeEstablishment.Success)
+                    {
+                        var establishments = typeEstablishment.objectResult.Records.ToList();
+                        CurrentEstablishment = new Establishment();
+                        CurrentEstablishment = establishments.Where(x => x.Type == CurrentType.Name).FirstOrDefault();
+
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.Establishment = CurrentEstablishment;
+                        CurrentBook.establishmentId = CurrentEstablishment.id;
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.userId = CurrentUser.id;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
+                    }
+                    CurrentType = null;
+                }
+
+                IsBusy = false;
+            }
+        });
+        public ICommand MusicalGenresCommand => new Command(async () =>
+        {
+            if (!IsBusy)
+            {
+                IsBusy = true;
+
+                if (CurrentMusicalGenres != null)
+                {
+                    var musicalGenre = await establishmentAgent.GetRecordsEstablishment();
+
+                    if (musicalGenre.Success)
+                    {
+                        var establishments = musicalGenre.objectResult.Records.ToList();
+                        CurrentEstablishment = new Establishment();
+                        CurrentEstablishment = establishments.Where(x => x.MusicalGenre == CurrentMusicalGenres.Name).FirstOrDefault();
+
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.Establishment = CurrentEstablishment;
+                        CurrentBook.establishmentId = CurrentEstablishment.id;
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.userId = CurrentUser.id;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
+                    }
+                    CurrentMusicalGenres = null;
+                }
+
+                IsBusy = false;
+            }
+        });
+        public ICommand CostLevelCommand => new Command(async () =>
+        {
+            if (!IsBusy)
+            {
+                IsBusy = true;
+
+                if (CurrentCostLevel != null)
+                {
+                    var costLevel = await establishmentAgent.GetRecordsEstablishment();
+
+                    if (costLevel.Success)
+                    {
+                        var establishments = costLevel.objectResult.Records.ToList();
+                        CurrentEstablishment = new Establishment();
+                        CurrentEstablishment = establishments.Where(x => x.CostLevel == CurrentCostLevel.Name).FirstOrDefault();
+
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.Establishment = CurrentEstablishment;
+                        CurrentBook.establishmentId = CurrentEstablishment.id;
+                        CurrentBook.User = CurrentUser;
+                        CurrentBook.userId = CurrentUser.id;
+                        await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
+                    }
+                    CurrentCostLevel = null;
+                }
+
+                IsBusy = false;
+            }
+        });
 
         readonly IUserDialogs dialogs;
         public BrowserViewModel(IUserDialogs _dialogs)
@@ -41,27 +127,6 @@ namespace PUL.GS.App.ViewModels
             base.Init(initData);
 
             CurrentUser = initData as User;
-
-            EstablishmentCommand = new Command(async () =>
-            {
-                if (!IsBusy)
-                {
-                    IsBusy = true;
-
-                    if (CurrentEstablishment != null)
-                    {
-                        CurrentBook.User = CurrentUser;
-                        CurrentBook.Establishment = CurrentEstablishment;
-                        CurrentBook.establishmentId = CurrentEstablishment.id;
-                        CurrentBook.User = CurrentUser;
-                        CurrentBook.userId = CurrentUser.id;
-                        await CoreMethods.PushPageModel<BookViewModel>(CurrentBook);
-                        CurrentEstablishment = null;
-                    }
-
-                    IsBusy = false;
-                }
-            });
         }
 
 
@@ -86,7 +151,7 @@ namespace PUL.GS.App.ViewModels
                                .Select(x => new MusicalGenre
                                {
                                    Name = x.Key.MusicalGenre,
-                                   Logo = x.Key.MusicalGenre == "Rock" ? "rock.png" : x.Key.MusicalGenre == "Techno" ?  "techno.png" : "electronica.png"
+                                   Logo = x.Key.MusicalGenre == "Rock" ? "rock.png" : x.Key.MusicalGenre == "Techno" ?  "techno.png" : "electronica.png",
                                });
 
                 MusicalGenres = new ObservableCollection<MusicalGenre>(groups);

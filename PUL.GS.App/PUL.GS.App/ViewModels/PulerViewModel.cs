@@ -77,13 +77,25 @@ namespace PUL.GS.App.ViewModels
         public ICommand RefreshCommand { get; set; }
         public ICommand EnterContactCommand { get; set; }
         public ICommand ActivityCommand { get; set; }
-        public ICommand PhantomCommand => new Command((color) =>
+        public ICommand PhantomCommand => new Command(async () =>
         {
-            if ((string)color == "greenphantom.png")
+            if (!IsBusy)
+            {
+                IsBusy = true;
 
-                Phantom = "redphantom.png";
-            else
-                Phantom = "greenphantom.png";
+                dialogs.ShowLoading("Conectando");
+
+                await CoreMethods.PushPopupPageModel<PhantomViewModel>();
+
+                dialogs.HideLoading();
+
+                IsBusy = false;
+            }
+            //if ((string)color == "greenphantom.png")
+
+            //    Phantom = "redphantom.png";
+            //else
+            //    Phantom = "greenphantom.png";
         });
 
         public ICommand TappedActivityCommand => new Command(() => {

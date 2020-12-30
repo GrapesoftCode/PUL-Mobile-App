@@ -122,7 +122,7 @@
                                  VerticalOptions="StartAndExpand">
                     </ImageButton>
 
-                    <Picker Grid.Row="0"
+                    <!--<Picker Grid.Row="0"
                             Grid.Column="2" 
                             Title="Estado" 
                             FontSize="12"
@@ -132,7 +132,7 @@
                             VerticalOptions="EndAndExpand"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="True" 
-                            Visual="Default"/>
+                            Visual="Default"/>-->
 
                     <CollectionView Grid.Row="1"
                                 Grid.ColumnSpan="3"

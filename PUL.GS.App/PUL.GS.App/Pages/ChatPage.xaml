@@ -53,7 +53,7 @@
                             VerticalOptions="Center"
                             HasShadow="False"
                             IsClippedToBounds="True">
-                            <Image Source="{Binding Avatar}"></Image>
+                            <Image Source="profile.png"></Image>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

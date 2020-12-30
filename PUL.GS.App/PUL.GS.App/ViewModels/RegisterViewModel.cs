@@ -48,7 +48,7 @@ namespace PUL.GS.App.ViewModels
                 if (result.Success)
                 {
                     await CoreMethods.PushPageModel<LoginViewModel>();
-                    dialogs.Alert($"El usuario {NewUser.Username}  se creo con Exito.");
+                    dialogs.Alert($"El usuario {NewUser.Username} se creó con éxito.");
                 }
                 dialogs.HideLoading();
                 IsBusy = false;

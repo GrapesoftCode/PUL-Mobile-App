@@ -9,17 +9,23 @@
              Visual="Material"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.ToolbarItems>
-       <!-- <ToolbarItem IconImageSource="location.png" Priority="0" Order="Primary" ></ToolbarItem>
-        <ToolbarItem IconImageSource="profile.png" Priority="1" Order="Primary" ></ToolbarItem>
-        
-        <ToolbarItem Text="About" Priority="2" Order="Secondary"/>-->
+        <!--<ToolbarItem IconImageSource="location.png" Priority="0" Order="Primary" ></ToolbarItem>
+        <ToolbarItem IconImageSource="profile.png" Priority="1" Order="Primary" ></ToolbarItem>-->
+
+        <!--<ToolbarItem Text="About" Priority="2" Order="Secondary"/>-->
         
         <ToolbarItem Order="Primary"
                      Text="Text Item"
                      Priority="0"
                      IconImageSource="profile.png"
                      Clicked="NavigateButton_OnClicked" />
-        <ToolbarItem 
+
+        <ToolbarItem Order="Primary"
+                     Text="Text Item"
+                     Priority="1"
+                     IconImageSource="location.png"
+                     Command="{Binding LocationCommand}"/>
+        <!--<ToolbarItem 
                      Priority="1"
                      Text="CDMX - Poniente"
                      Order="Secondary"/>
@@ -46,7 +52,7 @@
          <ToolbarItem 
                      Priority="7"
                      Text="Guadalajara"
-                     Order="Secondary"/>
+                     Order="Secondary"/>-->
 
     </ContentPage.ToolbarItems>
     
